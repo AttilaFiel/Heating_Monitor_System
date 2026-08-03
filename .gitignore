@@ -12,7 +12,7 @@
 *.lck
 
 # history mappa
-.history/
+KiCad/**/.history/
 
 # KiCad ERC report
 *.rpt
