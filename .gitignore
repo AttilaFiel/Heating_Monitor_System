@@ -10,3 +10,9 @@
 *.bak
 *.tmp
 *.lck
+
+# history mappa
+.history/
+
+# KiCad ERC report
+*.rpt
