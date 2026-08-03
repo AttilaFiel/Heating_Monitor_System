@@ -1,0 +1,12 @@
+# PlatformIO
+.pio/
+
+# VS Code (opcionális)
+.vscode/settings.json
+
+# KiCad backup fájlok
+*-backups/
+*.kicad_prl
+*.bak
+*.tmp
+*.lck
