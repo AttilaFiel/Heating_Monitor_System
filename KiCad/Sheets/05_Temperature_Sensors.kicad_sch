@@ -145,6 +145,244 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "HMS_Symbols:CONN_JST_PH_3P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 6.35 1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_JST_PH_3P"
+				(at 13.97 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+				(at 0 -7.112 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.438 -0.372)
+					(mid -2.54 0)
+					(end -1.642 -0.372)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy -2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.898 -0.3721)
+					(mid 0 -0.0001)
+					(end 0.898 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.27) (xy 2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.642 -0.3721)
+					(mid 2.54 -0.0001)
+					(end 3.438 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_1_1"
+				(pin passive line
+					(at -2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Sensor_Temperature:DS18B20"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -436,111 +674,29 @@
 		)
 		(uuid "2f5a4f89-ac27-4801-905f-d3ae990b289f")
 	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 166.37 100.33 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "229155cc-848e-4e1f-9246-9ad48f03cc45")
+	(junction
+		(at 124.46 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "11ef0310-3cc5-4a94-9a94-6a8cb6c6a0c1")
 	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 190.5 100.33 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "551d201b-9889-43b8-beb7-67d6ccfb4b0f")
-	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 95.25 100.33 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "735a36ca-27d0-45da-ad85-898ed132a8dc")
-	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 119.38 100.33 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "808cdf6f-ae69-4b9d-8d6f-4db7ff418ec1")
-	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 142.24 100.33 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "f652dd5e-b8b2-43ef-8496-34a1fe733b8d")
+	(junction
+		(at 171.45 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "227db1ba-a8f3-420b-b3ca-44c95c0f56f5")
 	)
 	(junction
 		(at 124.46 81.28)
 		(diameter 0)
 		(color 255 153 0 1)
 		(uuid "34bc29f6-6817-4688-8392-54c43747161f")
+	)
+	(junction
+		(at 173.99 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3b7d8d5c-458c-4146-88d9-07f538ef2daf")
 	)
 	(junction
 		(at 137.16 78.74)
@@ -561,6 +717,24 @@
 		(uuid "569d5026-fc50-470c-8051-d6ddf396a4a3")
 	)
 	(junction
+		(at 144.78 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a307960-a941-47f3-ae3d-2fce4aaebb87")
+	)
+	(junction
+		(at 147.32 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "72030dc3-01d7-4643-9581-84d8a2b46d3c")
+	)
+	(junction
+		(at 198.12 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "749f4ad5-153b-4091-9c61-3a5728f86a79")
+	)
+	(junction
 		(at 171.45 81.28)
 		(diameter 0)
 		(color 255 153 0 1)
@@ -579,10 +753,46 @@
 		(uuid "869ac1e5-59d5-4f85-aa1b-5aa090e05b32")
 	)
 	(junction
+		(at 193.04 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9063cc93-9d8e-4ccf-bb50-442060dde8dd")
+	)
+	(junction
 		(at 154.94 83.82)
 		(diameter 0)
 		(color 0 0 0 1)
 		(uuid "a38eb97c-e67f-4040-982d-177bb0319b97")
+	)
+	(junction
+		(at 168.91 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a5bd4566-d76a-4be2-a0ce-b3f938d1fa11")
+	)
+	(junction
+		(at 149.86 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a77f0389-c7df-4f81-8805-c5f647c22aaa")
+	)
+	(junction
+		(at 195.58 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b29946e4-4e2b-45bd-a93b-f400f7b1684a")
+	)
+	(junction
+		(at 97.79 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b8b73d12-643e-4b89-a7f9-849b4f0ab242")
+	)
+	(junction
+		(at 100.33 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "becd4bf1-64fa-432c-9224-15d0b218c857")
 	)
 	(junction
 		(at 127 83.82)
@@ -603,10 +813,28 @@
 		(uuid "e3ca5e6d-fee3-4bf9-b1db-e0815cc37d99")
 	)
 	(junction
+		(at 127 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e70cce57-2d16-4975-85cc-64f325fdd64b")
+	)
+	(junction
 		(at 168.91 78.74)
 		(diameter 0)
 		(color 255 0 0 1)
 		(uuid "eecd89b2-ebad-4737-ab72-7361961fb39f")
+	)
+	(junction
+		(at 121.92 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f1772b82-7050-4b4e-a672-54820f0b26cb")
+	)
+	(junction
+		(at 102.87 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6cc5c20-d549-4bb8-8a9c-10f2f620ad68")
 	)
 	(junction
 		(at 137.16 71.12)
@@ -627,7 +855,7 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 83.82) (xy 149.86 133.35)
+			(xy 149.86 83.82) (xy 149.86 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -682,7 +910,7 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 83.82) (xy 198.12 133.35)
+			(xy 198.12 83.82) (xy 198.12 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -693,7 +921,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 81.28) (xy 195.58 133.35)
+			(xy 195.58 81.28) (xy 195.58 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -726,7 +954,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 83.82) (xy 127 133.35)
+			(xy 127 83.82) (xy 127 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -748,7 +976,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 81.28) (xy 100.33 133.35)
+			(xy 100.33 81.28) (xy 100.33 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -792,7 +1020,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 78.74) (xy 193.04 133.35)
+			(xy 193.04 78.74) (xy 193.04 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -825,7 +1053,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 81.28) (xy 124.46 133.35)
+			(xy 124.46 81.28) (xy 124.46 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -836,7 +1064,18 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 81.28) (xy 147.32 133.35)
+			(xy 149.86 96.52) (xy 149.86 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "529271cd-f405-4618-ad69-d380316c992a")
+	)
+	(wire
+		(pts
+			(xy 147.32 81.28) (xy 147.32 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -847,7 +1086,18 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 83.82) (xy 102.87 133.35)
+			(xy 124.46 96.52) (xy 124.46 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "572178cb-3177-438a-8155-fd2d174be0a9")
+	)
+	(wire
+		(pts
+			(xy 102.87 83.82) (xy 102.87 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -869,7 +1119,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 78.74) (xy 97.79 133.35)
+			(xy 97.79 78.74) (xy 97.79 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -913,7 +1163,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 81.28) (xy 171.45 133.35)
+			(xy 171.45 81.28) (xy 171.45 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -935,6 +1185,17 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 96.52) (xy 102.87 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "70a98314-f70b-4bae-bc3e-a16fa183075a")
+	)
+	(wire
+		(pts
 			(xy 102.87 83.82) (xy 127 83.82)
 		)
 		(stroke
@@ -943,6 +1204,39 @@
 			(color 0 0 0 1)
 		)
 		(uuid "729a5311-0f83-4112-b937-b4849ddf8b1d")
+	)
+	(wire
+		(pts
+			(xy 121.92 96.52) (xy 121.92 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "825711ab-1ac7-4a73-a10a-ae8e3728b7eb")
+	)
+	(wire
+		(pts
+			(xy 97.79 96.52) (xy 97.79 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "852c0039-d5a0-440c-97ad-3c2ff41b5a7b")
+	)
+	(wire
+		(pts
+			(xy 127 96.52) (xy 127 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "87d2808d-d65f-46e1-b369-f2552f9307bc")
 	)
 	(wire
 		(pts
@@ -1023,6 +1317,17 @@
 	)
 	(wire
 		(pts
+			(xy 193.04 96.52) (xy 193.04 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "9b07dad0-3f6b-4bc3-a563-689393bfdbba")
+	)
+	(wire
+		(pts
 			(xy 147.32 62.23) (xy 147.32 71.12)
 		)
 		(stroke
@@ -1034,7 +1339,18 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 78.74) (xy 144.78 133.35)
+			(xy 195.58 96.52) (xy 195.58 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "9db88e42-b81c-41b9-af82-d426a54d67f4")
+	)
+	(wire
+		(pts
+			(xy 144.78 78.74) (xy 144.78 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -1042,6 +1358,17 @@
 			(color 255 0 0 1)
 		)
 		(uuid "a059cbc6-724f-4b23-9a52-a7acc8fcc24f")
+	)
+	(wire
+		(pts
+			(xy 147.32 96.52) (xy 147.32 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "a5003f01-9d45-45ce-8f37-b642421586ce")
 	)
 	(wire
 		(pts
@@ -1056,6 +1383,17 @@
 	)
 	(wire
 		(pts
+			(xy 144.78 96.52) (xy 144.78 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "a91bfa00-e8b2-4d5e-8fcc-0f8b33e8e310")
+	)
+	(wire
+		(pts
 			(xy 132.08 133.35) (xy 127 133.35)
 		)
 		(stroke
@@ -1064,6 +1402,17 @@
 			(color 0 0 0 1)
 		)
 		(uuid "abf32992-a4ac-4a8c-bbb5-c5efaf3f3187")
+	)
+	(wire
+		(pts
+			(xy 171.45 96.52) (xy 171.45 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "b339b8eb-329e-4118-856e-1ebfe0ada330")
 	)
 	(wire
 		(pts
@@ -1122,7 +1471,7 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 78.74) (xy 168.91 133.35)
+			(xy 168.91 78.74) (xy 168.91 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -1154,6 +1503,39 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 96.52) (xy 100.33 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "cf21b2ea-abd1-412a-8c72-ca81055adb1e")
+	)
+	(wire
+		(pts
+			(xy 168.91 96.52) (xy 168.91 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "d70ea2cf-9450-4c21-b49c-c1331178c507")
+	)
+	(wire
+		(pts
+			(xy 173.99 96.52) (xy 173.99 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "d7bb1fd8-6b8b-4d46-b812-6ffda9f7dc1e")
+	)
+	(wire
+		(pts
 			(xy 154.94 83.82) (xy 173.99 83.82)
 		)
 		(stroke
@@ -1165,7 +1547,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 78.74) (xy 121.92 133.35)
+			(xy 121.92 78.74) (xy 121.92 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -1198,7 +1580,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 83.82) (xy 173.99 133.35)
+			(xy 173.99 83.82) (xy 173.99 96.52)
 		)
 		(stroke
 			(width 0.254)
@@ -1248,6 +1630,17 @@
 			(type default)
 		)
 		(uuid "fa56ac63-50c9-4752-a6b9-2f8ae9c1fd57")
+	)
+	(wire
+		(pts
+			(xy 198.12 96.52) (xy 198.12 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "fc5dba09-99a4-4267-af12-09b1859d24a0")
 	)
 	(wire
 		(pts
@@ -1337,7 +1730,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 145.542 58.42 90)
 			(hide yes)
 			(show_name no)
@@ -1416,7 +1809,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 142.24 72.898 90)
 			(hide yes)
 			(show_name no)
@@ -1471,7 +1864,7 @@
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -1554,7 +1947,7 @@
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -1637,7 +2030,7 @@
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -1714,13 +2107,98 @@
 		)
 	)
 	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 124.46 100.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "510214ab-19d5-465d-98bd-80becc46bb2e")
+		(property "Reference" "U15"
+			(at 130.81 99.0599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 130.81 101.5999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 124.46 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f25a1d96-21f4-4ea5-a594-98adec08d1c1")
+		)
+		(pin "1"
+			(uuid "fd959029-06d4-422b-b9f7-786cf73fb57b")
+		)
+		(pin "3"
+			(uuid "ce892782-3c9d-4b18-81c9-c761cbe117f6")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Sensor_Temperature:DS18B20")
 		(at 124.46 140.97 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -1797,13 +2275,98 @@
 		)
 	)
 	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 100.33 100.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5eabe2af-9c6d-47c2-9531-569322d111fe")
+		(property "Reference" "U14"
+			(at 106.68 99.0599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 106.68 101.5999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 100.33 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 100.33 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "02192dd4-cc21-49dc-a484-2bd961af5a56")
+		)
+		(pin "2"
+			(uuid "74f2de3e-5e1f-4a85-8fe7-02fe89317204")
+		)
+		(pin "3"
+			(uuid "6978371e-ebe6-48ea-9a18-e7777d2f9e81")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Sensor_Temperature:DS18B20")
 		(at 171.45 140.97 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -1874,6 +2437,261 @@
 			(project "HMS_Master"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
 					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 147.32 100.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "becfe831-0e85-43e1-8bf1-068a4ca86f93")
+		(property "Reference" "U16"
+			(at 153.67 99.0599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 153.67 101.5999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 147.32 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 147.32 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3a39f5fc-7993-4ac9-8d85-af628369bf2e")
+		)
+		(pin "3"
+			(uuid "1e2bbfdb-1697-49ba-a630-01de6a834d2e")
+		)
+		(pin "2"
+			(uuid "fed4edb3-f669-4266-8c58-7380c9e02d03")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 195.58 100.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dd1e8437-b84b-402d-a4d6-ffeebe63c4fb")
+		(property "Reference" "U18"
+			(at 201.93 99.0599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 201.93 101.5999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 195.58 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a5bb8d24-ba02-47ea-8996-b76ab8c86ba7")
+		)
+		(pin "1"
+			(uuid "5b44cd10-d1a9-41d5-9eba-b671522cfb42")
+		)
+		(pin "3"
+			(uuid "55956452-c2af-4a03-9c99-ee9a294ab3f6")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 171.45 100.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eac2acae-a7c1-41a9-abf9-1bfb1b439354")
+		(property "Reference" "U17"
+			(at 177.8 99.0599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 177.8 101.5999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 171.45 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.45 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 171.45 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "1c976f49-10d7-4d70-868d-2d5fae44d431")
+		)
+		(pin "2"
+			(uuid "08cc91f9-90c4-41e4-a7f9-259c1a778820")
+		)
+		(pin "1"
+			(uuid "0ff9033b-171d-4bec-9453-1821ae36655c")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U17")
 					(unit 1)
 				)
 			)

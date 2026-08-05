@@ -5,6 +5,428 @@
 	(uuid "d30030f8-a55d-4a0a-b3b7-364b8fd85f20")
 	(paper "A4")
 	(lib_symbols
+		(symbol "HMS_Symbols:CONN_JST_PH_2P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 5.334 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_JST_PH_2P"
+				(at 12.446 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+				(at 0 -5.588 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_2P_0_1"
+				(rectangle
+					(start -3.81 3.81)
+					(end 3.81 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.168 -0.372)
+					(mid -1.27 0)
+					(end -0.372 -0.372)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.372 -0.3721)
+					(mid 1.27 -0.0001)
+					(end 2.168 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_2P_1_1"
+				(pin passive line
+					(at -1.27 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 1.27 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "HMS_Symbols:CONN_JST_PH_3P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 6.35 1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_JST_PH_3P"
+				(at 13.97 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+				(at 0 -7.112 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.438 -0.372)
+					(mid -2.54 0)
+					(end -1.642 -0.372)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy -2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.898 -0.3721)
+					(mid 0 -0.0001)
+					(end 0.898 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.27) (xy 2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.642 -0.3721)
+					(mid 2.54 -0.0001)
+					(end 3.438 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_1_1"
+				(pin passive line
+					(at -2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "HMS_Symbols:OLED_SSD1306_SPI_0.96"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -241,9 +663,293 @@
 			(embedded_fonts no)
 		)
 	)
+	(junction
+		(at 134.62 72.39)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "27e1dd27-1b65-4d10-9f7e-a31de5f83565")
+	)
+	(junction
+		(at 148.59 105.41)
+		(diameter 0)
+		(color 0 255 255 1)
+		(uuid "7d5a1b15-bae3-4ce5-902f-177113f442a6")
+	)
+	(junction
+		(at 153.67 105.41)
+		(diameter 0)
+		(color 255 153 0 1)
+		(uuid "88421b4e-6d45-470e-898f-13fb72007036")
+	)
+	(junction
+		(at 139.7 88.9)
+		(diameter 0)
+		(color 0 255 0 1)
+		(uuid "d0850d22-125e-40e6-b89c-43ade32b2294")
+	)
+	(junction
+		(at 132.08 72.39)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "e264e9da-fc8f-45f2-8e92-988ccc334b5f")
+	)
+	(junction
+		(at 142.24 88.9)
+		(diameter 0)
+		(color 0 0 255 1)
+		(uuid "ed419308-2bdd-4338-81e6-405a9fa4229c")
+	)
+	(junction
+		(at 151.13 105.41)
+		(diameter 0)
+		(color 255 0 255 1)
+		(uuid "f2f371b7-71c4-4e0e-b9e0-4959792cfd8d")
+	)
+	(wire
+		(pts
+			(xy 142.24 88.9) (xy 142.24 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 255 1)
+		)
+		(uuid "231f289b-4c1f-4a8c-a148-3cf7445f297c")
+	)
+	(wire
+		(pts
+			(xy 135.89 124.46) (xy 135.89 82.55)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "26ea84d4-e00c-489a-82a5-1b02eb010b26")
+	)
+	(wire
+		(pts
+			(xy 148.59 63.5) (xy 148.59 105.41)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 255 1)
+		)
+		(uuid "2896701e-513e-4b94-9f1c-8fc0f51abb85")
+	)
+	(wire
+		(pts
+			(xy 139.7 88.9) (xy 139.7 124.46)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 0 1)
+		)
+		(uuid "2b9ea297-ed09-45ff-aa63-211140489e3e")
+	)
+	(wire
+		(pts
+			(xy 134.62 82.55) (xy 135.89 82.55)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "2f43e43d-7270-46e8-b73b-ec8f017e38d7")
+	)
+	(wire
+		(pts
+			(xy 154.94 124.46) (xy 154.94 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "6a8d5004-ca49-41ff-bdb4-9a5124e91122")
+	)
+	(wire
+		(pts
+			(xy 153.67 115.57) (xy 154.94 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "6e89b363-39a4-43b6-82e1-37342875675e")
+	)
+	(wire
+		(pts
+			(xy 151.13 105.41) (xy 151.13 63.5)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 255 1)
+		)
+		(uuid "72b30f7d-5a37-45de-bbb0-19b09f807613")
+	)
+	(wire
+		(pts
+			(xy 142.24 99.06) (xy 143.51 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 255 1)
+		)
+		(uuid "73dbb93a-319e-4ccd-8b4c-d872637fa2c9")
+	)
+	(wire
+		(pts
+			(xy 147.32 115.57) (xy 148.59 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 255 1)
+		)
+		(uuid "74263ac2-7a31-441b-86f1-87b18a97b4d8")
+	)
+	(wire
+		(pts
+			(xy 148.59 105.41) (xy 148.59 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 255 1)
+		)
+		(uuid "75f39111-3ed3-408e-8432-727decd9fe64")
+	)
+	(wire
+		(pts
+			(xy 147.32 124.46) (xy 147.32 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 255 1)
+		)
+		(uuid "81dd76c0-0b66-4eff-9137-c34bab8e9c85")
+	)
+	(wire
+		(pts
+			(xy 143.51 124.46) (xy 143.51 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 255 1)
+		)
+		(uuid "893f7c66-06ca-46a2-afba-762f2c9d8371")
+	)
+	(wire
+		(pts
+			(xy 132.08 72.39) (xy 132.08 63.5)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "a16e5b55-d3c5-41fc-a7b2-0bbe3dc6e071")
+	)
+	(wire
+		(pts
+			(xy 153.67 105.41) (xy 153.67 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "b1763813-732f-48d2-a058-0750e9427d71")
+	)
+	(wire
+		(pts
+			(xy 151.13 124.46) (xy 151.13 105.41)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 255 1)
+		)
+		(uuid "b52821fe-f397-44bd-b18c-f491ca1960df")
+	)
+	(wire
+		(pts
+			(xy 134.62 63.5) (xy 134.62 72.39)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "bd3df852-cccd-437b-aae8-f303422fce71")
+	)
+	(wire
+		(pts
+			(xy 132.08 72.39) (xy 132.08 124.46)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "bfb4f5fd-96ef-47f8-a1be-d17ab6a9ec20")
+	)
+	(wire
+		(pts
+			(xy 142.24 63.5) (xy 142.24 88.9)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 255 1)
+		)
+		(uuid "c48cd968-cbcf-4ab8-ba94-b6193a83e742")
+	)
+	(wire
+		(pts
+			(xy 153.67 63.5) (xy 153.67 105.41)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "d27ecaf6-fe71-43ec-a9a4-b760f7d83dd1")
+	)
+	(wire
+		(pts
+			(xy 139.7 88.9) (xy 139.7 63.5)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 0 1)
+		)
+		(uuid "dddae8cb-64a0-41b6-91f3-a7342fb8cbd2")
+	)
+	(wire
+		(pts
+			(xy 134.62 72.39) (xy 134.62 82.55)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "e1955174-b002-4164-a4ef-2d5d13b4c39f")
+	)
 	(hierarchical_label "DISPLAY_CS"
 		(shape input)
-		(at 154.94 85.09 90)
+		(at 153.67 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -254,7 +960,7 @@
 	)
 	(hierarchical_label "DISPLAY_RESET"
 		(shape input)
-		(at 147.32 85.09 90)
+		(at 148.59 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -265,7 +971,7 @@
 	)
 	(hierarchical_label "DISPLAY_DC"
 		(shape input)
-		(at 151.13 85.09 90)
+		(at 151.13 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -276,7 +982,7 @@
 	)
 	(hierarchical_label "PWR_GND"
 		(shape input)
-		(at 132.08 85.09 90)
+		(at 132.08 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -287,7 +993,7 @@
 	)
 	(hierarchical_label "SPI_SCK"
 		(shape input)
-		(at 139.7 85.09 90)
+		(at 139.7 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -298,7 +1004,7 @@
 	)
 	(hierarchical_label "PWR_3V3_IN"
 		(shape input)
-		(at 135.89 85.09 90)
+		(at 134.62 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -309,7 +1015,7 @@
 	)
 	(hierarchical_label "SPI_MOSI"
 		(shape input)
-		(at 143.51 85.09 90)
+		(at 142.24 63.5 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -320,17 +1026,17 @@
 	)
 	(symbol
 		(lib_id "HMS_Symbols:OLED_SSD1306_SPI_0.96")
-		(at 143.51 102.87 0)
+		(at 143.51 142.24 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3150258c-95e7-4fe0-aa79-7e6956e94af4")
 		(property "Reference" "U2"
-			(at 141.986 100.584 0)
+			(at 141.986 139.954 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -341,7 +1047,7 @@
 			)
 		)
 		(property "Value" "OLED_SSD1306_SPI_0.96"
-			(at 131.826 106.68 0)
+			(at 131.826 146.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -352,7 +1058,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 143.51 102.87 0)
+			(at 143.51 142.24 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -363,7 +1069,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 143.51 102.87 0)
+			(at 143.51 142.24 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -374,7 +1080,7 @@
 			)
 		)
 		(property "Description" "0.96\" SPI OLED display module based on SSD1306 controller."
-			(at 143.51 116.078 0)
+			(at 143.51 155.448 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -385,7 +1091,7 @@
 			)
 		)
 		(property "Description2" "7-pin module: GND, VCC, D0, D1, RES, DC, CS."
-			(at 143.51 118.872 0)
+			(at 143.51 158.242 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -396,7 +1102,7 @@
 			)
 		)
 		(property "Description3" "3.3 V supply recommended."
-			(at 143.51 121.412 0)
+			(at 143.51 160.782 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -431,6 +1137,253 @@
 			(project "HMS_Master"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/601e20f9-bdbc-41c4-99b3-024941b7a844"
 					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_2P")
+		(at 133.35 76.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "91f9e700-f16e-45a2-aae6-5ff89643f292")
+		(property "Reference" "U23"
+			(at 125.222 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_2P"
+			(at 112.776 77.216 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+			(at 133.35 81.788 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "69a40a42-a735-41e5-9bcd-f52aa6440b38")
+		)
+		(pin "2"
+			(uuid "0a504246-7b5d-4e76-af5b-2e7943eb715d")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/601e20f9-bdbc-41c4-99b3-024941b7a844"
+					(reference "U23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_2P")
+		(at 140.97 92.71 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a44e3e0e-81a7-473f-987f-7d84440e7424")
+		(property "Reference" "U24"
+			(at 139.192 97.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_2P"
+			(at 133.604 100.076 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+			(at 140.97 98.298 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 140.97 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 140.97 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "57438bbd-5f8f-4edd-a72f-00f572de4e54")
+		)
+		(pin "2"
+			(uuid "f1f38109-62ed-4cd1-aa01-acae3a121e60")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/601e20f9-bdbc-41c4-99b3-024941b7a844"
+					(reference "U24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 151.13 109.22 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ec244d97-6f98-419f-8b58-ecb53c1093da")
+		(property "Reference" "U25"
+			(at 157.48 107.9499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 157.48 110.4899 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 151.13 116.332 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 151.13 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 151.13 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "f326d43d-eddb-43da-83ca-938f5ccd18a2")
+		)
+		(pin "1"
+			(uuid "b557f1c8-366a-4469-8c36-bda8fb6c4436")
+		)
+		(pin "2"
+			(uuid "78576469-fd17-4109-992b-1fc1f2a33ec8")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/601e20f9-bdbc-41c4-99b3-024941b7a844"
+					(reference "U25")
 					(unit 1)
 				)
 			)

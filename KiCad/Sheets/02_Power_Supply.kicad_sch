@@ -1152,7 +1152,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
 			(at 164.7952 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -1235,7 +1235,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
 			(at 128.27 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -1395,7 +1395,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 143.2052 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -1477,7 +1477,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open"
 			(at 144.78 94.488 90)
 			(hide yes)
 			(show_name no)

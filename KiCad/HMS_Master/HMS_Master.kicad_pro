@@ -697,7 +697,7 @@
         "uuid": "cab65a7d-0a7e-481c-9f85-25eca3c1fa1e"
       }
     ],
-    "used_designators": "U1-13,C2100nF/50V1,J1-16,F1,C1470µF/10V1,#PWR1-6,D1-2,C1-2,R1-3,#FLG1-4,TC1-5,BZ1,Q1",
+    "used_designators": "U1-25,C2100nF/50V1,J1-16,F1,C1470µF/10V1,#PWR1-6,D1-2,C1-2,R1-3,#FLG1-4,TC1-5,BZ1,Q1",
     "variants": []
   },
   "sheets": [

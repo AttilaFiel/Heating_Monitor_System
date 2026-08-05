@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "HMS_Footprints") (type "KiCad") (uri "F:/Heating_Monitor_System_(HMS)/KiCad/Libraries/Footprints/HMS_Footprints.pretty") (options "") (descr ""))
+)

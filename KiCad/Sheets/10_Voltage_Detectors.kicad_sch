@@ -5,6 +5,244 @@
 	(uuid "90259e57-4df7-4d48-962d-475cb0e9945b")
 	(paper "A4")
 	(lib_symbols
+		(symbol "HMS_Symbols:CONN_JST_PH_3P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 6.35 1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_JST_PH_3P"
+				(at 13.97 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+				(at 0 -7.112 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.438 -0.372)
+					(mid -2.54 0)
+					(end -1.642 -0.372)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy -2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.898 -0.3721)
+					(mid 0 -0.0001)
+					(end 0.898 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.27) (xy 2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.642 -0.3721)
+					(mid 2.54 -0.0001)
+					(end 3.438 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_1_1"
+				(pin passive line
+					(at -2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "HMS_Symbols:MVPDM-1PHS"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -77,8 +315,8 @@
 			)
 			(symbol "MVPDM-1PHS_0_1"
 				(rectangle
-					(start -7.62 11.43)
-					(end 7.62 -17.78)
+					(start -6.35 11.43)
+					(end 6.35 -17.78)
 					(stroke
 						(width 0)
 						(type default)
@@ -90,7 +328,7 @@
 			)
 			(symbol "MVPDM-1PHS_1_1"
 				(pin power_in line
-					(at 5.08 16.51 270)
+					(at 2.54 16.51 270)
 					(length 5.08)
 					(name "GND"
 						(effects
@@ -162,7 +400,184 @@
 					)
 				)
 				(pin power_in line
-					(at -5.08 16.51 270)
+					(at -2.54 16.51 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "MVPDM-1PHS_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MVPDM-1PHS"
+				(at 0 -3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "230 V Main voltage presence detection module"
+				(at 0 -8.128 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "MVPDM-1PHS voltage presence detection"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MVPDM-1PHS_1_0_1"
+				(rectangle
+					(start -6.35 11.43)
+					(end 6.35 -17.78)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MVPDM-1PHS_1_1_1"
+				(pin power_in line
+					(at 2.54 16.51 270)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -22.86 90)
+					(length 5.08)
+					(name "L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -22.86 90)
+					(length 5.08)
+					(name "N"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "N"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 16.51 270)
+					(length 5.08)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 16.51 270)
 					(length 5.08)
 					(name "VCC"
 						(effects
@@ -185,7 +600,7 @@
 	)
 	(text "230 VAC input\nConnect in parallel with boiler mains supply."
 		(exclude_from_sim no)
-		(at 143.256 147.574 0)
+		(at 143.256 162.814 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -194,36 +609,72 @@
 		(uuid "ebc0f8af-543d-4837-8931-8ff673e425d8")
 	)
 	(junction
-		(at 134.62 73.66)
+		(at 158.75 86.36)
 		(diameter 0)
-		(color 255 0 0 1)
-		(uuid "4e1bb320-0357-464e-8107-02357e825965")
+		(color 0 0 0 0)
+		(uuid "0e710f43-c565-42d7-8fde-6db95a83cc3b")
 	)
 	(junction
 		(at 139.7 77.47)
 		(diameter 0)
 		(color 0 0 0 1)
-		(uuid "c1eb79fb-69dd-48e0-af7e-4dec39d6972f")
+		(uuid "415e0354-907e-4a24-bac4-f11d91a66026")
+	)
+	(junction
+		(at 119.38 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "42007904-f1db-4faa-acc2-68ab8a5a4478")
+	)
+	(junction
+		(at 134.62 73.66)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "51328f2d-0170-467d-b049-0359ae073f53")
+	)
+	(junction
+		(at 121.92 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "65d54aed-dc66-4a98-9034-8d1836be3b8f")
+	)
+	(junction
+		(at 163.83 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b52f2cfd-1fc9-46fa-b4fe-8148d495dc00")
+	)
+	(junction
+		(at 124.46 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb636348-ba3f-4038-8cd6-ab2a81a4403c")
+	)
+	(junction
+		(at 161.29 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f1b1db93-13bf-4c05-9bd0-d60f173b7f32")
 	)
 	(no_connect
-		(at 119.38 139.7)
+		(at 119.38 154.94)
 		(uuid "48a8e518-ba7e-4e2f-b243-77885ef753cd")
 	)
 	(no_connect
-		(at 124.46 139.7)
+		(at 124.46 154.94)
 		(uuid "90c6d496-1e4b-4868-a073-2eb636171c8a")
 	)
 	(no_connect
-		(at 158.75 139.7)
+		(at 158.75 154.94)
 		(uuid "ce914142-07ad-431c-b16b-053a2fe0a0cc")
 	)
 	(no_connect
-		(at 163.83 139.7)
+		(at 163.83 154.94)
 		(uuid "db77462a-b667-472c-99d6-23d35201b2b4")
 	)
 	(wire
 		(pts
-			(xy 127 77.47) (xy 127 100.33)
+			(xy 124.46 77.47) (xy 124.46 86.36)
 		)
 		(stroke
 			(width 0.254)
@@ -234,7 +685,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 77.47) (xy 166.37 100.33)
+			(xy 163.83 77.47) (xy 163.83 86.36)
 		)
 		(stroke
 			(width 0.254)
@@ -245,7 +696,18 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 73.66) (xy 116.84 100.33)
+			(xy 163.83 86.36) (xy 163.83 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "200adf11-a839-4dbf-b9f6-567534d965dd")
+	)
+	(wire
+		(pts
+			(xy 119.38 73.66) (xy 119.38 86.36)
 		)
 		(stroke
 			(width 0.254)
@@ -267,7 +729,18 @@
 	)
 	(wire
 		(pts
-			(xy 127 77.47) (xy 139.7 77.47)
+			(xy 124.46 86.36) (xy 124.46 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "2a942401-b2c4-46bc-b5f2-09ffd2fb18f2")
+	)
+	(wire
+		(pts
+			(xy 124.46 77.47) (xy 139.7 77.47)
 		)
 		(stroke
 			(width 0.254)
@@ -278,7 +751,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 73.66) (xy 156.21 73.66)
+			(xy 134.62 73.66) (xy 158.75 73.66)
 		)
 		(stroke
 			(width 0.254)
@@ -289,7 +762,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 73.66) (xy 156.21 100.33)
+			(xy 158.75 73.66) (xy 158.75 86.36)
 		)
 		(stroke
 			(width 0.254)
@@ -311,7 +784,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 73.66) (xy 134.62 73.66)
+			(xy 119.38 73.66) (xy 134.62 73.66)
 		)
 		(stroke
 			(width 0.254)
@@ -322,7 +795,29 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 77.47) (xy 166.37 77.47)
+			(xy 158.75 86.36) (xy 158.75 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "5cecc10e-4c18-4704-9814-747c68992373")
+	)
+	(wire
+		(pts
+			(xy 161.29 86.36) (xy 161.29 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 255 0 1)
+		)
+		(uuid "77e8f406-3a56-4b47-b37b-edcad7d60b72")
+	)
+	(wire
+		(pts
+			(xy 139.7 77.47) (xy 163.83 77.47)
 		)
 		(stroke
 			(width 0.254)
@@ -355,7 +850,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 81.28) (xy 121.92 100.33)
+			(xy 121.92 81.28) (xy 121.92 86.36)
 		)
 		(stroke
 			(width 0.254)
@@ -377,7 +872,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 81.28) (xy 161.29 100.33)
+			(xy 161.29 81.28) (xy 161.29 86.36)
 		)
 		(stroke
 			(width 0.254)
@@ -396,6 +891,28 @@
 			(color 0 0 0 1)
 		)
 		(uuid "bfd84cc9-2856-40bc-a99f-905b922bf1b5")
+	)
+	(wire
+		(pts
+			(xy 121.92 86.36) (xy 121.92 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 255 1)
+		)
+		(uuid "dac0f65a-c8c3-49d4-a6a1-8d1f1a5f89f3")
+	)
+	(wire
+		(pts
+			(xy 119.38 86.36) (xy 119.38 115.57)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "ddacf6e3-6497-412e-9000-72396d5974da")
 	)
 	(hierarchical_label "PWR_3V3_IN"
 		(shape input)
@@ -442,19 +959,20 @@
 		(uuid "dd7927e0-5ccd-4bcb-bafd-40c24465b90e")
 	)
 	(symbol
+		(lib_name "MVPDM-1PHS_1")
 		(lib_id "HMS_Symbols:MVPDM-1PHS")
-		(at 121.92 116.84 0)
+		(at 121.92 132.08 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6ce5a756-7d45-4fc1-8cac-69328726da1f")
 		(property "Reference" "U12"
-			(at 130.81 118.7449 0)
+			(at 130.81 133.9849 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -465,7 +983,7 @@
 			)
 		)
 		(property "Value" "MVPDM-1PHS"
-			(at 130.81 121.2849 0)
+			(at 130.81 136.5249 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -476,7 +994,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 121.92 116.84 0)
+			(at 121.92 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -487,7 +1005,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 116.84 0)
+			(at 121.92 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -498,7 +1016,7 @@
 			)
 		)
 		(property "Description" "230 V Main voltage presence detection module"
-			(at 121.92 124.968 0)
+			(at 121.92 140.208 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -533,8 +1051,8 @@
 		)
 	)
 	(symbol
-		(lib_id "HMS_Symbols:MVPDM-1PHS")
-		(at 161.29 116.84 0)
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 121.92 90.17 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -543,9 +1061,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "d3d1ced5-0c39-4f99-a397-493de63a6eaa")
-		(property "Reference" "U13"
-			(at 170.18 118.7449 0)
+		(uuid "9985bdc3-aee1-4b53-8385-3c668ca7e2f1")
+		(property "Reference" "U21"
+			(at 128.27 88.8999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -555,8 +1073,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MVPDM-1PHS"
-			(at 170.18 121.2849 0)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 128.27 91.4399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -566,8 +1084,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 161.29 116.84 0)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 121.92 97.282 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -578,7 +1096,177 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 161.29 116.84 0)
+			(at 121.92 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 121.92 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "44ce385d-a671-4aea-9d39-af439f83dc1d")
+		)
+		(pin "1"
+			(uuid "47238e8e-e092-4440-a116-695dbdaba8c1")
+		)
+		(pin "2"
+			(uuid "7df35a25-1f78-4cfa-b9b5-b98b4c4a72c7")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cf9d84e1-435b-4e22-a790-a7f6b51b0da1"
+					(reference "U21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 161.29 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7835c80-957a-4655-b37f-b6a4e2101658")
+		(property "Reference" "U22"
+			(at 167.64 88.8999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 167.64 91.4399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 161.29 97.282 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 161.29 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "edf9ada1-b48a-48aa-98c3-1ac268790265")
+		)
+		(pin "3"
+			(uuid "61028608-7599-494f-baf8-78ca8938f630")
+		)
+		(pin "1"
+			(uuid "3529d83e-4eb6-42d8-b541-f3e34665ea8a")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cf9d84e1-435b-4e22-a790-a7f6b51b0da1"
+					(reference "U22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:MVPDM-1PHS")
+		(at 161.29 132.08 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d3d1ced5-0c39-4f99-a397-493de63a6eaa")
+		(property "Reference" "U13"
+			(at 170.18 133.9849 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MVPDM-1PHS"
+			(at 170.18 136.5249 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 161.29 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -589,7 +1277,7 @@
 			)
 		)
 		(property "Description" "230 V Main voltage presence detection module"
-			(at 161.29 124.968 0)
+			(at 161.29 140.208 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

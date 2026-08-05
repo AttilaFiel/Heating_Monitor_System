@@ -5,6 +5,244 @@
 	(uuid "dedf88e0-1979-4198-86ed-f47f957d2299")
 	(paper "A4")
 	(lib_symbols
+		(symbol "HMS_Symbols:CONN_JST_PH_3P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 6.35 1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_JST_PH_3P"
+				(at 13.97 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+				(at 0 -7.112 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.438 -0.372)
+					(mid -2.54 0)
+					(end -1.642 -0.372)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy -2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.898 -0.3721)
+					(mid 0 -0.0001)
+					(end 0.898 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.27) (xy 2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.642 -0.3721)
+					(mid 2.54 -0.0001)
+					(end 3.438 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_3P_1_1"
+				(pin passive line
+					(at -2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Sensor:DHT11"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -177,29 +415,27 @@
 			(embedded_fonts no)
 		)
 	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 130.81 77.47 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "b4a3ebbb-b9c0-42e6-b963-2e43a195e28f")
+	(junction
+		(at 133.35 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "24998dba-a9f6-43bc-8152-bb3f5e14f55f")
+	)
+	(junction
+		(at 135.89 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7c262a2c-7859-489f-8039-0714358ee059")
+	)
+	(junction
+		(at 138.43 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "868ed979-b068-4cc2-a56a-3a9b391c7fbe")
 	)
 	(wire
 		(pts
-			(xy 133.35 69.85) (xy 133.35 91.44)
+			(xy 133.35 69.85) (xy 133.35 74.93)
 		)
 		(stroke
 			(width 0.254)
@@ -243,7 +479,7 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 69.85) (xy 135.89 95.25)
+			(xy 135.89 69.85) (xy 135.89 74.93)
 		)
 		(stroke
 			(width 0.254)
@@ -265,7 +501,18 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 69.85) (xy 138.43 91.44)
+			(xy 138.43 74.93) (xy 138.43 91.44)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "a2939210-1d8a-4dc8-8eb2-58b28e196b26")
+	)
+	(wire
+		(pts
+			(xy 138.43 69.85) (xy 138.43 74.93)
 		)
 		(stroke
 			(width 0.254)
@@ -273,6 +520,28 @@
 			(color 0 0 0 1)
 		)
 		(uuid "e0bf052d-34e5-4d47-9f58-8c5c9e776f6c")
+	)
+	(wire
+		(pts
+			(xy 135.89 74.93) (xy 135.89 95.25)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 194 194 194 1)
+		)
+		(uuid "eb8c6b31-f27a-4de7-a3b6-bac6f036f211")
+	)
+	(wire
+		(pts
+			(xy 133.35 74.93) (xy 133.35 91.44)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "fe4b7109-87d3-4842-8d21-c979777aa2bc")
 	)
 	(hierarchical_label "PWR_GND"
 		(shape input)
@@ -308,6 +577,91 @@
 		(uuid "deb64679-9d16-4190-abb7-229cc9fe91a9")
 	)
 	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_3P")
+		(at 135.89 78.74 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c22d7afe-9083-4d14-b1fc-9777fe6db5b2")
+		(property "Reference" "U20"
+			(at 142.24 77.4699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_3P"
+			(at 142.24 80.0099 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(at 135.89 85.852 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 135.89 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 135.89 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "0b52d774-5d1c-40b0-999b-adf70651741a")
+		)
+		(pin "1"
+			(uuid "d1d13a37-9878-46e3-b850-c52fa103ca27")
+		)
+		(pin "3"
+			(uuid "054700cb-af66-4bc8-b36c-b09256426ac4")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/90b74869-0313-4dc3-8b6e-6d6576565e56"
+					(reference "U20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Sensor:DHT11")
 		(at 135.89 102.87 90)
 		(unit 1)
@@ -339,7 +693,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm"
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical"
 			(at 146.05 102.87 0)
 			(hide yes)
 			(show_name no)

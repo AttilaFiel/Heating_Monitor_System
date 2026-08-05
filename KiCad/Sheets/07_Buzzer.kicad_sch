@@ -322,6 +322,190 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "HMS_Symbols:CONN_JST_PH_2P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 5.334 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_JST_PH_2P"
+				(at 12.446 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+				(at 0 -5.588 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_2P_0_1"
+				(rectangle
+					(start -3.81 3.81)
+					(end 3.81 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.168 -0.372)
+					(mid -1.27 0)
+					(end -0.372 -0.372)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.372 -0.3721)
+					(mid 1.27 -0.0001)
+					(end 2.168 -0.3721)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_JST_PH_2P_1_1"
+				(pin passive line
+					(at -1.27 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 1.27 3.81 270)
+					(length 3.81)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_BJT:S8050"
 			(pin_names
 				(offset 0)
@@ -566,25 +750,17 @@
 			(embedded_fonts no)
 		)
 	)
-	(text_box "JST connector"
-		(exclude_from_sim no)
-		(at 135.89 71.12 0)
-		(size 10.16 5.9929)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify top)
-		)
-		(uuid "c9df6a87-c239-44d0-8ffc-b0698eb8b3a6")
+	(junction
+		(at 139.7 72.39)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "31da112c-4b10-4cc9-b638-a0ae047eba15")
+	)
+	(junction
+		(at 142.24 72.39)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "abdd0e0a-b058-4d42-82c8-e9d9bcdf38a9")
 	)
 	(wire
 		(pts
@@ -610,7 +786,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 52.07) (xy 139.7 91.44)
+			(xy 139.7 52.07) (xy 139.7 72.39)
 		)
 		(stroke
 			(width 0.254)
@@ -643,6 +819,17 @@
 	)
 	(wire
 		(pts
+			(xy 142.24 72.39) (xy 142.24 91.44)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "3c369fff-e0b7-40e7-b367-770a7fa25246")
+	)
+	(wire
+		(pts
 			(xy 143.51 91.44) (xy 142.24 91.44)
 		)
 		(stroke
@@ -654,7 +841,18 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 59.69) (xy 142.24 91.44)
+			(xy 139.7 72.39) (xy 139.7 91.44)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "5c590e6b-d7e7-44a0-a47c-4215116b41b6")
+	)
+	(wire
+		(pts
+			(xy 142.24 59.69) (xy 142.24 72.39)
 		)
 		(stroke
 			(width 0.254)
@@ -849,6 +1047,88 @@
 		)
 	)
 	(symbol
+		(lib_id "HMS_Symbols:CONN_JST_PH_2P")
+		(at 140.97 76.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "877c2a70-0910-4185-8a5d-61a24d2439f5")
+		(property "Reference" "U19"
+			(at 146.05 74.9299 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_JST_PH_2P"
+			(at 146.05 77.4699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+			(at 140.97 81.788 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 140.97 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 140.97 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "040afbf1-b74d-46b6-9f1e-d31b4c88da0f")
+		)
+		(pin "1"
+			(uuid "e4ae276c-9604-4bfa-90d0-7a39c964c98b")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/a2e28c65-40dc-4ab8-b49b-8c9d90f9a40b"
+					(reference "U19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 147.32 45.72 0)
 		(unit 1)
@@ -881,7 +1161,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 145.542 45.72 90)
 			(hide yes)
 			(show_name no)
@@ -963,7 +1243,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Buzzer_Beeper:Buzzer_12x9.5RM7.6"
 			(at 138.43 95.885 90)
 			(hide yes)
 			(show_name no)
