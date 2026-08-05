@@ -1,0 +1,439 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "d30030f8-a55d-4a0a-b3b7-364b8fd85f20")
+	(paper "A4")
+	(lib_symbols
+		(symbol "HMS_Symbols:OLED_SSD1306_SPI_0.96"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "OLED_SSD1306_SPI_0.96"
+				(at 0 2.286 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "0.96\" SPI OLED display module based on SSD1306 controller."
+				(at 0 -13.208 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description2" "7-pin module: GND, VCC, D0, D1, RES, DC, CS."
+				(at 0 -16.002 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description3" "3.3 V supply recommended."
+				(at 0 -18.542 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "OLED SSD1306 SPI DISPLAY 0.96"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "OLED_SSD1306_SPI_0.96_0_1"
+				(rectangle
+					(start -15.24 12.7)
+					(end 15.24 -11.43)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "OLED_SSD1306_SPI_0.96_1_1"
+				(pin input line
+					(at 11.43 17.78 270)
+					(length 5.08)
+					(name "CS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "CS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -3.81 17.78 270)
+					(length 5.08)
+					(name "D0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "D0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 17.78 270)
+					(length 5.08)
+					(name "D1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "D1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 17.78 270)
+					(length 5.08)
+					(name "DC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -11.43 17.78 270)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 17.78 270)
+					(length 5.08)
+					(name "RES"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "RES"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -7.62 17.78 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(hierarchical_label "DISPLAY_CS"
+		(shape input)
+		(at 154.94 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5043c573-b919-449d-ad39-f57ecb1b83eb")
+	)
+	(hierarchical_label "DISPLAY_RESET"
+		(shape input)
+		(at 147.32 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "73f2fb6d-ce44-46aa-8c90-a35eb9777ae5")
+	)
+	(hierarchical_label "DISPLAY_DC"
+		(shape input)
+		(at 151.13 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "91665bca-ab5f-4da8-aefe-747cbc1bbe73")
+	)
+	(hierarchical_label "PWR_GND"
+		(shape input)
+		(at 132.08 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "92b85811-6cc1-4093-8c35-4c4856a54f78")
+	)
+	(hierarchical_label "SPI_SCK"
+		(shape input)
+		(at 139.7 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "97a99ba3-34ad-4db9-bc8c-d772f873634c")
+	)
+	(hierarchical_label "PWR_3V3_IN"
+		(shape input)
+		(at 135.89 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c3d5233e-053c-4eca-b630-1227e886b7b1")
+	)
+	(hierarchical_label "SPI_MOSI"
+		(shape input)
+		(at 143.51 85.09 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c4b72587-e787-48cb-9856-f4d7445a89f2")
+	)
+	(symbol
+		(lib_id "HMS_Symbols:OLED_SSD1306_SPI_0.96")
+		(at 143.51 102.87 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3150258c-95e7-4fe0-aa79-7e6956e94af4")
+		(property "Reference" "U2"
+			(at 141.986 100.584 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "OLED_SSD1306_SPI_0.96"
+			(at 131.826 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 143.51 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "0.96\" SPI OLED display module based on SSD1306 controller."
+			(at 143.51 116.078 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description2" "7-pin module: GND, VCC, D0, D1, RES, DC, CS."
+			(at 143.51 118.872 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description3" "3.3 V supply recommended."
+			(at 143.51 121.412 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "D1"
+			(uuid "f452df4b-c73f-4f0e-b0af-d4cc47b58c2f")
+		)
+		(pin "DC"
+			(uuid "7a5e0771-6ce0-40bf-90e1-936d8f46ece3")
+		)
+		(pin "CS"
+			(uuid "58413432-e0f9-4b0d-9df5-d3fa16bd6728")
+		)
+		(pin "RES"
+			(uuid "c16de161-1b90-4c34-aed4-0c6d9ad13159")
+		)
+		(pin "D0"
+			(uuid "22a89093-9dba-419e-9c68-4f8f64c18795")
+		)
+		(pin "GND"
+			(uuid "9e240d9d-0f5a-410d-80ed-6ebd991e7767")
+		)
+		(pin "VCC"
+			(uuid "f09dd76a-c044-40fc-8374-06836e31e9f5")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/601e20f9-bdbc-41c4-99b3-024941b7a844"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

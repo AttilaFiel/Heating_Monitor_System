@@ -1,0 +1,1882 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "5d036bd2-0c98-4246-be83-e9eea334df92")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Sensor_Temperature:DS18B20"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -3.81 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DS18B20"
+				(at 6.35 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+				(at -25.4 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf"
+				(at -3.81 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Programmable Resolution 1-Wire Digital Thermometer TO-92"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "OneWire 1Wire Dallas Maxim"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO*92*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "DS18B20_0_1"
+				(rectangle
+					(start -5.08 5.08)
+					(end 5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.937 3.175) (xy -3.937 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.937 3.175) (xy -3.302 3.175)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.937 2.54) (xy -3.302 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.937 1.905) (xy -3.302 1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.937 1.27) (xy -3.302 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.937 0.635) (xy -3.302 0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.937 3.175)
+					(mid -3.302 3.8073)
+					(end -2.667 3.175)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -3.302 -2.54)
+					(radius 1.27)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.667 3.175) (xy -2.667 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.667 -1.905)
+					(end -3.937 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "DS18B20_1_1"
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "DQ"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "V_{DD}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "DNP"
+		(exclude_from_sim no)
+		(at 151.13 62.23 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0a7bce19-b675-436e-865d-4ca420ba5f06")
+	)
+	(text "DS18B20 SENSORS"
+		(exclude_from_sim no)
+		(at 147.828 159.004 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2f5a4f89-ac27-4801-905f-d3ae990b289f")
+	)
+	(text_box "JST connector"
+		(exclude_from_sim no)
+		(at 166.37 100.33 0)
+		(size 10.16 5.9929)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify top)
+		)
+		(uuid "229155cc-848e-4e1f-9246-9ad48f03cc45")
+	)
+	(text_box "JST connector"
+		(exclude_from_sim no)
+		(at 190.5 100.33 0)
+		(size 10.16 5.9929)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify top)
+		)
+		(uuid "551d201b-9889-43b8-beb7-67d6ccfb4b0f")
+	)
+	(text_box "JST connector"
+		(exclude_from_sim no)
+		(at 95.25 100.33 0)
+		(size 10.16 5.9929)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify top)
+		)
+		(uuid "735a36ca-27d0-45da-ad85-898ed132a8dc")
+	)
+	(text_box "JST connector"
+		(exclude_from_sim no)
+		(at 119.38 100.33 0)
+		(size 10.16 5.9929)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify top)
+		)
+		(uuid "808cdf6f-ae69-4b9d-8d6f-4db7ff418ec1")
+	)
+	(text_box "JST connector"
+		(exclude_from_sim no)
+		(at 142.24 100.33 0)
+		(size 10.16 5.9929)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify top)
+		)
+		(uuid "f652dd5e-b8b2-43ef-8496-34a1fe733b8d")
+	)
+	(junction
+		(at 124.46 81.28)
+		(diameter 0)
+		(color 255 153 0 1)
+		(uuid "34bc29f6-6817-4688-8392-54c43747161f")
+	)
+	(junction
+		(at 137.16 78.74)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "48fb9ea0-08d2-4396-b204-79da304df93a")
+	)
+	(junction
+		(at 173.99 83.82)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "4f10ce3f-7437-4ccf-81aa-989b8014ddde")
+	)
+	(junction
+		(at 147.32 71.12)
+		(diameter 0)
+		(color 255 153 0 1)
+		(uuid "569d5026-fc50-470c-8051-d6ddf396a4a3")
+	)
+	(junction
+		(at 171.45 81.28)
+		(diameter 0)
+		(color 255 153 0 1)
+		(uuid "7866754a-9379-4cc8-b4d6-5be4aff5b03b")
+	)
+	(junction
+		(at 149.86 83.82)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "80883470-91f6-419c-b44a-e6e565f46625")
+	)
+	(junction
+		(at 147.32 81.28)
+		(diameter 0)
+		(color 255 153 0 1)
+		(uuid "869ac1e5-59d5-4f85-aa1b-5aa090e05b32")
+	)
+	(junction
+		(at 154.94 83.82)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "a38eb97c-e67f-4040-982d-177bb0319b97")
+	)
+	(junction
+		(at 127 83.82)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "c66b7bba-970b-4789-afee-ec67471f1b66")
+	)
+	(junction
+		(at 121.92 78.74)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "ca6361f3-9293-469a-9dec-ad05a6830c76")
+	)
+	(junction
+		(at 144.78 78.74)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "e3ca5e6d-fee3-4bf9-b1db-e0815cc37d99")
+	)
+	(junction
+		(at 168.91 78.74)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "eecd89b2-ebad-4737-ab72-7361961fb39f")
+	)
+	(junction
+		(at 137.16 71.12)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "ff21d2d6-4e14-4c32-96d6-dc929fd57bef")
+	)
+	(wire
+		(pts
+			(xy 154.94 48.26) (xy 154.94 83.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "068e6a77-81d4-4432-bc3e-9f99839e81f3")
+	)
+	(wire
+		(pts
+			(xy 149.86 83.82) (xy 149.86 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "0744dd5f-1b22-413a-9767-82f0a634d0c3")
+	)
+	(wire
+		(pts
+			(xy 154.94 140.97) (xy 154.94 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "08e06c41-cc3b-4493-be6e-b91e3386077e")
+	)
+	(wire
+		(pts
+			(xy 121.92 78.74) (xy 137.16 78.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "0b6ff480-b900-4ed4-bc8c-1712e76fe056")
+	)
+	(wire
+		(pts
+			(xy 203.2 140.97) (xy 203.2 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "0c8bbd36-827a-4ec6-867a-f83ebc4ca94c")
+	)
+	(wire
+		(pts
+			(xy 92.71 133.35) (xy 97.79 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "0e76df85-c541-4fdc-b283-e6fb025b8a90")
+	)
+	(wire
+		(pts
+			(xy 198.12 83.82) (xy 198.12 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "11926d2a-c70c-49c4-86b3-1580f04cf8c0")
+	)
+	(wire
+		(pts
+			(xy 195.58 81.28) (xy 195.58 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "20a5bde8-7530-4e21-9ba0-70c6a322cd0a")
+	)
+	(wire
+		(pts
+			(xy 116.84 140.97) (xy 116.84 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "21d43d0e-30a1-4ca8-aabe-39db0138a426")
+	)
+	(wire
+		(pts
+			(xy 163.83 133.35) (xy 168.91 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "2817c3b0-877c-49be-bfa5-d89c2bc1294b")
+	)
+	(wire
+		(pts
+			(xy 127 83.82) (xy 127 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "290fbf84-d37f-440b-ae69-65c83bc3279e")
+	)
+	(wire
+		(pts
+			(xy 203.2 133.35) (xy 198.12 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "2e1ef630-3f8a-454b-a096-ec34eb43ad8b")
+	)
+	(wire
+		(pts
+			(xy 100.33 81.28) (xy 100.33 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "3816bf49-ad3c-4283-bd29-0182edaf834a")
+	)
+	(wire
+		(pts
+			(xy 147.32 48.26) (xy 147.32 54.61)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "3964d831-14b2-458d-b25f-4e4fa73aec5c")
+	)
+	(wire
+		(pts
+			(xy 137.16 71.12) (xy 137.16 78.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "3b30a659-6267-4336-a476-70c459a29fac")
+	)
+	(wire
+		(pts
+			(xy 137.16 78.74) (xy 144.78 78.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "46199c23-6b65-4b03-af96-ef661f8b790b")
+	)
+	(wire
+		(pts
+			(xy 193.04 78.74) (xy 193.04 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "49b2d77d-88b0-4c03-a4f6-0e3fba56198c")
+	)
+	(wire
+		(pts
+			(xy 139.7 140.97) (xy 139.7 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "4bb11127-2027-4488-8c7e-1e1557ba3ae5")
+	)
+	(wire
+		(pts
+			(xy 97.79 78.74) (xy 121.92 78.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "4fa2a7b5-b893-4673-877f-f0e62a908378")
+	)
+	(wire
+		(pts
+			(xy 124.46 81.28) (xy 124.46 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "501e662a-dccc-40a2-ba4f-4b42bec85b0f")
+	)
+	(wire
+		(pts
+			(xy 147.32 81.28) (xy 147.32 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "54189728-1ff1-4991-96da-f3d2c3edba58")
+	)
+	(wire
+		(pts
+			(xy 102.87 83.82) (xy 102.87 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "5902857b-5b31-4ae8-9150-f2aad1695dc3")
+	)
+	(wire
+		(pts
+			(xy 100.33 81.28) (xy 124.46 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "5dc42305-4d19-4f88-919d-48a20b8ffb0f")
+	)
+	(wire
+		(pts
+			(xy 97.79 78.74) (xy 97.79 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "5eb14db5-2d7d-4db7-a0b5-24aa40fca632")
+	)
+	(wire
+		(pts
+			(xy 187.96 133.35) (xy 193.04 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "5f280f8a-a290-4034-a9e1-b04e2aec6ab4")
+	)
+	(wire
+		(pts
+			(xy 171.45 81.28) (xy 195.58 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "640f82fe-08cf-4074-a60f-f0e16127020b")
+	)
+	(wire
+		(pts
+			(xy 107.95 133.35) (xy 102.87 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "69398109-f51a-4736-aa04-c8865208d351")
+	)
+	(wire
+		(pts
+			(xy 171.45 81.28) (xy 171.45 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "6e72f55d-cc42-4617-83db-05e25b95b6f1")
+	)
+	(wire
+		(pts
+			(xy 137.16 71.12) (xy 138.43 71.12)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "70a462f7-015e-4712-b77b-bda8849e34c7")
+	)
+	(wire
+		(pts
+			(xy 102.87 83.82) (xy 127 83.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "729a5311-0f83-4112-b937-b4849ddf8b1d")
+	)
+	(wire
+		(pts
+			(xy 124.46 81.28) (xy 147.32 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "896827dc-13b6-48c4-9f92-5fd81781cc07")
+	)
+	(wire
+		(pts
+			(xy 107.95 140.97) (xy 107.95 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "8aee75a4-2368-4823-9807-5ef33504bab5")
+	)
+	(wire
+		(pts
+			(xy 116.84 133.35) (xy 121.92 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "8cf3e484-5f6d-4b0e-be44-3026a2880d5a")
+	)
+	(wire
+		(pts
+			(xy 154.94 133.35) (xy 149.86 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "8f3ad47d-c3c5-4543-b52a-495cebc69fc1")
+	)
+	(wire
+		(pts
+			(xy 146.05 71.12) (xy 147.32 71.12)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "9246c741-a002-4878-bda5-3411e50ec223")
+	)
+	(wire
+		(pts
+			(xy 137.16 48.26) (xy 137.16 71.12)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "98f46495-ea2f-4477-bd66-2d5423e878bb")
+	)
+	(wire
+		(pts
+			(xy 147.32 71.12) (xy 147.32 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "99efba7d-7238-4323-8188-fd779c2ca673")
+	)
+	(wire
+		(pts
+			(xy 147.32 62.23) (xy 147.32 71.12)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "9d31f3bc-9349-44ac-9656-2de84276ad30")
+	)
+	(wire
+		(pts
+			(xy 144.78 78.74) (xy 144.78 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "a059cbc6-724f-4b23-9a52-a7acc8fcc24f")
+	)
+	(wire
+		(pts
+			(xy 127 83.82) (xy 149.86 83.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "a7993492-127f-4248-9c73-ceb71bf42e35")
+	)
+	(wire
+		(pts
+			(xy 132.08 133.35) (xy 127 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "abf32992-a4ac-4a8c-bbb5-c5efaf3f3187")
+	)
+	(wire
+		(pts
+			(xy 92.71 140.97) (xy 92.71 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "b6efbc18-9ba4-4442-af1a-e63c58dd9784")
+	)
+	(wire
+		(pts
+			(xy 163.83 140.97) (xy 163.83 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "b78e2631-7a2e-4de2-9037-f3706fffe7fa")
+	)
+	(wire
+		(pts
+			(xy 139.7 133.35) (xy 144.78 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "b83baae0-e711-4864-a54d-4d83fef702e7")
+	)
+	(wire
+		(pts
+			(xy 179.07 133.35) (xy 173.99 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "bce38311-d1c7-4b7f-8110-18e3c673d8f3")
+	)
+	(wire
+		(pts
+			(xy 168.91 78.74) (xy 193.04 78.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "be63893a-8e5d-44fc-9b45-bf3acf3e98be")
+	)
+	(wire
+		(pts
+			(xy 168.91 78.74) (xy 168.91 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "c3ec73ed-0e6e-4848-b449-0d549df2a649")
+	)
+	(polyline
+		(pts
+			(xy 210.82 151.13) (xy 210.82 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7f3d6a5-7c18-4b12-9fca-450e56228ece")
+	)
+	(wire
+		(pts
+			(xy 144.78 78.74) (xy 168.91 78.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "ce1fde60-c124-415f-8d73-e6fa5256ddbd")
+	)
+	(wire
+		(pts
+			(xy 154.94 83.82) (xy 173.99 83.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "d8d97869-737a-47d0-bb1a-d1d70e92718a")
+	)
+	(wire
+		(pts
+			(xy 121.92 78.74) (xy 121.92 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "daa21bc0-be44-4611-859f-fc29a038382b")
+	)
+	(wire
+		(pts
+			(xy 149.86 83.82) (xy 154.94 83.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "deb236cc-adb2-4e9b-85e7-7927f4be70ac")
+	)
+	(wire
+		(pts
+			(xy 147.32 81.28) (xy 171.45 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 153 0 1)
+		)
+		(uuid "e1ca9060-a047-4c89-897a-6484cc67b734")
+	)
+	(wire
+		(pts
+			(xy 173.99 83.82) (xy 173.99 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "e8510850-999a-4672-8be9-f751b60e2de0")
+	)
+	(polyline
+		(pts
+			(xy 87.63 156.21) (xy 210.82 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e982c1d3-5ccb-4e21-a753-0bf413f57353")
+	)
+	(wire
+		(pts
+			(xy 187.96 140.97) (xy 187.96 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "ef27e0c9-2c5a-41de-b08c-6f2b1ebe079c")
+	)
+	(wire
+		(pts
+			(xy 173.99 83.82) (xy 198.12 83.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "f7eeef61-43b4-47d0-a0f9-f6416f1d1474")
+	)
+	(polyline
+		(pts
+			(xy 87.63 151.13) (xy 87.63 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa56ac63-50c9-4752-a6b9-2f8ae9c1fd57")
+	)
+	(wire
+		(pts
+			(xy 132.08 140.97) (xy 132.08 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "fcb0fdb4-0847-4cff-92e3-a72b344d6dd8")
+	)
+	(wire
+		(pts
+			(xy 179.07 140.97) (xy 179.07 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "fe9234c5-1bad-48db-bddd-24e0f4ab29fd")
+	)
+	(hierarchical_label "PWR_3V3_IN"
+		(shape input)
+		(at 137.16 48.26 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0ce350cc-11ab-4ff3-b671-df5be6e8f348")
+	)
+	(hierarchical_label "TEMPERATURE_SENSOR_BUS"
+		(shape output)
+		(at 147.32 48.26 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9759909a-2dc4-423d-9982-144f671e256f")
+	)
+	(hierarchical_label "PWR_GND"
+		(shape input)
+		(at 154.94 48.26 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "af4bb4e1-880c-4318-9bfd-4c50e299e957")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 147.32 58.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "01c04418-b182-4f96-ab5d-9035c4194c7d")
+		(property "Reference" "R2"
+			(at 149.098 57.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33Ω"
+			(at 149.098 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 145.542 58.42 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 147.32 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "16f9c312-34f0-4ae3-810b-5c60fd77ab62")
+		)
+		(pin "2"
+			(uuid "00bac609-86a5-4231-abb7-8642427dacb6")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 142.24 71.12 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "05d1e236-4614-466c-8d41-41e9b1133953")
+		(property "Reference" "R1"
+			(at 142.24 65.786 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4,7kΩ"
+			(at 142.24 68.326 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 142.24 72.898 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 142.24 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 142.24 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c116c462-e8b1-4b95-8fab-0efee05d0392")
+		)
+		(pin "2"
+			(uuid "268d5965-d67d-4f77-bfb0-7a8d07caf4cd")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Temperature:DS18B20")
+		(at 100.33 140.97 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0f86376d-c0d3-499b-aab3-5e05aa141e30")
+		(property "Reference" "U4"
+			(at 100.33 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GAS_FLOW_SENSOR"
+			(at 100.33 151.13 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(at 106.68 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf"
+			(at 93.98 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Programmable Resolution 1-Wire Digital Thermometer TO-92"
+			(at 100.33 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f94e278e-de91-4892-b2d6-8dde54648c42")
+		)
+		(pin "2"
+			(uuid "d55e09b0-cb51-4507-ba93-b0f2b18a853b")
+		)
+		(pin "3"
+			(uuid "43e457a9-b455-4272-ab0c-ffb2c06c622f")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Temperature:DS18B20")
+		(at 195.58 140.97 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "32064fc8-11d7-4673-a7c0-f2216a010334")
+		(property "Reference" "U8"
+			(at 195.58 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WOOD_BOILER_SENSOR"
+			(at 195.58 151.13 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(at 201.93 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf"
+			(at 189.23 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Programmable Resolution 1-Wire Digital Thermometer TO-92"
+			(at 195.58 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "d0e5bc49-c149-4c75-9391-d6c0f55d696d")
+		)
+		(pin "1"
+			(uuid "c26b5158-3611-4b0e-b052-995f7f4ae00e")
+		)
+		(pin "2"
+			(uuid "966889e5-2447-4dd5-a954-513975b68a5f")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Temperature:DS18B20")
+		(at 147.32 140.97 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3660be98-7d6e-4ad0-8ab6-e9f4c6b8885f")
+		(property "Reference" "U6"
+			(at 147.32 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WOOD_FLOW_SENSOR"
+			(at 147.32 151.13 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(at 153.67 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf"
+			(at 140.97 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Programmable Resolution 1-Wire Digital Thermometer TO-92"
+			(at 147.32 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e430716c-0289-4734-93f7-98200e85c6c0")
+		)
+		(pin "1"
+			(uuid "d8b8472f-3e62-45da-bec8-7fa97a295f0f")
+		)
+		(pin "3"
+			(uuid "649e3f07-ccfc-489a-adf2-4c4e8bf06f99")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Temperature:DS18B20")
+		(at 124.46 140.97 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5b2b3883-403c-4696-aab5-5089ecd7ee0c")
+		(property "Reference" "U5"
+			(at 124.46 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GAS_RETURN_SENSOR"
+			(at 124.46 151.13 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(at 130.81 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf"
+			(at 118.11 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Programmable Resolution 1-Wire Digital Thermometer TO-92"
+			(at 124.46 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ebd7f2b2-0afd-41ab-aeca-7210fe80fac0")
+		)
+		(pin "3"
+			(uuid "00c2d41f-1892-46d5-9fc6-7f2fec98ec9e")
+		)
+		(pin "2"
+			(uuid "98503e6e-5eb0-4411-ab69-56c9732fd6a0")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Temperature:DS18B20")
+		(at 171.45 140.97 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "720a6084-b39f-4f55-aafe-cb7f95368822")
+		(property "Reference" "U7"
+			(at 171.45 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WOOD_RETURN_SENSOR"
+			(at 171.45 151.13 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(at 177.8 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf"
+			(at 165.1 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Programmable Resolution 1-Wire Digital Thermometer TO-92"
+			(at 171.45 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f76e7e94-df75-4efc-a47d-e414560ef0f4")
+		)
+		(pin "1"
+			(uuid "0e5ca1a8-a9d0-4433-8974-c0dc4873b07b")
+		)
+		(pin "3"
+			(uuid "9c7b4ac6-1e8d-4ab2-9e3a-7f127e853c7f")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/d7f243bd-3c0b-419c-8d46-761a41196197"
+					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

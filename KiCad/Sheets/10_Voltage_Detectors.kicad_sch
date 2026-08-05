@@ -1,0 +1,626 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "90259e57-4df7-4d48-962d-475cb0e9945b")
+	(paper "A4")
+	(lib_symbols
+		(symbol "HMS_Symbols:MVPDM-1PHS"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MVPDM-1PHS"
+				(at 0 -3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "230 V Main voltage presence detection module"
+				(at 0 -8.128 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "MVPDM-1PHS voltage presence detection"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MVPDM-1PHS_0_1"
+				(rectangle
+					(start -7.62 11.43)
+					(end 7.62 -17.78)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MVPDM-1PHS_1_1"
+				(pin power_in line
+					(at 5.08 16.51 270)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -22.86 90)
+					(length 5.08)
+					(name "L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -22.86 90)
+					(length 5.08)
+					(name "N"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "N"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 0 16.51 270)
+					(length 5.08)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -5.08 16.51 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "230 VAC input\nConnect in parallel with boiler mains supply."
+		(exclude_from_sim no)
+		(at 143.256 147.574 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ebc0f8af-543d-4837-8931-8ff673e425d8")
+	)
+	(junction
+		(at 134.62 73.66)
+		(diameter 0)
+		(color 255 0 0 1)
+		(uuid "4e1bb320-0357-464e-8107-02357e825965")
+	)
+	(junction
+		(at 139.7 77.47)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "c1eb79fb-69dd-48e0-af7e-4dec39d6972f")
+	)
+	(no_connect
+		(at 119.38 139.7)
+		(uuid "48a8e518-ba7e-4e2f-b243-77885ef753cd")
+	)
+	(no_connect
+		(at 124.46 139.7)
+		(uuid "90c6d496-1e4b-4868-a073-2eb636171c8a")
+	)
+	(no_connect
+		(at 158.75 139.7)
+		(uuid "ce914142-07ad-431c-b16b-053a2fe0a0cc")
+	)
+	(no_connect
+		(at 163.83 139.7)
+		(uuid "db77462a-b667-472c-99d6-23d35201b2b4")
+	)
+	(wire
+		(pts
+			(xy 127 77.47) (xy 127 100.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "162dca77-93de-45a6-b2eb-3462559f2780")
+	)
+	(wire
+		(pts
+			(xy 166.37 77.47) (xy 166.37 100.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "1d1fdc45-a53c-4b88-9310-5e04bedb7d73")
+	)
+	(wire
+		(pts
+			(xy 116.84 73.66) (xy 116.84 100.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "204d8e6f-c09f-4652-860c-0cba3064d527")
+	)
+	(wire
+		(pts
+			(xy 134.62 62.23) (xy 134.62 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "20f52802-bd37-470e-9805-40ffb0aeb759")
+	)
+	(wire
+		(pts
+			(xy 127 77.47) (xy 139.7 77.47)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "2e7ba406-0029-488b-b1c2-03c532f9eb64")
+	)
+	(wire
+		(pts
+			(xy 134.62 73.66) (xy 156.21 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "38999529-ea64-4857-a917-715f082ea184")
+	)
+	(wire
+		(pts
+			(xy 156.21 73.66) (xy 156.21 100.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "454a85ca-7add-4ebc-bdb0-470b0c83608b")
+	)
+	(wire
+		(pts
+			(xy 144.78 81.28) (xy 121.92 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 255 1)
+		)
+		(uuid "50aeb008-ea81-4386-b70a-08f5e16d23bb")
+	)
+	(wire
+		(pts
+			(xy 116.84 73.66) (xy 134.62 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "566d5eb4-2820-4fc6-8b32-c41a54913488")
+	)
+	(wire
+		(pts
+			(xy 139.7 77.47) (xy 166.37 77.47)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "7cd6b942-33c7-46ae-81da-35dfea810b0a")
+	)
+	(wire
+		(pts
+			(xy 144.78 62.23) (xy 144.78 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 255 1)
+		)
+		(uuid "8e1caa28-0482-483c-94da-46af0df9ff4a")
+	)
+	(wire
+		(pts
+			(xy 149.86 81.28) (xy 161.29 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 255 0 1)
+		)
+		(uuid "93c9d0be-b9df-4ea4-92d7-83579061b640")
+	)
+	(wire
+		(pts
+			(xy 121.92 81.28) (xy 121.92 100.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 255 1)
+		)
+		(uuid "a70f5c89-3d97-41a8-bffa-e8bdcf2fd2f6")
+	)
+	(wire
+		(pts
+			(xy 149.86 62.23) (xy 149.86 81.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 255 0 1)
+		)
+		(uuid "a89b2034-ce0d-425e-b50d-ae86efef288a")
+	)
+	(wire
+		(pts
+			(xy 161.29 81.28) (xy 161.29 100.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 255 0 1)
+		)
+		(uuid "b9125545-e92b-4a7b-88d5-58f7e7815e48")
+	)
+	(wire
+		(pts
+			(xy 139.7 62.23) (xy 139.7 77.47)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "bfd84cc9-2856-40bc-a99f-905b922bf1b5")
+	)
+	(hierarchical_label "PWR_3V3_IN"
+		(shape input)
+		(at 134.62 62.23 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02c83879-fadf-46af-a55b-f7fb5f2ebf9c")
+	)
+	(hierarchical_label "WOOD_AC_PRESENT"
+		(shape output)
+		(at 149.86 62.23 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3dcd276c-df42-4e32-a171-e2ad56b80fec")
+	)
+	(hierarchical_label "GAS_AC_PRESENT"
+		(shape output)
+		(at 144.78 62.23 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d91f06df-6529-44b3-969f-f2682ff562fa")
+	)
+	(hierarchical_label "PWR_GND"
+		(shape input)
+		(at 139.7 62.23 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dd7927e0-5ccd-4bcb-bafd-40c24465b90e")
+	)
+	(symbol
+		(lib_id "HMS_Symbols:MVPDM-1PHS")
+		(at 121.92 116.84 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6ce5a756-7d45-4fc1-8cac-69328726da1f")
+		(property "Reference" "U12"
+			(at 130.81 118.7449 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MVPDM-1PHS"
+			(at 130.81 121.2849 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 121.92 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "230 V Main voltage presence detection module"
+			(at 121.92 124.968 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "VCC"
+			(uuid "d3fe377f-c21e-4446-80f5-31d7818e5800")
+		)
+		(pin "L"
+			(uuid "bff83d5b-153c-42ad-8122-0c64d0776362")
+		)
+		(pin "OUT"
+			(uuid "23506c1f-748f-4308-bfa3-875c9a2ce9cd")
+		)
+		(pin "GND"
+			(uuid "19139eff-9deb-4507-9dee-82f7faebada1")
+		)
+		(pin "N"
+			(uuid "532cdecb-a4bc-488f-975b-8dc3b00ee54f")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cf9d84e1-435b-4e22-a790-a7f6b51b0da1"
+					(reference "U12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:MVPDM-1PHS")
+		(at 161.29 116.84 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d3d1ced5-0c39-4f99-a397-493de63a6eaa")
+		(property "Reference" "U13"
+			(at 170.18 118.7449 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MVPDM-1PHS"
+			(at 170.18 121.2849 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 161.29 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "230 V Main voltage presence detection module"
+			(at 161.29 124.968 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "OUT"
+			(uuid "691b9080-a23f-4240-a230-1b71fffcd5b4")
+		)
+		(pin "GND"
+			(uuid "6f8b5f42-db52-44d3-ac05-bfbf043939c7")
+		)
+		(pin "L"
+			(uuid "de55d856-b16a-4841-abcd-5427a1e53cfe")
+		)
+		(pin "N"
+			(uuid "5db23051-1bda-441c-97d6-766116afda81")
+		)
+		(pin "VCC"
+			(uuid "79bade7a-b0c1-4e8e-b4af-787c9d84f2f7")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cf9d84e1-435b-4e22-a790-a7f6b51b0da1"
+					(reference "U13")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

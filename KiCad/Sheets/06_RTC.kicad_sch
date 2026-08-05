@@ -1,0 +1,379 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "3878d6f2-a706-4c0a-98bc-ca70062c7bc9")
+	(paper "A4")
+	(lib_symbols
+		(symbol "HMS_Symbols:DS3231+AT24C32"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DS3231+AT24C32"
+				(at -0.254 -2.286 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "DS3231 RTC module with AT24C32 EEPROM and CR2032 backup battery."
+				(at 0 -31.242 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "DS3231+AT24C32 RTCM RTC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "DS3231+AT24C32_0_1"
+				(rectangle
+					(start -12.7 7.62)
+					(end 12.7 -29.21)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -16.51)
+					(radius 10.925)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "DS3231+AT24C32_1_1"
+				(text "CR2023\nBattery"
+					(at 0 -16.51 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(pin output line
+					(at -8.89 12.7 270)
+					(length 5.08)
+					(name "32K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "32K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 10.16 12.7 270)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -1.27 12.7 270)
+					(length 5.08)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 2.54 12.7 270)
+					(length 5.08)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -5.08 12.7 270)
+					(length 5.08)
+					(name "SQW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "SQW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 6.35 12.7 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "DS3231+AT24C32"
+		(exclude_from_sim no)
+		(at 151.892 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "96628d8b-c482-4448-92a4-92bbed6e7c3a")
+	)
+	(no_connect
+		(at 146.05 88.9)
+		(uuid "57c06c40-fa4b-4437-9694-fd7002564ca3")
+	)
+	(no_connect
+		(at 142.24 88.9)
+		(uuid "f5109f47-3f27-40ba-8eed-93a5c10867d4")
+	)
+	(hierarchical_label "I2C_SCL"
+		(shape input)
+		(at 149.86 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0388236f-a581-4012-9854-5180834097f3")
+	)
+	(hierarchical_label "I2C_SDA"
+		(shape bidirectional)
+		(at 153.67 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7e4913b8-9f36-44c6-a610-b126da252045")
+	)
+	(hierarchical_label "PWR_3V3_IN"
+		(shape input)
+		(at 157.48 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a4b634d3-b61c-49aa-94da-ccf6175e7877")
+	)
+	(hierarchical_label "PWR_GND"
+		(shape input)
+		(at 161.29 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f240f6a9-6143-4392-9ad1-fb32fc800c9e")
+	)
+	(symbol
+		(lib_id "HMS_Symbols:DS3231+AT24C32")
+		(at 151.13 101.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4e0159e0-714e-4f1d-b8f0-6596343a5dab")
+		(property "Reference" "U9"
+			(at 150.368 101.854 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DS3231+AT24C32"
+			(at 150.876 103.886 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 151.13 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 151.13 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "DS3231 RTC module with AT24C32 EEPROM and CR2032 backup battery."
+			(at 151.384 110.998 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "SQW"
+			(uuid "e9d7968c-bb4c-4330-afa5-6637197b3ef4")
+		)
+		(pin "32K"
+			(uuid "ad70c740-d873-4b64-8a68-ee2eceab6be1")
+		)
+		(pin "GND"
+			(uuid "435d408f-76c6-40d9-b3d6-c02fdc7a8e99")
+		)
+		(pin "VCC"
+			(uuid "7f55c4e1-eb98-420f-9b5a-c072141e6ddb")
+		)
+		(pin "SDA"
+			(uuid "590a4316-a734-4f86-b2b4-cd6a89503b92")
+		)
+		(pin "SCL"
+			(uuid "a90b619b-c4de-4a1c-8bcd-fb9d5665d4fa")
+		)
+		(instances
+			(project "HMS_Master"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/9bf8bcb7-7800-41c3-a2be-8bb28cb524d4"
+					(reference "U9")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

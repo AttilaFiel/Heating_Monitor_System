@@ -611,14 +611,50 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Descriton2",
+          "name": "Descriton2",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description4",
+          "name": "Description4",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description3",
+          "name": "Description3",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description2",
+          "name": "Description2",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
-      "sort_field": "Referencia"
+      "sort_field": "Reference"
     },
     "bus_aliases": {},
     "connection_grid_size": 50.0,
@@ -661,13 +697,53 @@
         "uuid": "cab65a7d-0a7e-481c-9f85-25eca3c1fa1e"
       }
     ],
-    "used_designators": "U1,C2100nF/50V1,J1,F1,C1470µF/10V1,#PWR1-6,D1-2,C1-2,#FLG1-2",
+    "used_designators": "U1-13,C2100nF/50V1,J1-16,F1,C1470µF/10V1,#PWR1-6,D1-2,C1-2,R1-3,#FLG1-4,TC1-5,BZ1,Q1",
     "variants": []
   },
   "sheets": [
     [
       "cab65a7d-0a7e-481c-9f85-25eca3c1fa1e",
       "Gyökér"
+    ],
+    [
+      "856812e0-5d79-4de2-b8e2-1ff3e02bf923",
+      "01_ESP32"
+    ],
+    [
+      "cc839e62-2bf5-48e4-87b9-622d38cad52b",
+      "02_Power_Supply"
+    ],
+    [
+      "601e20f9-bdbc-41c4-99b3-024941b7a844",
+      "03_Display"
+    ],
+    [
+      "da3adc80-cafa-490d-b600-b66d0ebdc7e0",
+      "04_Chimney_Temperature"
+    ],
+    [
+      "d7f243bd-3c0b-419c-8d46-761a41196197",
+      "05_Temperature_Sensors"
+    ],
+    [
+      "9bf8bcb7-7800-41c3-a2be-8bb28cb524d4",
+      "06_RTC"
+    ],
+    [
+      "a2e28c65-40dc-4ab8-b49b-8c9d90f9a40b",
+      "07_Buzzer"
+    ],
+    [
+      "90b74869-0313-4dc3-8b6e-6d6576565e56",
+      "08_Boiler_Room_Sensor"
+    ],
+    [
+      "ac8dd93f-f177-42a1-98da-846cc16b134f",
+      "09_MicroSD"
+    ],
+    [
+      "cf9d84e1-435b-4e22-a790-a7f6b51b0da1",
+      "10_Voltage_Detectors"
     ]
   ],
   "text_variables": {},
