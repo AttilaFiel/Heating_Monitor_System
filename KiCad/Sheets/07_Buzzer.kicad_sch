@@ -1069,7 +1069,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_2P"
+		(property "Value" "BUZZER_SOCKET"
 			(at 146.05 77.4699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1217,7 +1217,7 @@
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f29063eb-4bb3-4f3d-9b82-efbda920fb99")

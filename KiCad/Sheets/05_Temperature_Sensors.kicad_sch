@@ -654,16 +654,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "DNP"
-		(exclude_from_sim no)
-		(at 151.13 62.23 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "0a7bce19-b675-436e-865d-4ca420ba5f06")
-	)
 	(text "DS18B20 SENSORS"
 		(exclude_from_sim no)
 		(at 147.828 159.004 0)
@@ -677,13 +667,13 @@
 	(junction
 		(at 124.46 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 153 0 1)
 		(uuid "11ef0310-3cc5-4a94-9a94-6a8cb6c6a0c1")
 	)
 	(junction
 		(at 171.45 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 153 0 1)
 		(uuid "227db1ba-a8f3-420b-b3ca-44c95c0f56f5")
 	)
 	(junction
@@ -695,7 +685,7 @@
 	(junction
 		(at 173.99 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "3b7d8d5c-458c-4146-88d9-07f538ef2daf")
 	)
 	(junction
@@ -719,19 +709,19 @@
 	(junction
 		(at 144.78 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "5a307960-a941-47f3-ae3d-2fce4aaebb87")
 	)
 	(junction
 		(at 147.32 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 153 0 1)
 		(uuid "72030dc3-01d7-4643-9581-84d8a2b46d3c")
 	)
 	(junction
 		(at 198.12 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "749f4ad5-153b-4091-9c61-3a5728f86a79")
 	)
 	(junction
@@ -755,7 +745,7 @@
 	(junction
 		(at 193.04 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "9063cc93-9d8e-4ccf-bb50-442060dde8dd")
 	)
 	(junction
@@ -767,31 +757,31 @@
 	(junction
 		(at 168.91 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "a5bd4566-d76a-4be2-a0ce-b3f938d1fa11")
 	)
 	(junction
 		(at 149.86 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "a77f0389-c7df-4f81-8805-c5f647c22aaa")
 	)
 	(junction
 		(at 195.58 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 153 0 1)
 		(uuid "b29946e4-4e2b-45bd-a93b-f400f7b1684a")
 	)
 	(junction
 		(at 97.79 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "b8b73d12-643e-4b89-a7f9-849b4f0ab242")
 	)
 	(junction
 		(at 100.33 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 153 0 1)
 		(uuid "becd4bf1-64fa-432c-9224-15d0b218c857")
 	)
 	(junction
@@ -815,7 +805,7 @@
 	(junction
 		(at 127 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "e70cce57-2d16-4975-85cc-64f325fdd64b")
 	)
 	(junction
@@ -827,13 +817,13 @@
 	(junction
 		(at 121.92 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "f1772b82-7050-4b4e-a672-54820f0b26cb")
 	)
 	(junction
 		(at 102.87 96.52)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "f6cc5c20-d549-4bb8-8a9c-10f2f620ad68")
 	)
 	(junction
@@ -2116,7 +2106,6 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "510214ab-19d5-465d-98bd-80becc46bb2e")
 		(property "Reference" "U15"
 			(at 130.81 99.0599 0)
@@ -2129,8 +2118,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
-			(at 130.81 101.5999 0)
+		(property "Value" "GAS_RETURN_SENSOR_SOCKET"
+			(at 110.744 93.726 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2284,7 +2273,6 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "5eabe2af-9c6d-47c2-9531-569322d111fe")
 		(property "Reference" "U14"
 			(at 106.68 99.0599 0)
@@ -2297,8 +2285,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
-			(at 106.68 101.5999 0)
+		(property "Value" "GAS_FLOW_SENSOR_SOCKET"
+			(at 89.154 105.918 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2452,7 +2440,6 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "becfe831-0e85-43e1-8bf1-068a4ca86f93")
 		(property "Reference" "U16"
 			(at 153.67 99.0599 0)
@@ -2465,8 +2452,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
-			(at 153.67 101.5999 0)
+		(property "Value" "WOOD_FLOW_SENSOR_SOCKET"
+			(at 134.112 106.172 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2537,7 +2524,6 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "dd1e8437-b84b-402d-a4d6-ffeebe63c4fb")
 		(property "Reference" "U18"
 			(at 201.93 99.0599 0)
@@ -2550,8 +2536,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
-			(at 201.93 101.5999 0)
+		(property "Value" "WOOD_BOILER_SENSOR_SOCKET"
+			(at 180.848 105.918 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2622,7 +2608,6 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "eac2acae-a7c1-41a9-abf9-1bfb1b439354")
 		(property "Reference" "U17"
 			(at 177.8 99.0599 0)
@@ -2635,8 +2620,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
-			(at 177.8 101.5999 0)
+		(property "Value" "WOOD_RETURN_SENSOR_SOCKET"
+			(at 155.956 94.234 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

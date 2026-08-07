@@ -99,25 +99,7 @@
 							)
 						)
 					)
-					(number "3v3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 2.54 12.7 270)
-					(length 5.08)
-					(name "CLK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "CLK"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -135,43 +117,7 @@
 							)
 						)
 					)
-					(number "CS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 10.16 12.7 270)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin tri_state line
-					(at 6.35 12.7 270)
-					(length 5.08)
-					(name "MISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MISO"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -189,7 +135,61 @@
 							)
 						)
 					)
-					(number "MOSI"
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 2.54 12.7 270)
+					(length 5.08)
+					(name "CLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin tri_state line
+					(at 6.35 12.7 270)
+					(length 5.08)
+					(name "MISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 10.16 12.7 270)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -333,22 +333,22 @@
 				)
 			)
 		)
-		(pin "3v3"
+		(pin "4"
 			(uuid "901af461-5f22-46f1-990c-ac51d1ea9b67")
 		)
-		(pin "MISO"
+		(pin "1"
 			(uuid "9d42eaa4-f60b-4c44-bd27-d73a7eda4b4c")
 		)
-		(pin "GND"
+		(pin "6"
 			(uuid "09b5c209-5ed2-4b2f-8d23-cc53905564eb")
 		)
-		(pin "CLK"
+		(pin "3"
 			(uuid "73c96e8d-0fdd-4cee-8284-43a94d802681")
 		)
-		(pin "CS"
+		(pin "5"
 			(uuid "1dc81480-148c-4d63-be6b-7cc333b5c20f")
 		)
-		(pin "MOSI"
+		(pin "2"
 			(uuid "5d856cc4-a6ae-457e-a3f0-a5fc55415b6e")
 		)
 		(instances

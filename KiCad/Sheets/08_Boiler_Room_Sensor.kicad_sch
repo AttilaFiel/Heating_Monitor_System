@@ -418,19 +418,19 @@
 	(junction
 		(at 133.35 74.93)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "24998dba-a9f6-43bc-8152-bb3f5e14f55f")
 	)
 	(junction
 		(at 135.89 74.93)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 194 194 194 1)
 		(uuid "7c262a2c-7859-489f-8039-0714358ee059")
 	)
 	(junction
 		(at 138.43 74.93)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "868ed979-b068-4cc2-a56a-3a9b391c7fbe")
 	)
 	(wire
@@ -599,7 +599,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
+		(property "Value" "BOILER_ROOM_SENSOR_SOCKET"
 			(at 142.24 80.0099 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -668,7 +668,7 @@
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -693,7 +693,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical"
+		(property "Footprint" "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm"
 			(at 146.05 102.87 0)
 			(hide yes)
 			(show_name no)

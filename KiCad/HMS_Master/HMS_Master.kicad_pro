@@ -697,7 +697,7 @@
         "uuid": "cab65a7d-0a7e-481c-9f85-25eca3c1fa1e"
       }
     ],
-    "used_designators": "U1-25,C2100nF/50V1,J1-16,F1,C1470µF/10V1,#PWR1-6,D1-2,C1-2,R1-3,#FLG1-4,TC1-5,BZ1,Q1",
+    "used_designators": "U1-32,J1-16,C2100nF/50V1,F1,D1-3,#PWR1-6,C1470µF/10V1,C1-2,#FLG1-4,R1-13,TC1-5,BZ1,Q1",
     "variants": []
   },
   "sheets": [
@@ -744,6 +744,10 @@
     [
       "cf9d84e1-435b-4e22-a790-a7f6b51b0da1",
       "10_Voltage_Detectors"
+    ],
+    [
+      "fd430bec-9a8c-4bf3-8d27-2a1395886f5b",
+      "11_LEDs"
     ]
   ],
   "text_variables": {},

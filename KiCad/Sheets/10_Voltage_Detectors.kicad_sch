@@ -420,183 +420,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "MVPDM-1PHS_1"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MVPDM-1PHS"
-				(at 0 -3.556 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "230 V Main voltage presence detection module"
-				(at 0 -8.128 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "MVPDM-1PHS voltage presence detection"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "MVPDM-1PHS_1_0_1"
-				(rectangle
-					(start -6.35 11.43)
-					(end 6.35 -17.78)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "MVPDM-1PHS_1_1_1"
-				(pin power_in line
-					(at 2.54 16.51 270)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 -22.86 90)
-					(length 5.08)
-					(name "L"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "L"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -22.86 90)
-					(length 5.08)
-					(name "N"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "N"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 0 16.51 270)
-					(length 5.08)
-					(name "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 16.51 270)
-					(length 5.08)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(text "230 VAC input\nConnect in parallel with boiler mains supply."
 		(exclude_from_sim no)
@@ -959,7 +782,6 @@
 		(uuid "dd7927e0-5ccd-4bcb-bafd-40c24465b90e")
 	)
 	(symbol
-		(lib_name "MVPDM-1PHS_1")
 		(lib_id "HMS_Symbols:MVPDM-1PHS")
 		(at 121.92 132.08 0)
 		(unit 1)
@@ -1073,7 +895,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
+		(property "Value" "GAS_AC_PRESENT_SOCKET"
 			(at 128.27 91.4399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1158,7 +980,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CONN_JST_PH_3P"
+		(property "Value" "WOOD_AC_PRESENT_SOCKET"
 			(at 167.64 91.4399 0)
 			(show_name no)
 			(do_not_autoplace no)

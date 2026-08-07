@@ -1,0 +1,137 @@
+Info: Processing symbol 'C1470µF/10V1:Capacitor_THT:CP_Radial_D8.0mm_P3.50mm'.
+Info: Processing symbol 'C2100nF/50V1:Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm'.
+Info: Processing symbol 'F1:Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open'.
+Info: Processing symbol 'Q1:Package_TO_SOT_THT:TO-92_Inline'.
+Info: Processing symbol 'R1:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R2:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R3:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'U1:HMS_Footprints:ESP32_DEVKITC_32UE'.
+Info: Processing symbol 'U9:Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical'.
+Info: Processing symbol 'U11:Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical'.
+Info: Processing symbol 'U14:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U3:Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical'.
+Info: Processing symbol 'U15:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U16:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U17:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U18:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U19:Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical'.
+Info: Processing symbol 'U20:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U21:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U22:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U23:Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical'.
+Info: Processing symbol 'U24:Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical'.
+Info: Processing symbol 'U25:Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical'.
+Info: Processing symbol 'U26:Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical'.
+Warning: No net found for component U1 pad 24 (no pin 24 in symbol).
+Warning: No net found for component U1 pad 15 (no pin 15 in symbol).
+Warning: No net found for component U1 pad 8 (no pin 8 in symbol).
+Warning: No net found for component U1 pad 34 (no pin 34 in symbol).
+Warning: No net found for component U1 pad 5 (no pin 5 in symbol).
+Warning: No net found for component U1 pad 18 (no pin 18 in symbol).
+Warning: No net found for component U1 pad 30 (no pin 30 in symbol).
+Warning: No net found for component U1 pad 29 (no pin 29 in symbol).
+Warning: No net found for component U1 pad 37 (no pin 37 in symbol).
+Warning: No net found for component U1 pad 14 (no pin 14 in symbol).
+Warning: No net found for component U1 pad 3 (no pin 3 in symbol).
+Warning: No net found for component U1 pad 12 (no pin 12 in symbol).
+Warning: No net found for component U1 pad 38 (no pin 38 in symbol).
+Warning: No net found for component U1 pad 27 (no pin 27 in symbol).
+Warning: No net found for component U1 pad 33 (no pin 33 in symbol).
+Warning: No net found for component U1 pad 26 (no pin 26 in symbol).
+Warning: No net found for component U1 pad 6 (no pin 6 in symbol).
+Warning: No net found for component U1 pad 13 (no pin 13 in symbol).
+Warning: No net found for component U1 pad 16 (no pin 16 in symbol).
+Warning: No net found for component U1 pad 22 (no pin 22 in symbol).
+Warning: No net found for component U1 pad 17 (no pin 17 in symbol).
+Warning: No net found for component U1 pad 4 (no pin 4 in symbol).
+Warning: No net found for component U1 pad 28 (no pin 28 in symbol).
+Warning: No net found for component U1 pad 9 (no pin 9 in symbol).
+Warning: No net found for component U1 pad 20 (no pin 20 in symbol).
+Warning: No net found for component U1 pad 31 (no pin 31 in symbol).
+Warning: No net found for component U1 pad 19 (no pin 19 in symbol).
+Warning: No net found for component U3 pad 3 (no pin 3 in symbol).
+Warning: No net found for component U3 pad 5 (no pin 5 in symbol).
+Warning: No net found for component U3 pad 4 (no pin 4 in symbol).
+Warning: No net found for component U3 pad 1 (no pin 1 in symbol).
+Warning: No net found for component U9 pad 5 (no pin 5 in symbol).
+Warning: No net found for component U9 pad 1 (no pin 1 in symbol).
+Warning: No net found for component U9 pad 4 (no pin 4 in symbol).
+Warning: No net found for component U9 pad 3 (no pin 3 in symbol).
+Warning: No net found for component U9 pad 2 (no pin 2 in symbol).
+Warning: No net found for component U9 pad 6 (no pin 6 in symbol).
+Warning: No net found for component U11 pad 6 (no pin 6 in symbol).
+Warning: No net found for component U11 pad 5 (no pin 5 in symbol).
+Warning: No net found for component U11 pad 3 (no pin 3 in symbol).
+Warning: No net found for component U11 pad 1 (no pin 1 in symbol).
+Warning: No net found for component U11 pad 2 (no pin 2 in symbol).
+Warning: No net found for component U11 pad 4 (no pin 4 in symbol).
+Warning: No net found for component U3 pad 2 (no pin 2 in symbol).
+Warning: No net found for component U1 pad 32 (no pin 32 in symbol).
+Warning: No net found for component U1 pad 2 (no pin 2 in symbol).
+Warning: No net found for component U1 pad 25 (no pin 25 in symbol).
+Warning: No net found for component U1 pad 11 (no pin 11 in symbol).
+Warning: No net found for component U1 pad 10 (no pin 10 in symbol).
+Warning: No net found for component U1 pad 35 (no pin 35 in symbol).
+Warning: No net found for component U1 pad 36 (no pin 36 in symbol).
+Warning: No net found for component U1 pad 23 (no pin 23 in symbol).
+Warning: No net found for component U1 pad 7 (no pin 7 in symbol).
+Warning: No net found for component U1 pad 21 (no pin 21 in symbol).
+Warning: No net found for component U1 pad 1 (no pin 1 in symbol).
+Error: U1 pad GPIO26 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO25 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO4 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO5 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO17 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO16 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO32 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO22 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO21 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO33 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad 3V3 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad 5V not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GND not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO19 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO23 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO18 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO27 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO14 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad CLK not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad CMD not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad EN not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO0 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO2 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO12 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO13 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO15 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO34 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO35 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO36(VP) not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad GPIO39(VN) not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad RX0(GPIO3) not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad SD0 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad SD1 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad SD2 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad SD3 not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U1 pad TX0(GPIO1) not found in HMS_Footprints:ESP32_DEVKITC_32UE.
+Error: U3 pad CS not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U3 pad VCC not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U3 pad GND not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U3 pad SO not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U3 pad SCK not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U3 pad T+ not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U3 pad T- not found in Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical.
+Error: U9 pad SCL not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U9 pad SDA not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U9 pad VCC not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U9 pad GND not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U9 pad 32K not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U9 pad SQW not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U11 pad CS not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U11 pad 3v3 not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U11 pad GND not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U11 pad MISO not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U11 pad MOSI not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+Error: U11 pad CLK not found in Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical.
+
+
+Info: Total warnings: 55, errors: 55.

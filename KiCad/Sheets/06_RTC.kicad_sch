@@ -119,61 +119,7 @@
 							)
 						)
 					)
-					(number "32K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 10.16 12.7 270)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -1.27 12.7 270)
-					(length 5.08)
-					(name "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 2.54 12.7 270)
-					(length 5.08)
-					(name "SDA"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SDA"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -191,7 +137,43 @@
 							)
 						)
 					)
-					(number "SQW"
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -1.27 12.7 270)
+					(length 5.08)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 2.54 12.7 270)
+					(length 5.08)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -209,7 +191,25 @@
 							)
 						)
 					)
-					(number "VCC"
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 10.16 12.7 270)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -349,22 +349,22 @@
 				)
 			)
 		)
-		(pin "SQW"
+		(pin "5"
 			(uuid "e9d7968c-bb4c-4330-afa5-6637197b3ef4")
 		)
-		(pin "32K"
+		(pin "1"
 			(uuid "ad70c740-d873-4b64-8a68-ee2eceab6be1")
 		)
-		(pin "GND"
+		(pin "2"
 			(uuid "435d408f-76c6-40d9-b3d6-c02fdc7a8e99")
 		)
-		(pin "VCC"
+		(pin "3"
 			(uuid "7f55c4e1-eb98-420f-9b5a-c072141e6ddb")
 		)
-		(pin "SDA"
+		(pin "6"
 			(uuid "590a4316-a734-4f86-b2b4-cd6a89503b92")
 		)
-		(pin "SCL"
+		(pin "4"
 			(uuid "a90b619b-c4de-4a1c-8bcd-fb9d5665d4fa")
 		)
 		(instances

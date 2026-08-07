@@ -393,23 +393,43 @@
 						(type none)
 					)
 				)
+				(circle
+					(center -2.54 -6.35)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 -6.35)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 			)
 			(symbol "MAX6675_1_1"
-				(pin input line
-					(at 3.81 12.7 270)
-					(length 5.08)
-					(name "CS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
+				(text "T+"
+					(at -4.826 -6.35 0)
+					(effects
+						(font
+							(size 1.27 1.27)
 						)
 					)
-					(number "CS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
+				)
+				(text "T-"
+					(at 5.08 -6.35 0)
+					(effects
+						(font
+							(size 1.27 1.27)
 						)
 					)
 				)
@@ -423,79 +443,7 @@
 							)
 						)
 					)
-					(number "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 0 12.7 270)
-					(length 5.08)
-					(name "SCK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SCK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin tri_state line
-					(at 7.62 12.7 270)
-					(length 5.08)
-					(name "SO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -2.54 -12.7 90)
-					(length 5.08)
-					(name "T+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "T+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 2.54 -12.7 90)
-					(length 5.08)
-					(name "T-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "T-"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -513,7 +461,61 @@
 							)
 						)
 					)
-					(number "VCC"
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 12.7 270)
+					(length 5.08)
+					(name "SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 12.7 270)
+					(length 5.08)
+					(name "CS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin tri_state line
+					(at 7.62 12.7 270)
+					(length 5.08)
+					(name "SO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -525,9 +527,25 @@
 			(embedded_fonts no)
 		)
 	)
+	(no_connect
+		(at 137.16 102.87)
+		(uuid "1f5d639f-311b-4570-8a56-77bd69ac3ae9")
+	)
+	(no_connect
+		(at 137.16 116.84)
+		(uuid "8d655779-c635-4e7c-b484-8228d5103349")
+	)
+	(no_connect
+		(at 142.24 116.84)
+		(uuid "d69fe228-08b9-4892-a78a-8d594972e0d0")
+	)
+	(no_connect
+		(at 142.24 102.87)
+		(uuid "ea74ef0b-cd59-4466-9129-6c2e81a08cba")
+	)
 	(wire
 		(pts
-			(xy 142.24 116.84) (xy 142.24 107.95)
+			(xy 142.24 102.87) (xy 142.24 116.84)
 		)
 		(stroke
 			(width 0.254)
@@ -538,7 +556,7 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 116.84) (xy 137.16 107.95)
+			(xy 137.16 102.87) (xy 137.16 116.84)
 		)
 		(stroke
 			(width 0.254)
@@ -749,26 +767,20 @@
 				)
 			)
 		)
-		(pin "SCK"
+		(pin "1"
 			(uuid "ae1ace5a-1fa8-4171-9dcb-c0ef65100ed6")
 		)
-		(pin "SO"
+		(pin "5"
 			(uuid "467bbf18-f1e0-4ffa-a342-c530a484b82f")
 		)
-		(pin "CS"
+		(pin "3"
 			(uuid "7a02fcdc-fcf1-4895-a7ad-377033d4dc85")
 		)
-		(pin "VCC"
+		(pin "2"
 			(uuid "4fc2e03e-c16e-4b08-9d39-493e9821420e")
 		)
-		(pin "GND"
+		(pin "4"
 			(uuid "c9abe74d-9473-4ff0-9251-5fa04337a4b3")
-		)
-		(pin "T-"
-			(uuid "6780f561-2a61-4b94-8602-6d492e27fc5b")
-		)
-		(pin "T+"
-			(uuid "0ab50b67-645a-4740-b687-aec876431317")
 		)
 		(instances
 			(project "HMS_Master"
