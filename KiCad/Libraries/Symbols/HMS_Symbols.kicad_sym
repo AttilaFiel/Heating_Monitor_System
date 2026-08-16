@@ -28,7 +28,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 0 -5.588 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -212,7 +212,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 0 -7.112 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -450,7 +450,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 0 -6.604 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -742,7 +742,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B5B-PH-K_1x05_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 0 -6.604 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2906,7 +2906,7 @@
 			)
 		)
 		(property "Value" "SERVO16-1A-SLD"
-			(at 0.254 -43.942 0)
+			(at 0 -36.576 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2962,7 +2962,7 @@
 		(symbol "SERVO16-1A-SLD_0_1"
 			(rectangle
 				(start -13.97 35.56)
-				(end 12.7 -41.91)
+				(end 12.7 -34.29)
 				(stroke
 					(width 0)
 					(type default)
@@ -3362,42 +3362,6 @@
 					)
 				)
 				(number "22"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin output line
-				(at 17.78 -34.29 180)
-				(length 5.08)
-				(name "PWM16"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "23"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin output line
-				(at 17.78 -38.1 180)
-				(length 5.08)
-				(name "PWM17"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "24"
 					(effects
 						(font
 							(size 1.27 1.27)

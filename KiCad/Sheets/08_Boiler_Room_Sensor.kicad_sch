@@ -31,7 +31,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+			(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 				(at 0 -7.112 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -610,7 +610,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 135.89 85.852 0)
 			(hide yes)
 			(show_name no)

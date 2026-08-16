@@ -2,7 +2,7 @@
 	(version 20260306)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid "bc1d3cbc-b906-42a6-bc28-dfcf39a7ec69")
+	(uuid "2df5a7dc-b754-49b0-8877-dcf62e37572c")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:LED_RKBG"
@@ -690,7 +690,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
+			(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 				(at 0 -6.604 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -973,7 +973,7 @@
 				)
 			)
 			(property "Value" "SERVO16-1A-SLD"
-				(at 0.254 -43.942 0)
+				(at 0 -36.576 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1029,7 +1029,7 @@
 			(symbol "SERVO16-1A-SLD_0_1"
 				(rectangle
 					(start -13.97 35.56)
-					(end 12.7 -41.91)
+					(end 12.7 -34.29)
 					(stroke
 						(width 0)
 						(type default)
@@ -1436,42 +1436,6 @@
 						)
 					)
 				)
-				(pin output line
-					(at 17.78 -34.29 180)
-					(length 5.08)
-					(name "PWM16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 17.78 -38.1 180)
-					(length 5.08)
-					(name "PWM17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "24"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
 			(embedded_fonts no)
 		)
@@ -1587,14 +1551,6 @@
 	(no_connect
 		(at 147.32 62.23)
 		(uuid "3fe95f0e-58b9-4eb8-a478-a22ca89c597b")
-	)
-	(no_connect
-		(at 156.21 140.97)
-		(uuid "7ad6268b-8e66-45cd-ad56-70f636cbdef0")
-	)
-	(no_connect
-		(at 156.21 137.16)
-		(uuid "a77dda0e-af0e-43fa-8163-0d178661ef82")
 	)
 	(no_connect
 		(at 156.21 121.92)
@@ -2415,9 +2371,6 @@
 		(pin "20"
 			(uuid "4c2db49d-68de-4d98-a4da-36da7a8cc8f8")
 		)
-		(pin "23"
-			(uuid "caa99396-ca0c-446f-aa03-e36e43a4db69")
-		)
 		(pin "17"
 			(uuid "6076a2a7-e0d0-40b0-b09d-d89cd0ac92fe")
 		)
@@ -2426,9 +2379,6 @@
 		)
 		(pin "18"
 			(uuid "32183fa8-1e80-4f99-a0b0-bbe062dcbba2")
-		)
-		(pin "24"
-			(uuid "0c803a6c-a824-484f-a3b0-700cf7987ce8")
 		)
 		(pin "21"
 			(uuid "b90fc38d-0231-4d48-945f-d87ecf7e0264")
@@ -2556,7 +2506,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 205.994 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -2965,7 +2915,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 205.994 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -3219,7 +3169,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 205.994 107.95 0)
 			(hide yes)
 			(show_name no)

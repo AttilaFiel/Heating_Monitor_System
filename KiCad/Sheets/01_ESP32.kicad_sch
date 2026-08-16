@@ -803,16 +803,16 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "GPIO kiosztás:\nGPIO23	21	SPI_MOSI\nGPIO19	27	SPI_MISO\nGPIO18	28	SPI_SCK\n\nGPIO22	22	I2C_SCL\nGPIO21	25	I2C_SDA\n\nGPIO27	11	TEMPERATURE_SENSOR_BUS (5× DS18B20)\n\nGPIO26	10	BOILER_ROOM_TEMPERATURE (DHT11)\n\nGPIO17	30	DISPLAY1_DC + DISPLAY2_DC\nGPIO16	31	DISPLAY1_RESET + DISPLAY2_RESET\nGPIO5	29	DISPLAY1_CS\nGPIO13	15	DISPLAY2_CS\n\nGPIO4	32	CHIMNEY_TEMPERATURE_CS (MAX6675)\n\nGPIO25	9	BUZZER\n\nGPIO32	7	GAS_AC_PRESENT\nGPIO14	12	WOOD_AC_PRESENT\n\nGPIO33	8	MICROSD_CS"
+	(text "GPIO kiosztás:\nGPIO23 SPI_MOSI\nGPIO19 SPI_MISO\nGPIO18 SPI_SCK\n\nGPIO22 I2C_SCL\nGPIO21 I2C_SDA\n\nGPIO27 TEMPERATURE_SENSOR_BUS (5× DS18B20)\n\nGPIO26 BOILER_ROOM_TEMPERATURE (DHT11)\n\nGPIO17 DISPLAY1_DC + DISPLAY2_DC\nGPIO16 DISPLAY1_RESET + DISPLAY2_RESET\nGPIO5  DISPLAY1_CS\nGPIO4  DISPLAY2_CS\n\nGPIO14 CHIMNEY_TEMPERATURE_CS (MAX6675)\n\nGPIO25 BUZZER\n\nGPIO32 GAS_AC_PRESENT\nGPIO33 WOOD_AC_PRESENT\n\nGPIO13 MICROSD_CS"
 		(exclude_from_sim no)
-		(at 20.574 51.308 0)
+		(at 21.59 48.006 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "9a0b0726-f7a8-4ed4-94f8-b748b4a8978a")
+		(uuid "a72bce38-783d-4489-be60-a3716897e564")
 	)
 	(junction
 		(at 158.75 60.96)
@@ -984,12 +984,12 @@
 	)
 	(hierarchical_label "CHIMNEY_TEMPERATURE_CS"
 		(shape input)
-		(at 177.8 83.82 0)
+		(at 121.92 80.01 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "0b7b0c06-f94e-4449-b13e-3b42a3777f33")
 	)
@@ -1017,12 +1017,12 @@
 	)
 	(hierarchical_label "DISPLAY2_CS"
 		(shape output)
-		(at 121.92 91.44 180)
+		(at 177.8 83.82 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "15ab0bb9-e007-4d04-a2ee-47034c9bac42")
 	)
@@ -1138,7 +1138,7 @@
 	)
 	(hierarchical_label "MICROSD_CS"
 		(shape output)
-		(at 121.92 64.77 180)
+		(at 121.92 91.44 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1149,7 +1149,7 @@
 	)
 	(hierarchical_label "WOOD_AC_PRESENT"
 		(shape input)
-		(at 121.92 80.01 180)
+		(at 121.92 64.77 180)
 		(effects
 			(font
 				(size 1.27 1.27)
