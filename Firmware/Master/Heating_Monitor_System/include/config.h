@@ -17,3 +17,36 @@
 // PCA9685
 #define PCA9685_ADDRESS 0x40
 #define PCA9685_PWM_FREQ 1000
+
+// MicroSD / SPI
+#define MICROSD_CS 13
+
+#define SPI_SCK 18
+#define SPI_MISO 19
+#define SPI_MOSI 23
+
+// MAX6675
+#define CHIMNEY_TEMPERATURE_CS 14
+
+// DHT11
+#define BOILER_ROOM_TEMPERATURE 26
+
+// MVPDM-1PHS AC JELENLET ERZEKELŐK
+#define GAS_AC_PRESENT 32
+#define WOOD_AC_PRESENT 33
+
+// ========================================
+// DS18B20 HŐMÉRSÉKLET SZENZOROK
+// ========================================
+
+// DS18B20 OneWire
+#define TEMPERATURE_SENSOR_BUS 27
+
+// DS18B20 Szenzorok egyedi címei
+#define GAS_FLOW_SENSOR       "2850D68990250673"
+#define GAS_RETURN_SENSOR     "2842FF9590250667"
+
+#define WOOD_FLOW_SENSOR      "28CE7739902506BE"
+#define WOOD_RETURN_SENSOR    "28711D9E912506B5"
+
+#define WOOD_BOILER_SENSOR    "2827C42D9125069D"

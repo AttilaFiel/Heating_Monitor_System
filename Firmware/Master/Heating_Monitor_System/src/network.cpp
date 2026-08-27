@@ -96,3 +96,8 @@ void networkLoop()
         }
     }
 }
+
+bool isTerminalConnected()
+{
+    return terminalClient && terminalClient.connected();
+}
