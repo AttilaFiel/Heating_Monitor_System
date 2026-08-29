@@ -61,7 +61,7 @@ void startupTest()
         setRGB(i, PWM_MAX, 0, 0);
     }
 
-    delay(1000);
+    delay(500);
 
 
     Serial.println("ZOLD");
@@ -71,7 +71,7 @@ void startupTest()
         setRGB(i, 0, PWM_MAX, 0);
     }
 
-    delay(1000);
+    delay(500);
 
 
     Serial.println("KEK");
@@ -81,11 +81,11 @@ void startupTest()
         setRGB(i, 0, 0, PWM_MAX);
     }
 
-    delay(1000);
+    delay(500);
 
     allOff();
 
-    delay(500);
+    delay(100);
 }
 
 
@@ -217,5 +217,5 @@ void randomLedShow()
     setRGB(2, r3, g3, b3);
 
 
-    delay(random(100, 800));
+    delay(random(100, 300));
 }

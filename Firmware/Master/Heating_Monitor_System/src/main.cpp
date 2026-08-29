@@ -9,6 +9,9 @@
 #include "ds18b20.h"
 #include "dht11.h"
 #include "ac_sensor.h"
+#include "display.h"
+#include "buzzer.h"
+#include "sensor_manager.h"
 
 bool i2cScanned = false;
 bool rtcTested = false;
@@ -17,6 +20,7 @@ bool max6675Tested = false;
 bool ds18b20Tested = false;
 bool dht11Tested = false;
 bool acSensorTested = false;
+bool displayTested = false;
 
 void setup()
 {
@@ -50,6 +54,15 @@ void setup()
     // AC jelenlet erzekelok inditasa
     acSensorSetup();
 
+    // Display indítása
+    displaySetup();
+
+    // Buzzer indítása
+    buzzerTest();
+
+    // Sensor Manager indítása
+    sensorManagerSetup();
+
     // RGB LED teszt
     Serial.println();
     Serial.println("====================");
@@ -64,7 +77,7 @@ void setup()
     // Induló színteszt
     startupTest();
 
-
+    
     // Hullámzó fényjáték
     //waveShow();
 
@@ -80,7 +93,11 @@ void setup()
 void loop()
 {
     // Wi-Fi, OTA és terminál kezelése
-    networkLoop();
+    for (int i = 0; i < 10; i++)
+    {
+        networkLoop();
+        delay(100);
+    }
 
     // I2C busz szkennelése
     // A keresés csak akkor indul,
@@ -134,7 +151,10 @@ void loop()
         acSensorTested = true;
     }
 
-    delay(5000);
+    sensorManagerUpdate();
+    
+
+    //delay(1000);
 
     // Tesztüzenet
     //logMessage("ESP32 mukodik...");
@@ -142,4 +162,7 @@ void loop()
 
     // Véletlen RGB színek
     randomLedShow();
+
+    // Display teszt
+    displayTest();
 }

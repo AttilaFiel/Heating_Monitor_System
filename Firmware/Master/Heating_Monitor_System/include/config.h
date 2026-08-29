@@ -35,6 +35,9 @@
 #define GAS_AC_PRESENT 32
 #define WOOD_AC_PRESENT 33
 
+// Buzzer
+#define BUZZER 25
+
 // ========================================
 // DS18B20 HŐMÉRSÉKLET SZENZOROK
 // ========================================
@@ -50,3 +53,15 @@
 #define WOOD_RETURN_SENSOR    "28711D9E912506B5"
 
 #define WOOD_BOILER_SENSOR    "2827C42D9125069D"
+
+// ========================================
+// SSD1306 KIJEZOK
+// ========================================
+
+// Kijelzok kozos vezerlo jelei
+#define DISPLAY_RESET 16
+#define DISPLAY_DC 17
+
+// Kijelzok Chip Select jelei
+#define DISPLAY1_CS 5
+#define DISPLAY2_CS 4
