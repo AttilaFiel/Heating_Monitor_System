@@ -15,6 +15,16 @@ void acSensorSetup()
     logMessage("AC jelenlet erzekelok inicializalva.");
 }
 
+bool gasAcPresent()
+{
+    return digitalRead(GAS_AC_PRESENT) == LOW;
+}
+
+
+bool woodAcPresent()
+{
+    return digitalRead(WOOD_AC_PRESENT) == LOW;
+}
 
 // AC jelenlet erzekelok tesztje
 void acSensorTest()
@@ -77,8 +87,7 @@ void acSensorTest()
     );
 
     logMessage(message);
-
-
+    
     logMessage("================================");
     logMessage("AC JELENLET ERZEKELŐ TESZT VEGE");
     logMessage("================================");

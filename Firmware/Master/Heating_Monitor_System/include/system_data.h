@@ -2,30 +2,25 @@
 
 #include <RTClib.h>
 
-
 // --------------------------------
-// Futesi ag
+// Központi rendszeradat-struktúra, melyik fűtési ág aktív
 // --------------------------------
-
 enum HeatingBranch
 {
     HEATING_NONE,
     HEATING_GAS,
-    HEATING_WOOD
+    HEATING_WOOD,
+    HEATING_ERROR
 };
-
-
-// --------------------------------
-// Rendszerállapotok
-// --------------------------------
 
 enum SystemState
 {
     SYSTEM_OFF,
     SYSTEM_GAS,
     SYSTEM_WOOD,
-    SYSTEM_IGNITION,
-    SYSTEM_ALARM
+    SYSTEM_FIRE_WITHOUT_CIRCULATOR,
+    SYSTEM_STARTUP,
+    SYSTEM_FAULT
 };
 
 

@@ -12,6 +12,7 @@
 #include "display.h"
 #include "buzzer.h"
 #include "sensor_manager.h"
+#include "data_manager.h"
 
 bool i2cScanned = false;
 bool rtcTested = false;
@@ -42,23 +43,14 @@ void setup()
     // MicroSD indítása
     sdCardSetup();
 
-    // MAX6675 indítása
-    max6675Setup();
-
-    // DS18B20 indítása
-    ds18b20Setup();
-
-    // DHT11 indítása
-    dht11Setup();
-
-    // AC jelenlet erzekelok inditasa
-    acSensorSetup();
-
     // Display indítása
     displaySetup();
 
     // Buzzer indítása
     buzzerTest();
+    
+    // Data Manager indítása
+    dataManagerSetup();
 
     // Sensor Manager indítása
     sensorManagerSetup();
@@ -148,17 +140,24 @@ void loop()
     {
         acSensorTest();
 
+        logMessage(
+            systemData.gasAcPresent
+                ? "GAS AC: VAN"
+                : "GAS AC: NINCS"
+        );
+
+        logMessage(
+            systemData.woodAcPresent
+                ? "WOOD AC: VAN"
+                : "WOOD AC: NINCS"
+        );
         acSensorTested = true;
     }
 
     sensorManagerUpdate();
+    dataManagerUpdate();
     
-
-    //delay(1000);
-
-    // Tesztüzenet
-    //logMessage("ESP32 mukodik...");
-
+    dataManagerTest();
 
     // Véletlen RGB színek
     randomLedShow();

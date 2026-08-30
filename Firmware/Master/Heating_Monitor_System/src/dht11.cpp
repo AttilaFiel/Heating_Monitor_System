@@ -6,13 +6,20 @@
 #include "dht11.h"
 
 
+// --------------------------------
+// DHT11
+// --------------------------------
+
 DHT dht(
     BOILER_ROOM_TEMPERATURE,
     DHT11
 );
 
 
-// DHT11 inicializálása
+// --------------------------------
+// Inicializalas
+// --------------------------------
+
 void dht11Setup()
 {
     dht.begin();
@@ -21,7 +28,10 @@ void dht11Setup()
 }
 
 
+// --------------------------------
 // DHT11 teszt
+// --------------------------------
+
 void dht11Test()
 {
     logMessage("");
@@ -29,24 +39,18 @@ void dht11Test()
     logMessage("DHT11 TESZT INDUL");
     logMessage("================================");
 
+    // DHT11 inicializalasa
+    dht.begin();
 
-    // A DHT11 lassú szenzor,
-    // ezért hagyunk neki egy kis időt
     delay(2000);
 
-
-    // Páratartalom kiolvasása
-    float humidity = dht.readHumidity();
-
-
-    // Hőmérséklet kiolvasása
-    float temperature = dht.readTemperature();
+    float temperature;
+    float humidity;
 
 
-    // Kommunikáció ellenőrzése
-    if (isnan(humidity) || isnan(temperature))
+    if (!dht11Read(temperature, humidity))
     {
-        logMessage("DHT11: HIBA - adat nem olvashato!");
+        logMessage("DHT11: HIBA - nem olvashato adat!");
 
         logMessage("================================");
         logMessage("DHT11 TESZT VEGE");
@@ -62,7 +66,7 @@ void dht11Test()
     snprintf(
         message,
         sizeof(message),
-        "Kazanhelyiseg homerseklet: %.1f C",
+        "Kazanhaz homerseklet: %.1f C",
         temperature
     );
 
@@ -72,7 +76,7 @@ void dht11Test()
     snprintf(
         message,
         sizeof(message),
-        "Paratartalom: %.1f %%",
+        "Kazanhaz paratartalom: %.1f %%",
         humidity
     );
 
@@ -84,4 +88,17 @@ void dht11Test()
     logMessage("================================");
     logMessage("DHT11 TESZT VEGE");
     logMessage("================================");
+}
+
+bool dht11Read(float& temperature, float& humidity)
+{
+    temperature = dht.readTemperature();
+    humidity = dht.readHumidity();
+
+    if (isnan(temperature) || isnan(humidity))
+    {
+        return false;
+    }
+
+    return true;
 }

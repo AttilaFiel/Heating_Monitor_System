@@ -7,12 +7,12 @@
 #include "system_data.h"
 #include "network.h"
 #include "ds18b20.h"
+#include "max6675.h"
+#include "dht11.h"
+#include "ac_sensor.h"
 
-// --------------------------------
-// Sensor Manager uzenet buffer
-// --------------------------------
+unsigned long dht11LastRead = 0;
 
-char message[100];
 
 // --------------------------------
 // DS18B20 egyedi cimek
@@ -45,6 +45,72 @@ DeviceAddress woodBoilerAddress =
 
 
 // --------------------------------
+// DS18B20 szenzorok ellenorzese
+// --------------------------------
+bool checkDS18B20Sensors()
+{
+    bool allOk = true;
+
+
+    if (ds18b20.isConnected(gasFlowAddress))
+    {
+        logMessage("GAS_FLOW_SENSOR: OK");
+    }
+    else
+    {
+        logMessage("GAS_FLOW_SENSOR: HIBA - nem talalhato!");
+        allOk = false;
+    }
+
+
+    if (ds18b20.isConnected(gasReturnAddress))
+    {
+        logMessage("GAS_RETURN_SENSOR: OK");
+    }
+    else
+    {
+        logMessage("GAS_RETURN_SENSOR: HIBA - nem talalhato!");
+        allOk = false;
+    }
+
+
+    if (ds18b20.isConnected(woodFlowAddress))
+    {
+        logMessage("WOOD_FLOW_SENSOR: OK");
+    }
+    else
+    {
+        logMessage("WOOD_FLOW_SENSOR: HIBA - nem talalhato!");
+        allOk = false;
+    }
+
+
+    if (ds18b20.isConnected(woodReturnAddress))
+    {
+        logMessage("WOOD_RETURN_SENSOR: OK");
+    }
+    else
+    {
+        logMessage("WOOD_RETURN_SENSOR: HIBA - nem talalhato!");
+        allOk = false;
+    }
+
+
+    if (ds18b20.isConnected(woodBoilerAddress))
+    {
+        logMessage("WOOD_BOILER_SENSOR: OK");
+    }
+    else
+    {
+        logMessage("WOOD_BOILER_SENSOR: HIBA - nem talalhato!");
+        allOk = false;
+    }
+
+
+    return allOk;
+}
+
+// --------------------------------
 // Sensor Manager inicializalasa
 // --------------------------------
 
@@ -52,30 +118,30 @@ void sensorManagerSetup()
 {
     logMessage("Sensor Manager inicializalasa...");
 
-    ds18b20.begin();
+    // MAX6675 indítása
+    max6675Setup();
 
-    uint8_t sensorCount = ds18b20.getDeviceCount();
+    // DS18B20 indítása
+    ds18b20Setup();
 
-    snprintf(
-        message,
-        sizeof(message),
-        "DS18B20 szenzorok szama: %u",
-        sensorCount
-    );
-
-    logMessage(message);
-
-
-    if (sensorCount != 5)
+    // DS18B20 szenzorok ellenőrzése
+    if (checkDS18B20Sensors())
     {
-        logMessage("FIGYELEM: nem 5 DS18B20 talalhato!");
+        logMessage("DS18B20: minden szenzor OK");
     }
     else
     {
-        logMessage("DS18B20: 5 szenzor OK");
+        logMessage("DS18B20: HIBA - legalabb egy szenzor hianyzik!");
     }
-}
 
+    // DHT11 indítása
+    dht11Setup();
+
+    // AC jelenlet erzekelok inditasa
+    acSensorSetup();
+
+
+}
 
 // --------------------------------
 // DS18B20 ertekek frissitese
@@ -118,6 +184,61 @@ void updateDS18B20()
         ds18b20.getTempC(woodBoilerAddress);
 }
 
+// --------------------------------
+// MAX6675 ertekek frissitese
+// --------------------------------
+void updateMAX6675()
+{
+    float temperature = max6675ReadTemperature();
+
+    if (isnan(temperature))
+    {
+        logMessage("MAX6675: TERMOELEM HIBA / SZAKADAS!");
+
+        return;
+    }
+
+    systemData.chimneyTemperature = temperature;
+}
+
+// --------------------------------
+// AC jelenlet erzekelok frissitese
+// --------------------------------
+
+void updateACSensors()
+{
+    systemData.gasAcPresent = gasAcPresent();
+    systemData.woodAcPresent = woodAcPresent();
+}
+
+// --------------------------------
+// DHT11 ertekek frissitese
+// --------------------------------
+void updateDHT11()
+{
+    // DHT11 olvasasa 2 masodpercenkent
+    if (millis() - dht11LastRead < 2000)
+    {
+        return;
+    }
+
+    dht11LastRead = millis();
+
+
+    float temperature;
+    float humidity;
+
+
+    // Sikertelen meres
+    if (!dht11Read(temperature, humidity))
+    {
+        return;
+    }
+
+    // Ervenyes adatok bekerulnek a kozponti adatstruktúrába
+    systemData.boilerRoomTemperature = temperature;
+    systemData.boilerRoomHumidity = humidity;
+}
 
 // --------------------------------
 // Sensor Manager frissitese
@@ -125,59 +246,15 @@ void updateDS18B20()
 
 void sensorManagerUpdate()
 {
+    // DS18B20
     updateDS18B20();
 
+    // MAX6675
+    updateMAX6675();
 
-    // --------------------------------
-    // TESZT KIIRAS
-    // --------------------------------
+    // AC jelenlet erzekelok
+    updateACSensors();
 
-    snprintf(
-        message,
-        sizeof(message),
-        "GAS FLOW: %.2f C",
-        systemData.gasFlowTemperature
-    );
-
-    logMessage(message);
-
-
-    snprintf(
-        message,
-        sizeof(message),
-        "GAS RETURN: %.2f C",
-        systemData.gasReturnTemperature
-    );
-
-    logMessage(message);
-
-
-    snprintf(
-        message,
-        sizeof(message),
-        "WOOD FLOW: %.2f C",
-        systemData.woodFlowTemperature
-    );
-
-    logMessage(message);
-
-
-    snprintf(
-        message,
-        sizeof(message),
-        "WOOD RETURN: %.2f C",
-        systemData.woodReturnTemperature
-    );
-
-    logMessage(message);
-
-
-    snprintf(
-        message,
-        sizeof(message),
-        "WOOD BOILER: %.2f C",
-        systemData.woodBoilerTemperature
-    );
-
-    logMessage(message);
+    // DHT11
+    updateDHT11();
 }

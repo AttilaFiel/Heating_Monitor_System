@@ -107,6 +107,40 @@ void readSensor(const char* sensorName, const char* sensorAddress)
     logMessage(message);
 }
 
+// Egyetlen DS18B20 hőmérsékletének kiolvasása systemData struktúrába
+float readSensorTemperature(const char* sensorAddress)
+{
+    DeviceAddress address;
+
+
+    // Cim atalakitas
+    if (!stringToAddress(sensorAddress, address))
+    {
+        return NAN;
+    }
+
+
+    // Szenzor ellenorzese
+    if (!ds18b20.isConnected(address))
+    {
+        return NAN;
+    }
+
+
+    // Homerseklet kiolvasasa
+    float temperature = ds18b20.getTempC(address);
+
+
+    // Hibás ertek ellenorzese
+    if (temperature == DEVICE_DISCONNECTED_C)
+    {
+        return NAN;
+    }
+
+
+    return temperature;
+}
+
 
 void ds18b20Setup()
 {

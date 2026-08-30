@@ -15,6 +15,46 @@ void max6675Setup()
     logMessage("MAX6675 elokeszitve.");
 }
 
+float max6675ReadTemperature()
+{
+    // SD kartya biztosan nincs kivalasztva
+    digitalWrite(MICROSD_CS, HIGH);
+
+    // MAX6675 kivalasztasa
+    digitalWrite(CHIMNEY_TEMPERATURE_CS, LOW);
+
+    SPI.beginTransaction(
+        SPISettings(
+            4000000,
+            MSBFIRST,
+            SPI_MODE0
+        )
+    );
+
+    // 16 bit kiolvasasa
+    uint16_t rawData = SPI.transfer16(0x0000);
+
+    SPI.endTransaction();
+
+    // MAX6675 kikapcsolasa
+    digitalWrite(CHIMNEY_TEMPERATURE_CS, HIGH);
+
+
+    // Termoelem hiba / szakadas
+    if (rawData & 0x0004)
+    {
+        return NAN;
+    }
+
+
+    // Homerseklet bitek
+    rawData >>= 3;
+
+    // Egy bit = 0.25 Celsius
+    float temperature = rawData * 0.25;
+
+    return temperature;
+}
 
 void max6675Test()
 {
