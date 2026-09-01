@@ -22,3 +22,8 @@ void dataManagerTest();
 // Rendszerallapot frissitese
 // --------------------------------
 void updateSystemState();
+
+// --------------------------------
+// Riasztasi allapot frissitese
+// --------------------------------
+void updateAlarmState();

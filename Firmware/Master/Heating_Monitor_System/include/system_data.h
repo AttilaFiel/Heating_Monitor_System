@@ -3,8 +3,9 @@
 #include <RTClib.h>
 
 // --------------------------------
-// Központi rendszeradat-struktúra, melyik fűtési ág aktív
+// Központi rendszeradat-struktúra
 // --------------------------------
+// Melyik fűtési ág aktív
 enum HeatingBranch
 {
     HEATING_NONE,
@@ -13,6 +14,7 @@ enum HeatingBranch
     HEATING_ERROR
 };
 
+// Rendszerállapotok
 enum SystemState
 {
     SYSTEM_OFF,
@@ -23,6 +25,13 @@ enum SystemState
     SYSTEM_FAULT
 };
 
+// Riasztási állapotok
+enum AlarmState
+{
+    ALARM_NONE,
+    ALARM_WARNING,
+    ALARM_CRITICAL
+};
 
 // --------------------------------
 // Kozponti rendszeradatok
@@ -31,7 +40,6 @@ enum SystemState
 struct SystemData
 {
     // Hőmérsékletek
-
     float gasFlowTemperature;
     float gasReturnTemperature;
 
@@ -46,25 +54,23 @@ struct SystemData
 
 
     // AC állapotok
-
     bool gasAcPresent;
     bool woodAcPresent;
 
 
     // Feldolgozott állapotok
-
     bool firePresent;
 
+    // Rendszerállapotok
     SystemState systemState;
 
-
     // Aktív fűtési ág
-
     HeatingBranch activeBranch;
 
+    // Riasztási állapot
+    AlarmState alarmState;
 
     // Idő
-
     DateTime timestamp;
 };
 

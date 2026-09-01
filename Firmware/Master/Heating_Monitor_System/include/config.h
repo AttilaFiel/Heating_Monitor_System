@@ -1,6 +1,9 @@
 #pragma once
+// --------------------------------
+// Network
+// --------------------------------
 
-// Wi-Fi
+// Wi-fi csatlakozási adatok
 #define WIFI_SSID "YOUR_WIFI_SSID"
 #define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
 
@@ -9,6 +12,10 @@
 
 // OTA
 #define OTA_HOSTNAME "HMS-ESP32"
+
+// --------------------------------
+// GPIO pin definíciók
+// --------------------------------
 
 // I2C
 #define I2C_SDA 21
@@ -38,10 +45,7 @@
 // Buzzer
 #define BUZZER 25
 
-// ========================================
-// DS18B20 HŐMÉRSÉKLET SZENZOROK
-// ========================================
-
+// DS18B20 hőmérséklet szenzorok
 // DS18B20 OneWire
 #define TEMPERATURE_SENSOR_BUS 27
 
@@ -54,10 +58,8 @@
 
 #define WOOD_BOILER_SENSOR    "2827C42D9125069D"
 
-// ========================================
-// SSD1306 KIJEZOK
-// ========================================
 
+// SSD1306 KIJEZOK
 // Kijelzok kozos vezerlo jelei
 #define DISPLAY_RESET 16
 #define DISPLAY_DC 17
@@ -65,3 +67,19 @@
 // Kijelzok Chip Select jelei
 #define DISPLAY1_CS 5
 #define DISPLAY2_CS 4
+
+
+// --------------------------------
+// Hőmérséklet határértékek
+// --------------------------------
+#define FIRE_TEMPERATURE_THRESHOLD       80.0
+
+#define WOOD_FLOW_HEATING_THRESHOLD      28.0
+#define WOOD_FLOW_COOLING_THRESHOLD      22.0
+
+#define WOOD_BOILER_OPTIMAL_TEMPERATURE  60.0
+#define WOOD_BOILER_WARNING_TEMPERATURE  70.0
+#define WOOD_BOILER_ALARM_TEMPERATURE    80.0
+
+#define STARTUP_TIMEOUT                 900000UL   // 15 perc
+#define WOOD_AC_SWITCH_TIMEOUT          120000UL   // 2 perc
