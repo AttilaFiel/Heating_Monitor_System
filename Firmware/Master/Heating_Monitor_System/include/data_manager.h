@@ -27,3 +27,18 @@ void updateSystemState();
 // Riasztasi allapot frissitese
 // --------------------------------
 void updateAlarmState();
+
+// --------------------------------
+// Rendszerallapot szoveges reprezentacioja
+// --------------------------------
+const char* systemStateToLogString(SystemState state);
+
+// --------------------------------
+// Fűtési ág állapot logolása string formátumban
+// --------------------------------
+const char* heatingBranchToLogString(HeatingBranch branch);
+
+// --------------------------------
+// Riasztasi allapot szoveges reprezentacioja
+// --------------------------------
+const char* alarmStateToLogString(AlarmState state);

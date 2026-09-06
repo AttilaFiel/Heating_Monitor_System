@@ -17,13 +17,17 @@ void acSensorSetup()
 
 bool gasAcPresent()
 {
+    //TODO: visszaállítani
+    //return digitalRead(GAS_AC_PRESENT) == LOW;
     return digitalRead(GAS_AC_PRESENT) == LOW;
 }
 
 
 bool woodAcPresent()
 {
-    return digitalRead(WOOD_AC_PRESENT) == LOW;
+    //TODO: visszaállítani
+    //return digitalRead(WOOD_AC_PRESENT) == LOW;
+    return digitalRead(WOOD_AC_PRESENT) == HIGH;
 }
 
 // AC jelenlet erzekelok tesztje

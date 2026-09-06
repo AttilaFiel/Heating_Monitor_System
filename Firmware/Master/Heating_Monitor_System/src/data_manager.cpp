@@ -3,6 +3,8 @@
 #include "data_manager.h"
 #include "network.h"
 #include "rtc.h"
+#include "logger.h"
+#include "sd_card.h"
 
 unsigned long timestampLastUpdate = 0;
 bool timestampInitialized = false;
@@ -17,6 +19,31 @@ float startupInitialFlowTemperature = 0.0;
 
 bool startupFault = false;
 bool startupWarning = false;
+
+// Logger globalis változók
+SystemState previousSystemState = SYSTEM_OFF;
+bool systemStateInitialized = false;
+HeatingBranch previousActiveBranch = HEATING_NONE;
+bool activeBranchInitialized = false;
+AlarmState previousAlarmState = ALARM_NONE;
+bool alarmStateInitialized = false;
+bool previousFirePresent = false;
+bool firePresentInitialized = false;
+bool previousGasAcPresent = false;
+bool gasAcPresentInitialized = false;
+bool previousWoodAcPresent = false;
+bool woodAcPresentInitialized = false;
+
+bool startupFlowThresholdAbove = false;
+enum OverheatState
+{
+    OVERHEAT_NORMAL,
+    OVERHEAT_WARNING,
+    OVERHEAT_CRITICAL
+};
+
+OverheatState previousOverheatState = OVERHEAT_NORMAL;
+bool overheatStateInitialized = false;
 
 // --------------------------------
 // Data Manager inicializalasa
@@ -165,12 +192,17 @@ void updateStartup()
             systemData.firePresent)
         {
             startupActive = true;
-
             startupStartTime = millis();
-
             woodAcSwitchTimerActive = false;
-            
             startupWarning = false;
+            startupFlowThresholdAbove = false;
+
+            logEvent(
+                "STARTUP",
+                "START",
+                "",
+                ""
+            );
 
             systemData.systemState = SYSTEM_STARTUP;
         }
@@ -185,13 +217,28 @@ void updateStartup()
 
     if (systemData.woodAcPresent)
     {
+        if (woodAcSwitchTimerActive)
+        {
+            logEvent(
+                "STARTUP",
+                "SWITCH_TIMER_STOP",
+                "",
+                "SUCCESS"
+            );
+        }
+
+        logEvent(
+            "STARTUP",
+            "SUCCESS",
+            "",
+            ""
+        );
+
         startupActive = false;
         woodAcSwitchTimerActive = false;
         startupFault = false;
         startupWarning = false;
-
         systemData.systemState = SYSTEM_WOOD;
-
         return;
     }
 
@@ -202,10 +249,27 @@ void updateStartup()
 
     if (!systemData.firePresent)
     {
+        if (woodAcSwitchTimerActive)
+        {
+            logEvent(
+                "STARTUP",
+                "SWITCH_TIMER_STOP",
+                "",
+                "FIRE_LOST"
+            );
+        }
+
+        logEvent(
+            "STARTUP",
+            "FIRE_LOST",
+            "",
+            ""
+        );
         startupActive = false;
         woodAcSwitchTimerActive = false;
         startupFault = false;
         startupWarning = true;
+        startupFlowThresholdAbove = false;
 
         systemData.systemState = SYSTEM_GAS;
 
@@ -216,22 +280,59 @@ void updateStartup()
     // --------------------------------
     // Wood flow elérte a 28 °C-ot
     // --------------------------------
+    if (systemData.woodFlowTemperature >= WOOD_FLOW_HEATING_THRESHOLD &&
+    !startupFlowThresholdAbove)
+    {
+        startupFlowThresholdAbove = true;
 
-    if (systemData.woodFlowTemperature >=
-        WOOD_FLOW_HEATING_THRESHOLD)
+        logEvent(
+            "STARTUP",
+            "FLOW_THRESHOLD",
+            "BELOW",
+            "ABOVE"
+        );
+    }
+    else if (systemData.woodFlowTemperature < WOOD_FLOW_HEATING_THRESHOLD &&
+            startupFlowThresholdAbove)
+    {
+        startupFlowThresholdAbove = false;
+
+        logEvent(
+            "STARTUP",
+            "FLOW_THRESHOLD",
+            "ABOVE",
+            "BELOW"
+        );
+    }
+
+    if (systemData.woodFlowTemperature >= WOOD_FLOW_HEATING_THRESHOLD)
     {
         if (!woodAcSwitchTimerActive)
         {
             woodAcSwitchTimerActive = true;
             woodAcSwitchStartTime = millis();
+
+            logEvent(
+                "STARTUP",
+                "SWITCH_TIMER_START",
+                "",
+                ""
+            );
         }
 
         // 28 °C elérése után maximum 2 perc
         // áll rendelkezésre az AC átkapcsolására
 
-        if (millis() - woodAcSwitchStartTime >=
-            WOOD_AC_SWITCH_TIMEOUT)
+        if (millis() - woodAcSwitchStartTime >= WOOD_AC_SWITCH_TIMEOUT)
         {
+            logEvent(
+                "STARTUP",
+                "SWITCH_TIMER_TIMEOUT",
+                "",
+                ""
+            );
+
+            woodAcSwitchTimerActive = false;
             startupActive = false;
             startupFault = true;
             systemData.systemState = SYSTEM_FAULT;
@@ -247,10 +348,16 @@ void updateStartup()
 
     if (millis() - startupStartTime >= STARTUP_TIMEOUT)
     {
+        logEvent(
+            "STARTUP",
+            "TIMEOUT",
+            "",
+            ""
+        );
+
         startupActive = false;
         startupFault = true;
         systemData.systemState = SYSTEM_FAULT;
-
         return;
     }
 }
@@ -262,6 +369,7 @@ void updateAlarmState()
         systemData.woodAcPresent)
     {
         systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_BOTH_BRANCHES;
     }
 
     // Tűz van, de egyik fűtési ág sem aktív
@@ -270,6 +378,7 @@ void updateAlarmState()
              systemData.firePresent)
     {
         systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_FIRE_WITHOUT_CIRCULATOR;
     }
 
     // Fa kazán túlmelegedés
@@ -277,17 +386,32 @@ void updateAlarmState()
              WOOD_BOILER_ALARM_TEMPERATURE)
     {
         systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_WOOD_BOILER_OVERHEAT;
     }
 
     // Startup hiba
     else if (startupFault)
     {
         systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_STARTUP_FAULT;
+    }
+
+    else if (sdCardHasWarning())
+    {
+        systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_SD_WARNING;
+    }
+
+    else if (sdCardIsFull())
+    {
+        systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_SD_FULL;
     }
 
     else if (startupWarning)
     {
         systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_STARTUP_WARNING;
     }
 
     // Fa kazán magas hőmérséklete
@@ -295,15 +419,312 @@ void updateAlarmState()
              WOOD_BOILER_WARNING_TEMPERATURE)
     {
         systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_WOOD_BOILER_WARNING;
     }
 
     // Minden rendben
     else
     {
         systemData.alarmState = ALARM_NONE;
+        systemData.alarmReason = ALARM_REASON_NONE;
     }
 }
 
+
+// --------------------------------
+// Rendszerállapot logolása string formátumban
+// --------------------------------
+
+const char* systemStateToLogString(SystemState state)
+{
+    switch (state)
+    {
+        case SYSTEM_OFF:
+            return "OFF";
+
+        case SYSTEM_GAS:
+            return "GAS";
+
+        case SYSTEM_WOOD:
+            return "WOOD";
+
+        case SYSTEM_FIRE_WITHOUT_CIRCULATOR:
+            return "FIRE_WITHOUT_CIRCULATOR";
+
+        case SYSTEM_STARTUP:
+            return "STARTUP";
+
+        case SYSTEM_FAULT:
+            return "FAULT";
+
+        default:
+            return "UNKNOWN";
+    }
+}
+
+// --------------------------------
+// Fűtési ág állapot logolása string formátumban
+// --------------------------------
+
+const char* heatingBranchToLogString(HeatingBranch branch)
+{
+    switch (branch)
+    {
+        case HEATING_NONE:
+            return "NONE";
+
+        case HEATING_GAS:
+            return "GAS";
+
+        case HEATING_WOOD:
+            return "WOOD";
+
+        case HEATING_ERROR:
+            return "ERROR";
+
+        default:
+            return "UNKNOWN";
+    }
+}
+
+// --------------------------------
+// Riasztasi allapot logolása string formátumban
+// --------------------------------
+const char* alarmStateToLogString(AlarmState state)
+{
+    switch (state)
+    {
+        case ALARM_NONE:
+            return "NONE";
+
+        case ALARM_WARNING:
+            return "WARNING";
+
+        case ALARM_CRITICAL:
+            return "CRITICAL";
+
+        default:
+            return "UNKNOWN";
+    }
+}
+
+// --------------------------------
+// Rendszerállapot logolása
+// --------------------------------
+void updateSystemStateLog()
+{
+    if (!systemStateInitialized)
+    {
+        previousSystemState = systemData.systemState;
+        systemStateInitialized = true;
+        return;
+    }
+
+    if (systemData.systemState != previousSystemState)
+    {
+        logEvent(
+            "SYSTEM",
+            "STATE",
+            systemStateToLogString(previousSystemState),
+            systemStateToLogString(systemData.systemState)
+        );
+
+        previousSystemState = systemData.systemState;
+    }
+}
+
+// --------------------------------
+// Fűtési ág állapot logolása
+// --------------------------------
+void updateActiveBranchLog()
+{
+    if (!activeBranchInitialized)
+    {
+        previousActiveBranch = systemData.activeBranch;
+        activeBranchInitialized = true;
+        return;
+    }
+
+    if (systemData.activeBranch != previousActiveBranch)
+    {
+        logEvent(
+            "BRANCH",
+            "STATE",
+            heatingBranchToLogString(previousActiveBranch),
+            heatingBranchToLogString(systemData.activeBranch)
+        );
+
+        previousActiveBranch = systemData.activeBranch;
+    }
+}
+
+// --------------------------------
+// Riasztási állapot logolása
+// --------------------------------
+void updateAlarmStateLog()
+{
+    if (!alarmStateInitialized)
+    {
+        previousAlarmState = systemData.alarmState;
+        alarmStateInitialized = true;
+        return;
+    }
+
+    if (systemData.alarmState != previousAlarmState)
+    {
+        logEvent(
+            "ALARM",
+            "STATE",
+            alarmStateToLogString(previousAlarmState),
+            alarmStateToLogString(systemData.alarmState)
+        );
+
+        previousAlarmState = systemData.alarmState;
+    }
+}
+
+// --------------------------------
+// Tűz jelenlét logolása
+// --------------------------------
+void updateFirePresentLog()
+{
+    if (!firePresentInitialized)
+    {
+        previousFirePresent = systemData.firePresent;
+        firePresentInitialized = true;
+        return;
+    }
+
+    if (systemData.firePresent != previousFirePresent)
+    {
+        logEvent(
+            "FIRE",
+            "STATE",
+            previousFirePresent ? "ON" : "OFF",
+            systemData.firePresent ? "ON" : "OFF"
+        );
+
+        previousFirePresent = systemData.firePresent;
+    }
+}
+
+// --------------------------------
+// Gáz AC jelenlét logolása
+// --------------------------------
+void updateGasAcPresentLog()
+{
+    if (!gasAcPresentInitialized)
+    {
+        previousGasAcPresent = systemData.gasAcPresent;
+        gasAcPresentInitialized = true;
+        return;
+    }
+
+    if (systemData.gasAcPresent != previousGasAcPresent)
+    {
+        logEvent(
+            "GAS_AC",
+            "STATE",
+            previousGasAcPresent ? "ON" : "OFF",
+            systemData.gasAcPresent ? "ON" : "OFF"
+        );
+
+        previousGasAcPresent = systemData.gasAcPresent;
+    }
+}
+
+// --------------------------------
+// Fa AC jelenlét logolása
+// --------------------------------
+void updateWoodAcPresentLog()
+{
+    if (!woodAcPresentInitialized)
+    {
+        previousWoodAcPresent = systemData.woodAcPresent;
+        woodAcPresentInitialized = true;
+        return;
+    }
+
+    if (systemData.woodAcPresent != previousWoodAcPresent)
+    {
+        logEvent(
+            "WOOD_AC",
+            "STATE",
+            previousWoodAcPresent ? "ON" : "OFF",
+            systemData.woodAcPresent ? "ON" : "OFF"
+        );
+
+        previousWoodAcPresent = systemData.woodAcPresent;
+    }
+}
+
+// --------------------------------
+// Fa kazán túlmelegedés megállapítása
+// --------------------------------
+OverheatState getOverheatState()
+{
+    if (systemData.woodBoilerTemperature >=
+        WOOD_BOILER_ALARM_TEMPERATURE)
+    {
+        return OVERHEAT_CRITICAL;
+    }
+
+    if (systemData.woodBoilerTemperature >=
+        WOOD_BOILER_WARNING_TEMPERATURE)
+    {
+        return OVERHEAT_WARNING;
+    }
+
+    return OVERHEAT_NORMAL;
+}
+
+// --------------------------------
+// Fa kazán túlmelegedés állapot stringgé alakítása
+// --------------------------------
+const char* overheatStateToLogString(OverheatState state)
+{
+    switch (state)
+    {
+        case OVERHEAT_NORMAL:
+            return "NORMAL";
+
+        case OVERHEAT_WARNING:
+            return "WARNING";
+
+        case OVERHEAT_CRITICAL:
+            return "CRITICAL";
+
+        default:
+            return "UNKNOWN";
+    }
+}
+
+// --------------------------------
+// Fa kazán túlmelegedés állapot logolása
+// --------------------------------
+void updateOverheatStateLog()
+{
+    OverheatState currentState = getOverheatState();
+
+    if (!overheatStateInitialized)
+    {
+        previousOverheatState = currentState;
+        overheatStateInitialized = true;
+        return;
+    }
+
+    if (currentState != previousOverheatState)
+    {
+        logEvent(
+            "OVERHEAT",
+            "STATE",
+            overheatStateToLogString(previousOverheatState),
+            overheatStateToLogString(currentState)
+        );
+
+        previousOverheatState = currentState;
+    }
+}
 
 // --------------------------------
 // Adatok frissitese
@@ -315,7 +736,17 @@ void dataManagerUpdate()
     updateStartup();
     updateSystemState();
     updateAlarmState();
+
+    rtcUpdate();
     updateTimestamp();
+
+    updateSystemStateLog();
+    updateActiveBranchLog();
+    updateAlarmStateLog();
+    updateFirePresentLog();
+    updateGasAcPresentLog();
+    updateWoodAcPresentLog();
+    updateOverheatStateLog();
 }
 
 // --------------------------------

@@ -103,6 +103,7 @@ const Glyph font[] =
     { ',', {0x00, 0x60, 0x40, 0x00, 0x00} },
     { ':', {0x00, 0x44, 0x00, 0x00, 0x00} },
     { '-', {0x08, 0x08, 0x08, 0x08, 0x08} },
+    { '_', {0x40, 0x40, 0x40, 0x40, 0x40} },
     { '/', {0x20, 0x10, 0x08, 0x04, 0x02} },
     { '%', {0x63, 0x13, 0x08, 0x64, 0x63} },
     { '(', {0x00, 0x1C, 0x22, 0x41, 0x00} },
@@ -1670,6 +1671,78 @@ const char* alarmStateToString(AlarmState state)
     }
 }
 
+const char* alarmReasonRawToString(AlarmReason reason)
+{
+    switch (reason)
+    {
+        case ALARM_REASON_NONE:
+            return "REASON_NONE";
+
+        case ALARM_REASON_BOTH_BRANCHES:
+            return "BOTH_BRANCHES";
+
+        case ALARM_REASON_FIRE_WITHOUT_CIRCULATOR:
+            return "FIRE_WITHOUT_CIRCULATOR";
+
+        case ALARM_REASON_WOOD_BOILER_OVERHEAT:
+            return "WOOD_BOILER_OVERHEAT";
+
+        case ALARM_REASON_STARTUP_FAULT:
+            return "STARTUP_FAULT";
+
+        case ALARM_REASON_SD_WARNING:
+            return "SD_WARNING";
+
+        case ALARM_REASON_SD_FULL:
+            return "SD_FULL";
+
+        case ALARM_REASON_STARTUP_WARNING:
+            return "STARTUP_WARNING";
+
+        case ALARM_REASON_WOOD_BOILER_WARNING:
+            return "WOOD_BOILER_WARNING";
+
+        default:
+            return "ALARM_REASON_UNKNOWN";
+    }
+}
+
+const char* alarmReasonToString(AlarmReason reason)
+{
+    switch (reason)
+    {
+        case ALARM_REASON_NONE:
+            return "Nincs";
+
+        case ALARM_REASON_BOTH_BRANCHES:
+            return "Gáz+fa ág egyszerre";
+
+        case ALARM_REASON_FIRE_WITHOUT_CIRCULATOR:
+            return "Tűz!, nincs keringető";
+
+        case ALARM_REASON_WOOD_BOILER_OVERHEAT:
+            return "Kazán túlmelegedés";
+
+        case ALARM_REASON_STARTUP_FAULT:
+            return "Indítás sikertelen";
+
+        case ALARM_REASON_SD_WARNING:
+            return "SD kártya eltávolítva";
+
+        case ALARM_REASON_SD_FULL:
+            return "SD kártya megtelt";
+
+        case ALARM_REASON_STARTUP_WARNING:
+            return "Indítás megszakadt";
+
+        case ALARM_REASON_WOOD_BOILER_WARNING:
+            return "Kazán hő magas";
+
+        default:
+            return "Ismeretlen";
+    }
+}
+
 void displayUpdate()
 {
     static unsigned long lastUpdate = 0;
@@ -1828,26 +1901,49 @@ void displayUpdate()
     drawText(0, 20, text, 1);
 
 
-    // 4. sor – Kazánház
-    snprintf(
-        text,
-        sizeof(text),
-        "Kazánház:%.1f°C",
-        systemData.boilerRoomTemperature
-    );
+    // 4. és 5. sor – Alarm oka
+    if (systemData.alarmState != ALARM_NONE)
+    {
+        snprintf(
+            text,
+            sizeof(text),
+            "%s",
+            alarmReasonRawToString(systemData.alarmReason)
+        );
 
-    drawText(0, 30, text, 1);
+        drawText(0, 30, text, 1);
 
+        snprintf(
+            text,
+            sizeof(text),
+            "%s",
+            alarmReasonToString(systemData.alarmReason)
+        );
 
-    // 5. sor – Páratartalom
-    snprintf(
-        text,
-        sizeof(text),
-        "Páratartalom:%.0f%%",
-        systemData.boilerRoomHumidity
-    );
+        drawText(0, 40, text, 1);
+    }
+    else
+    {
+        // 4. sor – Kazánház
+        snprintf(
+            text,
+            sizeof(text),
+            "Kazánház:%.1f°C",
+            systemData.boilerRoomTemperature
+        );
 
-    drawText(0, 40, text, 1);
+        drawText(0, 30, text, 1);
+
+        // 5. sor – Páratartalom
+        snprintf(
+            text,
+            sizeof(text),
+            "Páratartalom:%.0f%%",
+            systemData.boilerRoomHumidity
+        );
+
+        drawText(0, 40, text, 1);
+    }
 
 
     // 6. sor – Dátum / idő

@@ -33,6 +33,19 @@ enum AlarmState
     ALARM_CRITICAL
 };
 
+// Riasztási okok
+enum AlarmReason
+{
+    ALARM_REASON_NONE,
+    ALARM_REASON_BOTH_BRANCHES,
+    ALARM_REASON_FIRE_WITHOUT_CIRCULATOR,
+    ALARM_REASON_WOOD_BOILER_OVERHEAT,
+    ALARM_REASON_STARTUP_FAULT,
+    ALARM_REASON_SD_WARNING,
+    ALARM_REASON_SD_FULL,
+    ALARM_REASON_STARTUP_WARNING,
+    ALARM_REASON_WOOD_BOILER_WARNING
+};
 // --------------------------------
 // Kozponti rendszeradatok
 // --------------------------------
@@ -69,6 +82,9 @@ struct SystemData
 
     // Riasztási állapot
     AlarmState alarmState;
+    
+    // Riasztási ok
+    AlarmReason alarmReason;
 
     // Idő
     DateTime timestamp;

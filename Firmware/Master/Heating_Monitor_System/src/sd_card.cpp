@@ -5,7 +5,45 @@
 #include "config.h"
 #include "network.h"
 #include "sd_card.h"
+#include "logger.h"
 
+bool sdCardAvailable = false;
+bool sdCardStateInitialized = false;
+
+bool sdWriteErrorPending = false;
+LoggerWriteErrorReason sdWriteErrorReason =
+    LOGGER_WRITE_ERROR_NONE;
+
+bool sdCardIsAvailable()
+{
+    return sdCardAvailable;
+}
+
+enum SDWarningReason
+{
+    SD_WARNING_NONE,
+    SD_WARNING_REMOVED,
+    SD_WARNING_INIT_ERROR,
+    SD_WARNING_WRITE_ERROR,
+    SD_WARNING_FULL
+};
+
+unsigned long sdCardCheckTime = 0;
+
+#define SD_CARD_CHECK_INTERVAL 2000
+
+#define SD_FULL_THRESHOLD_PERCENT 95
+SDWarningReason sdWarning = SD_WARNING_NONE;
+
+bool sdCardIsFull()
+{
+    return sdWarning == SD_WARNING_FULL;
+}
+
+bool sdCardHasWarning()
+{
+    return sdWarning != SD_WARNING_NONE;
+}
 
 // SPI inicializálása
 void sdCardSetup()
@@ -174,4 +212,181 @@ void sdCardTest()
     logMessage("================================");
     logMessage("MICROSD TESZT VEGE");
     logMessage("================================");
+}
+
+void sdCardUpdate()
+{
+    if (millis() - sdCardCheckTime < SD_CARD_CHECK_INTERVAL)
+    {
+        return;
+    }
+
+    sdCardCheckTime = millis();
+
+    //bool available = sdCardAvailable;
+    File testFile = SD.open("/log");
+    bool available = testFile;
+    testFile.close();
+    /* SD.end();
+
+    bool available = SD.begin(
+        MICROSD_CS,
+        SPI,
+        400000
+    ); */
+
+    // Logger írási hiba átvétele
+    if (loggerHasWriteError())
+    {
+        sdWriteErrorPending = true;
+        sdWriteErrorReason = loggerGetWriteErrorReason();
+    }
+
+    // Első állapotfelmérés
+    if (!sdCardStateInitialized)
+    {
+        sdCardStateInitialized = true;
+        sdCardAvailable = available;
+
+        if (available)
+        {
+            logEvent(
+                "SD",
+                "MOUNT_OK",
+                "",
+                ""
+            );
+        }
+        else
+        {
+            logEvent(
+                "SD",
+                "MOUNT_ERROR",
+                "",
+                "NOT_FOUND"
+            );
+        }
+
+        return;
+    }
+
+    // SD eltűnt
+    if (!available)
+    {
+        if (sdCardAvailable)
+        {
+            sdCardAvailable = false;
+            sdWarning = SD_WARNING_REMOVED;
+
+            logEvent(
+                "SD",
+                "MOUNT_ERROR",
+                "",
+                "REMOVED"
+            );
+        }
+
+        return;
+    }
+
+    // SD visszatért
+    if (!sdCardAvailable)
+    {
+        bool success = logEvent(
+            "SD",
+            "RECOVERED",
+            "",
+            ""
+        );
+
+        if (success)
+        {
+            sdCardAvailable = true;
+            sdWarning = SD_WARNING_NONE;
+        }
+
+        return;
+    }
+
+    // SD telítettség ellenőrzése
+    uint64_t totalBytes = SD.totalBytes();
+    uint64_t usedBytes = SD.usedBytes();
+
+    if (totalBytes > 0)
+    {
+        uint64_t fullThreshold =
+            (totalBytes * SD_FULL_THRESHOLD_PERCENT) / 100;
+
+        if (usedBytes >= fullThreshold)
+        {
+            if (sdWarning != SD_WARNING_FULL)
+            {
+                sdWarning = SD_WARNING_FULL;
+
+                logEvent(
+                    "SD",
+                    "FULL",
+                    "",
+                    ""
+                );
+            }
+        }
+        else
+        {
+            if (sdWarning == SD_WARNING_FULL)
+            {
+                sdWarning = SD_WARNING_NONE;
+
+                logEvent(
+                    "SD",
+                    "RECOVERED",
+                    "",
+                    ""
+                );
+            }
+        }
+    }
+
+
+    // Függőben lévő írási hiba naplózása
+    if (sdWriteErrorPending)
+    {
+        const char* reason = "";
+
+        if (sdWriteErrorReason ==
+            LOGGER_WRITE_ERROR_EVENT_LOG)
+        {
+            reason = "EVENT_LOG";
+        }
+        else if (sdWriteErrorReason ==
+                 LOGGER_WRITE_ERROR_MEASUREMENT_LOG)
+        {
+            reason = "MEASUREMENT_LOG";
+        }
+
+        bool success = logEvent(
+            "SD",
+            "WRITE_ERROR",
+            "",
+            reason
+        );
+
+        if (success)
+        {
+            sdWriteErrorPending = false;
+            sdWriteErrorReason = LOGGER_WRITE_ERROR_NONE;
+
+            loggerClearWriteError();
+        }
+    }
+}
+
+void sdCardWriteError(const char* reason)
+{
+    logMessage("SD HIBA: irasi hiba!");
+
+    if (sdWarning != SD_WARNING_WRITE_ERROR)
+    {
+        sdWarning = SD_WARNING_WRITE_ERROR;
+    }
 }

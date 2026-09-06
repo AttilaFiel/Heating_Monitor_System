@@ -4,31 +4,179 @@
 
 #include "network.h"
 #include "rtc.h"
-
+#include "logger.h"
 
 RTC_DS3231 rtc;
+enum RTCWarningReason
+{
+    RTC_WARNING_NONE,
+    RTC_WARNING_NOT_FOUND,
+    RTC_WARNING_READ_ERROR,
+    RTC_WARNING_OSCILLATOR_STOP,
+    RTC_WARNING_INVALID_TIME
+};
 
+RTCWarningReason rtcWarning = RTC_WARNING_NONE;
+
+bool rtcAvailable = false;
 
 // RTC inicializálása
 void rtcSetup()
 {
+    rtcAvailable = false;
+
     if (!rtc.begin())
     {
         logMessage("DS3231 RTC HIBA: nem inicializalhato!");
         return;
     }
 
+    rtcAvailable = true;
+
     logMessage("DS3231 RTC inicializalva.");
 
     if (rtc.lostPower())
     {
-        logMessage("RTC elvesztette az idot - ido beallitasa.");
+        logMessage("RTC elvesztette az idot - ido alaphelyzetbe allitasa.");
 
-        rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+        rtc.adjust(DateTime(2000, 1, 1, 0, 0, 0));
 
-        logMessage("RTC ido beallitva.");
+        logMessage("RTC ido: 2000.01.01 00:00:00");
     }
 }
+
+bool rtcIsAvailable()
+{
+    return rtcAvailable;
+}
+
+// RTC állapotának folyamatos ellenőrzése
+void rtcUpdate()
+{
+    // DS3231 I2C ellenőrzése
+    Wire.beginTransmission(0x68);
+
+    if (Wire.endTransmission() != 0)
+    {
+        if (rtcWarning != RTC_WARNING_NOT_FOUND)
+        {
+            logEvent(
+                "RTC",
+                "ERROR",
+                "",
+                "NOT_FOUND"
+            );
+
+            rtcWarning = RTC_WARNING_NOT_FOUND;
+        }
+
+        return;
+    }
+
+
+    // RTC idő kiolvasása
+    Wire.beginTransmission(0x68);
+
+    Wire.write(0x00);
+
+    if (Wire.endTransmission(false) != 0)
+    {
+        if (rtcWarning != RTC_WARNING_READ_ERROR)
+        {
+            logEvent(
+                "RTC",
+                "ERROR",
+                "",
+                "READ_ERROR"
+            );
+
+            rtcWarning = RTC_WARNING_READ_ERROR;
+        }
+
+        return;
+    }
+
+    if (Wire.requestFrom(0x68, 7) != 7)
+    {
+        if (rtcWarning != RTC_WARNING_READ_ERROR)
+        {
+            logEvent(
+                "RTC",
+                "ERROR",
+                "",
+                "READ_ERROR"
+            );
+
+            rtcWarning = RTC_WARNING_READ_ERROR;
+        }
+
+        return;
+    }
+
+    // A regiszterek kiolvasása
+    while (Wire.available())
+    {
+        Wire.read();
+    }
+
+
+    DateTime now = rtc.now();
+
+
+    // RTC oszcillátor leállt
+    if (rtc.lostPower())
+    {
+        if (rtcWarning != RTC_WARNING_OSCILLATOR_STOP)
+        {
+            logEvent(
+                "RTC",
+                "ERROR",
+                "",
+                "OSCILLATOR_STOP"
+            );
+
+            rtcWarning = RTC_WARNING_OSCILLATOR_STOP;
+        }
+
+        return;
+    }
+
+
+    // Érvénytelen idő
+    DateTime minimumTime(2000, 1, 1, 0, 0, 0);
+
+    if (now < minimumTime)
+    {
+        if (rtcWarning != RTC_WARNING_INVALID_TIME)
+        {
+            logEvent(
+                "RTC",
+                "ERROR",
+                "",
+                "INVALID_TIME"
+            );
+
+            rtcWarning = RTC_WARNING_INVALID_TIME;
+        }
+
+        return;
+    }
+
+
+    // RTC újra rendben
+    if (rtcWarning != RTC_WARNING_NONE)
+    {
+        logEvent(
+            "RTC",
+            "RECOVERED",
+            "",
+            ""
+        );
+
+        rtcWarning = RTC_WARNING_NONE;
+    }
+}
+
 
 // DS3231 + AT24C32 teszt
 void rtcTest()

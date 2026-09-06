@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <esp_system.h>
 
 #include "network.h"
 #include "i2c_scanner.h"
@@ -13,6 +14,8 @@
 #include "buzzer.h"
 #include "sensor_manager.h"
 #include "data_manager.h"
+#include "logger.h"
+#include "esp32_system.h"
 
 bool i2cScanned = false;
 bool rtcTested = false;
@@ -43,6 +46,12 @@ void setup()
     // MicroSD indítása
     sdCardSetup();
 
+    // Logger indítása
+    loggerSetup();
+
+    // ESP32 rendszer indítása
+    esp32SystemSetup();
+
     // Display indítása
     displaySetup();
 
@@ -68,17 +77,6 @@ void setup()
 
     // Induló színteszt
     startupTest();
-
-    
-    // Hullámzó fényjáték
-    //waveShow();
-
-
-    // Teljes káosz
-    //chaosShow();
-
-
-    Serial.println("VELETLEN SZINEK INDULNAK");
 }
 
 
@@ -157,11 +155,11 @@ void loop()
     sensorManagerUpdate();
     dataManagerUpdate();
     
-    dataManagerTest();
+    sdCardUpdate();
 
     // Véletlen RGB színek
     randomLedShow();
-
+    dataManagerTest();
     // Display frissítése
     displayUpdate();
 }

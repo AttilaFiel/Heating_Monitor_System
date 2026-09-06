@@ -4,11 +4,18 @@
 
 #include "config.h"
 #include "network.h"
+#include "logger.h"
 
 
 WiFiServer terminalServer(TERMINAL_PORT);
 
 WiFiClient terminalClient;
+
+
+bool previousWiFiConnected = false;
+
+unsigned long wifiLastAttempt = 0;
+const unsigned long WIFI_RECONNECT_INTERVAL = 10000;
 
 
 // Log üzenetek kiírása a Serial Monitorra
@@ -27,21 +34,13 @@ void logMessage(const char* message)
 // Wi-Fi, terminál és OTA indítása
 void networkSetup()
 {
+    WiFi.mode(WIFI_STA);
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-    Serial.print("WiFi kapcsolodas");
+    Serial.println("WiFi csatlakozas inditva...");
 
-    while (WiFi.status() != WL_CONNECTED)
-    {
-        delay(500);
-        Serial.print(".");
-    }
-
-    Serial.println();
-    Serial.println("WiFi csatlakozva!");
-
-    Serial.print("IP cim: ");
-    Serial.println(WiFi.localIP());
+    previousWiFiConnected = false;
+    wifiLastAttempt = millis();
 
 
     // Wi-Fi terminál szerver
@@ -66,6 +65,7 @@ void networkSetup()
 
     ArduinoOTA.begin();
 
+
     logMessage("OTA keszen all!");
     logMessage("WiFi terminal keszen all!");
 }
@@ -74,12 +74,62 @@ void networkSetup()
 // Folyamatos hálózati feladatok
 void networkLoop()
 {
+    bool currentWiFiConnected =
+        WiFi.status() == WL_CONNECTED;
+
+
+    // WiFi állapotváltozás
+    if (currentWiFiConnected != previousWiFiConnected)
+    {
+        if (currentWiFiConnected)
+        {
+            Serial.println("WiFi csatlakozva!");
+            Serial.print("IP cim: ");
+            Serial.println(WiFi.localIP());
+
+            logEvent(
+                "ESP32",
+                "WIFI_CONNECTED",
+                "",
+                ""
+            );
+        }
+        else
+        {
+            Serial.println("WiFi kapcsolat megszakadt!");
+
+            logEvent(
+                "ESP32",
+                "WIFI_DISCONNECTED",
+                "",
+                ""
+            );
+        }
+
+        previousWiFiConnected = currentWiFiConnected;
+    }
+
+
     // OTA kezelés
     ArduinoOTA.handle();
 
 
+    // Újracsatlakozási kísérlet
+    if (!currentWiFiConnected &&
+        millis() - wifiLastAttempt >= WIFI_RECONNECT_INTERVAL)
+    {
+        wifiLastAttempt = millis();
+
+        Serial.println("WiFi ujracsatlakozasi kiserlet...");
+
+        WiFi.disconnect();
+        WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    }
+
+
     // Új terminál kliens
-    if (terminalServer.hasClient())
+    if (currentWiFiConnected &&
+        terminalServer.hasClient())
     {
         if (!terminalClient || !terminalClient.connected())
         {
@@ -96,6 +146,7 @@ void networkLoop()
         }
     }
 }
+
 
 bool isTerminalConnected()
 {
