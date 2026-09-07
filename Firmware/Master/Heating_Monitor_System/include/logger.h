@@ -19,3 +19,6 @@ bool logEvent(
 bool loggerHasWriteError();
 LoggerWriteErrorReason loggerGetWriteErrorReason();
 void loggerClearWriteError();
+
+bool logMeasurements();
+void loggerUpdate();

@@ -26,6 +26,9 @@ bool dht11Tested = false;
 bool acSensorTested = false;
 bool displayTested = false;
 
+unsigned long networkUpdateTime = 0;
+#define NETWORK_UPDATE_INTERVAL 100UL
+
 void setup()
 {
     Serial.begin(115200);
@@ -56,7 +59,7 @@ void setup()
     displaySetup();
 
     // Buzzer indítása
-    buzzerTest();
+    buzzerSetup();
     
     // Data Manager indítása
     dataManagerSetup();
@@ -83,10 +86,11 @@ void setup()
 void loop()
 {
     // Wi-Fi, OTA és terminál kezelése
-    for (int i = 0; i < 10; i++)
+    if (millis() - networkUpdateTime >= NETWORK_UPDATE_INTERVAL)
     {
+        networkUpdateTime = millis();
+
         networkLoop();
-        delay(100);
     }
 
     // I2C busz szkennelése
@@ -157,8 +161,13 @@ void loop()
     
     sdCardUpdate();
 
+    loggerUpdate();
+
+    buzzerUpdate();
+    rgbLedUpdate();
+
     // Véletlen RGB színek
-    randomLedShow();
+    //randomLedShow();
     dataManagerTest();
     // Display frissítése
     displayUpdate();

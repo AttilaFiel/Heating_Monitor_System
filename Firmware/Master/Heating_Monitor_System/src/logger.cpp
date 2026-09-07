@@ -5,6 +5,8 @@
 #include "network.h"
 #include "rtc.h"
 #include "logger.h"
+#include "system_data.h"
+#include "sd_card.h"
 
 
 bool loggerInitialized = false;
@@ -22,6 +24,9 @@ DateTime loggerNow()
 
 LoggerWriteErrorReason loggerWriteErrorReason =
     LOGGER_WRITE_ERROR_NONE;
+
+unsigned long measurementsLogTime = 0;
+#define MEASUREMENTS_LOG_INTERVAL 60000UL
 
 // --------------------------------------------------
 // Könyvtár létrehozása
@@ -261,10 +266,14 @@ bool logEvent(const char* type,
              now.year(),
              now.month());
 
+    sdCardSetBusy(true);
+
     File file = SD.open(eventsPath, FILE_WRITE);
 
     if (!file)
     {
+        sdCardSetBusy(false);
+
         logMessage("LOGGER: events.csv megnyitasi hiba!");
         loggerWriteError = true;
         loggerWriteErrorReason = LOGGER_WRITE_ERROR_EVENT_LOG;
@@ -338,6 +347,8 @@ bool logEvent(const char* type,
 
     file.close();
 
+    sdCardSetBusy(false);
+
     if (!writeOk)
     {
         logMessage("LOGGER: SD WRITE_ERROR - irasi hiba!");
@@ -345,6 +356,142 @@ bool logEvent(const char* type,
         loggerWriteErrorReason = LOGGER_WRITE_ERROR_EVENT_LOG;
         return false;
     }
+
+    return true;
+}
+
+// --------------------------------------------------
+// Mérési adatok naplózása
+// --------------------------------------------------
+
+bool logMeasurements()
+{
+    if (!loggerInitialized)
+    {
+        return false;
+    }
+
+    DateTime now = loggerNow();
+
+    char monthPath[24];
+
+    snprintf(
+        monthPath,
+        sizeof(monthPath),
+        "/log/%04d/%02d",
+        now.year(),
+        now.month()
+    );
+
+    // Ha időközben új hónap kezdődött,
+    // biztosítsuk a könyvtárstruktúra meglétét.
+    if (!createLogDirectory())
+    {
+        return false;
+    }
+
+    char measurementsPath[48];
+
+    snprintf(
+        measurementsPath,
+        sizeof(measurementsPath),
+        "%s/measurements.csv",
+        monthPath
+    );
+
+    sdCardSetBusy(true);
+
+    File file = SD.open(
+        measurementsPath,
+        FILE_APPEND
+    );
+
+    if (!file)
+    {
+        sdCardSetBusy(false);
+
+        logMessage(
+            "LOGGER: HIBA - measurements.csv nem nyithato meg!"
+        );
+
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_MEASUREMENT_LOG;
+
+        return false;
+    }
+
+    char timestamp[24];
+
+    snprintf(
+        timestamp,
+        sizeof(timestamp),
+        "%04d.%02d.%02d %02d:%02d:%02d",
+        now.year(),
+        now.month(),
+        now.day(),
+        now.hour(),
+        now.minute(),
+        now.second()
+    );
+
+    bool writeOk = true;
+
+    if (file.print(timestamp) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.gasFlowTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.gasReturnTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.woodFlowTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.woodReturnTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.woodBoilerTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.chimneyTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.boilerRoomTemperature, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.boilerRoomHumidity, 1) == 0) writeOk = false;
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.print(systemData.gasAcPresent ? "ON" : "OFF") == 0)
+        writeOk = false;
+
+    if (file.print(",") == 0) writeOk = false;
+
+    if (file.println(systemData.woodAcPresent ? "ON" : "OFF") == 0)
+        writeOk = false;
+
+    file.close();
+
+    sdCardSetBusy(false);
+
+    if (!writeOk)
+    {
+        logMessage(
+            "LOGGER: SD WRITE_ERROR - meresi naplo irasi hiba!"
+        );
+
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_MEASUREMENT_LOG;
+
+        return false;
+    }
+
+    loggerWriteError = false;
+    loggerWriteErrorReason =
+        LOGGER_WRITE_ERROR_MEASUREMENT_LOG;
 
     return true;
 }
@@ -418,4 +565,17 @@ void loggerClearWriteError()
 {
     loggerWriteError = false;
     loggerWriteErrorReason = LOGGER_WRITE_ERROR_NONE;
+}
+
+void loggerUpdate()
+{
+    if (millis() - measurementsLogTime <
+        MEASUREMENTS_LOG_INTERVAL)
+    {
+        return;
+    }
+
+    measurementsLogTime = millis();
+
+    logMeasurements();
 }

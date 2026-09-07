@@ -17,6 +17,12 @@ bool previousWiFiConnected = false;
 unsigned long wifiLastAttempt = 0;
 const unsigned long WIFI_RECONNECT_INTERVAL = 10000;
 
+bool otaActive = false;
+
+bool otaUpdateActive()
+{
+    return otaActive;
+}
 
 // Log üzenetek kiírása a Serial Monitorra
 // és a Wi-Fi terminálra
@@ -55,11 +61,13 @@ void networkSetup()
 
     ArduinoOTA.onStart([]()
     {
+        otaActive = true;
         logMessage("OTA feltoltes indul!");
     });
 
     ArduinoOTA.onEnd([]()
     {
+        otaActive = false;
         logMessage("OTA feltoltes kesz!");
     });
 

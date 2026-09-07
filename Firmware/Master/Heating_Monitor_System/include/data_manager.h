@@ -42,3 +42,8 @@ const char* heatingBranchToLogString(HeatingBranch branch);
 // Riasztasi allapot szoveges reprezentacioja
 // --------------------------------
 const char* alarmStateToLogString(AlarmState state);
+
+// --------------------------------
+// Startup allapot lekerdezese
+// --------------------------------
+bool isStartupActive();

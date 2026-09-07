@@ -11,8 +11,9 @@ bool sdCardAvailable = false;
 bool sdCardStateInitialized = false;
 
 bool sdWriteErrorPending = false;
-LoggerWriteErrorReason sdWriteErrorReason =
-    LOGGER_WRITE_ERROR_NONE;
+LoggerWriteErrorReason sdWriteErrorReason = LOGGER_WRITE_ERROR_NONE;
+
+bool sdCardBusy = false;
 
 bool sdCardIsAvailable()
 {
@@ -43,6 +44,16 @@ bool sdCardIsFull()
 bool sdCardHasWarning()
 {
     return sdWarning != SD_WARNING_NONE;
+}
+
+bool sdCardIsBusy()
+{
+    return sdCardBusy;
+}
+
+void sdCardSetBusy(bool busy)
+{
+    sdCardBusy = busy;
 }
 
 // SPI inicializálása

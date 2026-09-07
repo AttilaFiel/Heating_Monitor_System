@@ -7,3 +7,5 @@ void networkLoop();
 bool isTerminalConnected();
 
 void logMessage(const char* message);
+
+bool otaUpdateActive();

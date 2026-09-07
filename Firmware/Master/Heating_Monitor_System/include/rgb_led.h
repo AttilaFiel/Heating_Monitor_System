@@ -9,3 +9,5 @@ void waveShow();
 void chaosShow();
 
 void randomLedShow();
+
+void rgbLedUpdate();

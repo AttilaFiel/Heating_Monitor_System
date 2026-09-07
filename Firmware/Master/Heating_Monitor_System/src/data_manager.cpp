@@ -45,6 +45,11 @@ enum OverheatState
 OverheatState previousOverheatState = OVERHEAT_NORMAL;
 bool overheatStateInitialized = false;
 
+bool isStartupActive()
+{
+    return startupActive;
+}
+
 // --------------------------------
 // Data Manager inicializalasa
 // --------------------------------
