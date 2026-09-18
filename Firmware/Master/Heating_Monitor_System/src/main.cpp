@@ -15,6 +15,7 @@
 #include "sensor_manager.h"
 #include "data_manager.h"
 #include "logger.h"
+#include "watchdog.h"
 #include "esp32_system.h"
 
 bool i2cScanned = false;
@@ -80,6 +81,8 @@ void setup()
 
     // Induló színteszt
     startupTest();
+    
+    watchdogSetup();
 }
 
 
@@ -173,4 +176,6 @@ void loop()
 
     // Display frissítése
     displayUpdate();
+
+    watchdogUpdate();
 }

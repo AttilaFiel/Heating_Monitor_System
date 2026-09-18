@@ -10,7 +10,7 @@
 #include "logger.h"
 #include "rtc.h"
 #include "sd_card.h"
-
+#include "watchdog.h"
 
 WiFiServer terminalServer(TERMINAL_PORT);
 WebServer webServer(80);
@@ -372,6 +372,11 @@ void networkSetup()
     {
         otaActive = false;
         logMessage("OTA feltoltes kesz!");
+    });
+
+    ArduinoOTA.onProgress([](unsigned int progress, unsigned int total)
+    {
+        watchdogUpdate();
     });
 
     ArduinoOTA.begin();
