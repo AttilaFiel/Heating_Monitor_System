@@ -50,6 +50,11 @@ bool isStartupActive()
     return startupActive;
 }
 
+// AC jelenlet erzekelok grace time
+#define AC_SWITCH_GRACE_TIME 1000
+
+unsigned long acBothActiveStartTime = 0;
+
 // --------------------------------
 // Data Manager inicializalasa
 // --------------------------------
@@ -369,18 +374,36 @@ void updateStartup()
 
 void updateAlarmState()
 {
-    // Mindkét AC aktiv: rendszerhiba
+    // Mindkét AC aktiv: átkapcsoláskor 1 másodperc türelmi idő
     if (systemData.gasAcPresent &&
         systemData.woodAcPresent)
     {
-        systemData.alarmState = ALARM_CRITICAL;
-        systemData.alarmReason = ALARM_REASON_BOTH_BRANCHES;
+        if (acBothActiveStartTime == 0)
+        {
+            acBothActiveStartTime = millis();
+        }
+
+        if (millis() - acBothActiveStartTime >= AC_SWITCH_GRACE_TIME)
+        {
+            systemData.alarmState = ALARM_CRITICAL;
+            systemData.alarmReason = ALARM_REASON_BOTH_BRANCHES;
+        }
+        else
+        {
+            systemData.alarmState = ALARM_NONE;
+            systemData.alarmReason = ALARM_REASON_NONE;
+        }
+
+        return;
     }
 
+    // Nincs két aktív ág, ezért az átkapcsolási időzítő törölhető
+    acBothActiveStartTime = 0;
+
     // Tűz van, de egyik fűtési ág sem aktív
-    else if (!systemData.gasAcPresent &&
-             !systemData.woodAcPresent &&
-             systemData.firePresent)
+    if (!systemData.gasAcPresent &&
+        !systemData.woodAcPresent &&
+        systemData.firePresent)
     {
         systemData.alarmState = ALARM_CRITICAL;
         systemData.alarmReason = ALARM_REASON_FIRE_WITHOUT_CIRCULATOR;
