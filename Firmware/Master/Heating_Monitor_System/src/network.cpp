@@ -87,6 +87,10 @@ void appendDirectoryToHtml(
             html += filePath;
             html += "\">Letoltes</a>";
 
+            html += " <a href=\"/delete?path=";
+            html += filePath;
+            html += "\" onclick=\"return confirm('Biztosan torolni szeretned ezt a fajlt?');\">Torles</a>";
+
             html += "<br>";
         }
 
@@ -257,6 +261,86 @@ void networkSetup()
         );
 
         file.close();
+    });
+
+    webServer.on("/delete", []()
+    {
+        if (!sdCardIsAvailable())
+        {
+            webServer.send(
+                503,
+                "text/plain",
+                "SD kartya nem erheto el."
+            );
+            return;
+        }
+
+        if (sdCardIsBusy())
+        {
+            webServer.send(
+                503,
+                "text/plain",
+                "SD kartya hasznalatban van."
+            );
+            return;
+        }
+
+        if (!webServer.hasArg("path"))
+        {
+            webServer.send(
+                400,
+                "text/plain",
+                "Hianyzik a fajl eleresi utja."
+            );
+            return;
+        }
+
+        String path = webServer.arg("path");
+
+        if (!path.startsWith("/log/"))
+        {
+            webServer.send(
+                403,
+                "text/plain",
+                "Tiltott fajl eleresi ut."
+            );
+            return;
+        }
+
+        File file = SD.open(path, FILE_READ);
+
+        if (!file || file.isDirectory())
+        {
+            if (file)
+            {
+                file.close();
+            }
+
+            webServer.send(
+                404,
+                "text/plain",
+                "A fajl nem talalhato."
+            );
+            return;
+        }
+
+        file.close();
+
+        if (!SD.remove(path))
+        {
+            webServer.send(
+                500,
+                "text/plain",
+                "A fajl torlese sikertelen."
+            );
+            return;
+        }
+
+        webServer.send(
+            200,
+            "text/plain",
+            "A fajl sikeresen torolve."
+        );
     });
 
     webServer.on("/restart", []()

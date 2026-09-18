@@ -11,6 +11,18 @@ OneWire oneWire(TEMPERATURE_SENSOR_BUS);
 
 DallasTemperature ds18b20(&oneWire);
 
+struct SensorReadStats
+{
+    unsigned long firstReadError;
+    unsigned long retrySuccess;
+    unsigned long doubleError;
+};
+
+SensorReadStats gasFlowStats = {0, 0, 0};
+SensorReadStats gasReturnStats = {0, 0, 0};
+SensorReadStats woodFlowStats = {0, 0, 0};
+SensorReadStats woodReturnStats = {0, 0, 0};
+SensorReadStats woodBoilerStats = {0, 0, 0};
 
 // Hexadecimális cím string átalakítása
 // DS18B20 DeviceAddress formátumra
@@ -118,30 +130,69 @@ float readSensorTemperature(const char* sensorAddress)
         return NAN;
     }
 
-    // Szenzor ellenorzese
-    if (!ds18b20.isConnected(address))
-    {
-        return NAN;
-    }
-
     // Homerseklet kiolvasasa
     float temperature = ds18b20.getTempC(address);
 
-    // Ha az elso olvasas hibas, egyszer ujra probaljuk
-    if (temperature == DEVICE_DISCONNECTED_C)
+    // Elso olvasas sikeres
+    if (temperature != DEVICE_DISCONNECTED_C)
     {
-        temperature = ds18b20.getTempC(address);
+        return temperature;
     }
 
-    // Ha a masodik olvasas is hibas
-    if (temperature == DEVICE_DISCONNECTED_C)
+    // Elso olvasas hibas
+    SensorReadStats* stats = nullptr;
+
+    if (strcmp(sensorAddress, GAS_FLOW_SENSOR) == 0)
     {
-        return NAN;
+        stats = &gasFlowStats;
+    }
+    else if (strcmp(sensorAddress, GAS_RETURN_SENSOR) == 0)
+    {
+        stats = &gasReturnStats;
+    }
+    else if (strcmp(sensorAddress, WOOD_FLOW_SENSOR) == 0)
+    {
+        stats = &woodFlowStats;
+    }
+    else if (strcmp(sensorAddress, WOOD_RETURN_SENSOR) == 0)
+    {
+        stats = &woodReturnStats;
+    }
+    else if (strcmp(sensorAddress, WOOD_BOILER_SENSOR) == 0)
+    {
+        stats = &woodBoilerStats;
     }
 
-    return temperature;
+    if (stats != nullptr)
+    {
+        stats->firstReadError++;
+    }
+
+    // 10 ms varakozas
+    delay(10);
+
+    // Ujraolvasas
+    temperature = ds18b20.getTempC(address);
+
+    // Ujraolvasas sikeres
+    if (temperature != DEVICE_DISCONNECTED_C)
+    {
+        if (stats != nullptr)
+        {
+            stats->retrySuccess++;
+        }
+
+        return temperature;
+    }
+
+    // Mindket olvasas hibas
+    if (stats != nullptr)
+    {
+        stats->doubleError++;
+    }
+
+    return NAN;
 }
-
 
 void ds18b20Setup()
 {
@@ -150,6 +201,81 @@ void ds18b20Setup()
     logMessage("DS18B20 OneWire busz inicializalva.");
 }
 
+void printSensorReadStats()
+{
+    char message[100];
+
+    logMessage("");
+    logMessage("================================");
+    logMessage("DS18B20 OLVASASI STATISZTIKA");
+    logMessage("================================");
+
+    snprintf(
+        message,
+        sizeof(message),
+        "GAS_FLOW: elso hiba=%lu, retry siker=%lu, dupla hiba=%lu",
+        gasFlowStats.firstReadError,
+        gasFlowStats.retrySuccess,
+        gasFlowStats.doubleError
+    );
+    logMessage(message);
+
+    snprintf(
+        message,
+        sizeof(message),
+        "GAS_RETURN: elso hiba=%lu, retry siker=%lu, dupla hiba=%lu",
+        gasReturnStats.firstReadError,
+        gasReturnStats.retrySuccess,
+        gasReturnStats.doubleError
+    );
+    logMessage(message);
+
+    snprintf(
+        message,
+        sizeof(message),
+        "WOOD_FLOW: elso hiba=%lu, retry siker=%lu, dupla hiba=%lu",
+        woodFlowStats.firstReadError,
+        woodFlowStats.retrySuccess,
+        woodFlowStats.doubleError
+    );
+    logMessage(message);
+
+    snprintf(
+        message,
+        sizeof(message),
+        "WOOD_RETURN: elso hiba=%lu, retry siker=%lu, dupla hiba=%lu",
+        woodReturnStats.firstReadError,
+        woodReturnStats.retrySuccess,
+        woodReturnStats.doubleError
+    );
+    logMessage(message);
+
+    snprintf(
+        message,
+        sizeof(message),
+        "WOOD_BOILER: elso hiba=%lu, retry siker=%lu, dupla hiba=%lu",
+        woodBoilerStats.firstReadError,
+        woodBoilerStats.retrySuccess,
+        woodBoilerStats.doubleError
+    );
+    logMessage(message);
+
+    logMessage("================================");
+}
+
+unsigned long sensorStatsPrintTime = 0;
+
+void updateSensorReadStats()
+{
+    if (millis() - sensorStatsPrintTime < 60000)
+    {
+        return;
+    }
+
+    sensorStatsPrintTime = millis();
+
+    printSensorReadStats();
+}
 
 void ds18b20Scan()
 {
@@ -218,6 +344,7 @@ void ds18b20Scan()
         WOOD_BOILER_SENSOR
     );
 
+    printSensorReadStats();
 
     logMessage("================================");
     logMessage("DS18B20 SZENZOR TESZT VEGE");

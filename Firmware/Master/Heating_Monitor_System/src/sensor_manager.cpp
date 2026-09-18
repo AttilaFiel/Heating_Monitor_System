@@ -154,34 +154,65 @@ void updateDS18B20()
     ds18b20.requestTemperatures();
 
 
+    float temperature;
+
+
     // GAS FLOW
 
-    systemData.gasFlowTemperature =
-        ds18b20.getTempC(gasFlowAddress);
+    temperature =
+        readSensorTemperature(GAS_FLOW_SENSOR);
+
+    if (!isnan(temperature))
+    {
+        systemData.gasFlowTemperature = temperature;
+    }
 
 
     // GAS RETURN
 
-    systemData.gasReturnTemperature =
-        ds18b20.getTempC(gasReturnAddress);
+    temperature =
+        readSensorTemperature(GAS_RETURN_SENSOR);
+
+    if (!isnan(temperature))
+    {
+        systemData.gasReturnTemperature = temperature;
+    }
 
 
     // WOOD FLOW
 
-    systemData.woodFlowTemperature =
-        ds18b20.getTempC(woodFlowAddress);
+    temperature =
+        readSensorTemperature(WOOD_FLOW_SENSOR);
+
+    if (!isnan(temperature))
+    {
+        systemData.woodFlowTemperature = temperature;
+    }
 
 
     // WOOD RETURN
 
-    systemData.woodReturnTemperature =
-        ds18b20.getTempC(woodReturnAddress);
+    temperature =
+        readSensorTemperature(WOOD_RETURN_SENSOR);
+
+    if (!isnan(temperature))
+    {
+        systemData.woodReturnTemperature = temperature;
+    }
 
 
     // WOOD BOILER
 
-    systemData.woodBoilerTemperature =
-        ds18b20.getTempC(woodBoilerAddress);
+    temperature =
+        readSensorTemperature(WOOD_BOILER_SENSOR);
+
+    if (!isnan(temperature))
+    {
+        systemData.woodBoilerTemperature = temperature;
+    }
+
+
+    updateSensorReadStats();
 }
 
 // --------------------------------

@@ -168,7 +168,9 @@ void loop()
 
     // Véletlen RGB színek
     //randomLedShow();
-    dataManagerTest();
+    
+    //dataManagerTest();
+
     // Display frissítése
     displayUpdate();
 }

@@ -12,3 +12,5 @@ extern DallasTemperature ds18b20;
 bool stringToAddress(const char* addressString, DeviceAddress address);
 
 float readSensorTemperature(const char* sensorAddress);
+
+void updateSensorReadStats();
