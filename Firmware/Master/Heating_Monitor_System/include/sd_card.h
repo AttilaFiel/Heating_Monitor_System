@@ -10,3 +10,5 @@ bool sdCardHasWarning();
 
 bool sdCardIsBusy();
 void sdCardSetBusy(bool busy);
+
+void sdCardWriteError(const char* reason);

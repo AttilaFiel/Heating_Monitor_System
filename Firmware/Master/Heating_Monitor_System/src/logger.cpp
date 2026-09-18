@@ -26,7 +26,7 @@ LoggerWriteErrorReason loggerWriteErrorReason =
     LOGGER_WRITE_ERROR_NONE;
 
 unsigned long measurementsLogTime = 0;
-#define MEASUREMENTS_LOG_INTERVAL 60000UL
+#define MEASUREMENTS_LOG_INTERVAL 1000UL
 
 // --------------------------------------------------
 // Könyvtár létrehozása
@@ -58,6 +58,8 @@ bool createLogDirectory()
     {
         if (!SD.mkdir("/log"))
         {
+            sdCardWriteError("LOG_DIRECTORY");
+
             logMessage("LOGGER: HIBA - /log konyvtar nem hozhato letre!");
             return false;
         }
@@ -67,6 +69,8 @@ bool createLogDirectory()
     {
         if (!SD.mkdir(yearPath))
         {
+            sdCardWriteError("LOG_DIRECTORY");
+
             logMessage("LOGGER: HIBA - ev konyvtar nem hozhato letre!");
             return false;
         }
@@ -76,6 +80,8 @@ bool createLogDirectory()
     {
         if (!SD.mkdir(monthPath))
         {
+            sdCardWriteError("LOG_DIRECTORY");
+
             logMessage("LOGGER: HIBA - honap konyvtar nem hozhato letre!");
             return false;
         }
@@ -130,13 +136,25 @@ bool createLogFiles()
 
         if (!file)
         {
+            sdCardWriteError("EVENT_LOG");
+
             logMessage("LOGGER: HIBA - events.csv nem hozhato letre!");
             return false;
         }
 
-        file.println(
-            "timestamp,type,event,value_old,value_new"
-        );
+       if (file.println(
+                "timestamp,type,event,value_old,value_new"
+            ) == 0)
+        {
+            sdCardWriteError("EVENT_LOG");
+            file.close();
+
+            logMessage(
+                "LOGGER: HIBA - events.csv fejléc irasi hiba!"
+            );
+
+            return false;
+        }
 
         file.close();
     }
@@ -151,6 +169,8 @@ bool createLogFiles()
 
         if (!file)
         {
+            sdCardWriteError("MEASUREMENT_LOG");
+
             logMessage(
                 "LOGGER: HIBA - measurements.csv nem hozhato letre!"
             );
@@ -158,10 +178,20 @@ bool createLogFiles()
             return false;
         }
 
-        file.println(
-            "timestamp,gasFlow,gasReturn,woodFlow,woodReturn,"
-            "woodBoiler,chimney,roomTemp,humidity,gasAC,woodAC"
-        );
+        if (file.println(
+                "timestamp,gasFlow,gasReturn,woodFlow,woodReturn,"
+                "woodBoiler,chimney,roomTemp,humidity,gasAC,woodAC"
+            ) == 0)
+        {
+            sdCardWriteError("MEASUREMENT_LOG");
+            file.close();
+
+            logMessage(
+                "LOGGER: HIBA - measurements.csv fejléc irasi hiba!"
+            );
+
+            return false;
+        }
 
         file.close();
     }
@@ -217,147 +247,135 @@ bool writeLogField(File& file,
 
 bool logEvent(const char* type,
               const char* event,
-              const char* oldValue,
-              const char* newValue)
+              const char* valueOld,
+              const char* valueNew)
 {
-    if (!loggerInitialized)
-    {
-        return false;
-    }
-
     DateTime now = loggerNow();
 
-    char timestamp[20];
-
-    snprintf(timestamp,
-             sizeof(timestamp),
-             "%04d-%02d-%02d %02d:%02d:%02d",
-             now.year(),
-             now.month(),
-             now.day(),
-             now.hour(),
-             now.minute(),
-             now.second());
-
-    // Kötelező mezők ellenőrzése még az SD megnyitása előtt
-    if (timestamp[0] == '\0')
+    if (!createLogDirectory())
     {
-        logMessage("LOGGER ERROR: timestamp ures!");
+        logMessage("LOGGER ERROR: log konyvtar letrehozasi hiba!");
+
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
+            
         return false;
     }
 
-    if (type == nullptr || type[0] == '\0')
+    if (!createLogFiles())
     {
-        logMessage("LOGGER ERROR: type ures!");
+        logMessage("LOGGER ERROR: log fajlok letrehozasi hiba!");
+
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
+
         return false;
     }
 
-    if (event == nullptr || event[0] == '\0')
-    {
-        logMessage("LOGGER ERROR: event ures!");
-        return false;
-    }
+    char path[50];
 
-    char eventsPath[64];
-
-    snprintf(eventsPath,
-             sizeof(eventsPath),
-             "/log/%04d/%02d/events.csv",
-             now.year(),
-             now.month());
+    snprintf(
+        path,
+        sizeof(path),
+        "/log/%04d/%02d/events.csv",
+        now.year(),
+        now.month()
+    );
 
     sdCardSetBusy(true);
 
-    File file = SD.open(eventsPath, FILE_WRITE);
+    File file = SD.open(path, FILE_APPEND);
 
     if (!file)
     {
         sdCardSetBusy(false);
 
-        logMessage("LOGGER: events.csv megnyitasi hiba!");
+        sdCardWriteError("EVENT_LOG");
+
+        logMessage("LOGGER ERROR: events.csv megnyitasi hiba!");
+
         loggerWriteError = true;
-        loggerWriteErrorReason = LOGGER_WRITE_ERROR_EVENT_LOG;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
+
         return false;
     }
 
-    file.seek(file.size());
+    bool success = true;
 
-    bool writeOk = true;
-
-    // Timestamp
-    if (!writeLogField(file, "timestamp", timestamp, true))
+    if (file.size() == 0)
     {
-        writeOk = false;
+        if (file.println("timestamp,type,event,value_old,value_new") == 0)
+        {
+            logMessage("LOGGER ERROR: events.csv fejlec irasi hiba!");
+            success = false;
+        }
     }
 
-    // Vessző
-    if (file.print(",") == 0)
+    if (success)
     {
-        writeOk = false;
-    }
+        char timestamp[25];
 
-    // Type
-    if (!writeLogField(file, "type", type, true))
-    {
-        writeOk = false;
-    }
+        snprintf(
+            timestamp,
+            sizeof(timestamp),
+            "%04d-%02d-%02d %02d:%02d:%02d",
+            now.year(),
+            now.month(),
+            now.day(),
+            now.hour(),
+            now.minute(),
+            now.second()
+        );
 
-    // Vessző
-    if (file.print(",") == 0)
-    {
-        writeOk = false;
-    }
+        if (!writeLogField(file, "timestamp", timestamp, true))
+            success = false;
 
-    // Event
-    if (!writeLogField(file, "event", event, true))
-    {
-        writeOk = false;
-    }
+        if (success && file.print(",") == 0)
+            success = false;
 
-    // Vessző
-    if (file.print(",") == 0)
-    {
-        writeOk = false;
-    }
+        if (success && !writeLogField(file, "type", type, true))
+            success = false;
 
-    // OldValue – opcionális
-    if (!writeLogField(file, "oldValue", oldValue, false))
-    {
-        writeOk = false;
-    }
+        if (success && file.print(",") == 0)
+            success = false;
 
-    // Vessző
-    if (file.print(",") == 0)
-    {
-        writeOk = false;
-    }
+        if (success && !writeLogField(file, "event", event, true))
+            success = false;
 
-    // NewValue – opcionális
-    if (!writeLogField(file, "newValue", newValue, false))
-    {
-        writeOk = false;
-    }
+        if (success && file.print(",") == 0)
+            success = false;
 
-    // Sor lezárása
-    if (file.println() == 0)
-    {
-        logMessage("LOGGER ERROR: sorvege iras HIBA");
-        writeOk = false;
+        if (success && !writeLogField(file, "value_old", valueOld, false))
+            success = false;
+
+        if (success && file.print(",") == 0)
+            success = false;
+
+        if (success && !writeLogField(file, "value_new", valueNew, false))
+            success = false;
+
+        if (success && file.println() == 0)
+            success = false;
     }
 
     file.close();
 
     sdCardSetBusy(false);
 
-    if (!writeOk)
+    if (!success)
     {
-        logMessage("LOGGER: SD WRITE_ERROR - irasi hiba!");
+        sdCardWriteError("EVENT_LOG");
+
+        logMessage("LOGGER ERROR: events.csv irasi hiba!");
         loggerWriteError = true;
-        loggerWriteErrorReason = LOGGER_WRITE_ERROR_EVENT_LOG;
-        return false;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
     }
 
-    return true;
+    return success;
 }
 
 // --------------------------------------------------
@@ -387,6 +405,19 @@ bool logMeasurements()
     // biztosítsuk a könyvtárstruktúra meglétét.
     if (!createLogDirectory())
     {
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_MEASUREMENT_LOG;
+
+        return false;
+    }
+
+    if (!createLogFiles())
+    {
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_MEASUREMENT_LOG;
+
         return false;
     }
 
@@ -409,6 +440,8 @@ bool logMeasurements()
     if (!file)
     {
         sdCardSetBusy(false);
+
+        sdCardWriteError("MEASUREMENT_LOG");
 
         logMessage(
             "LOGGER: HIBA - measurements.csv nem nyithato meg!"
@@ -478,6 +511,8 @@ bool logMeasurements()
 
     if (!writeOk)
     {
+        sdCardWriteError("MEASUREMENT_LOG");
+
         logMessage(
             "LOGGER: SD WRITE_ERROR - meresi naplo irasi hiba!"
         );
@@ -491,7 +526,7 @@ bool logMeasurements()
 
     loggerWriteError = false;
     loggerWriteErrorReason =
-        LOGGER_WRITE_ERROR_MEASUREMENT_LOG;
+        LOGGER_WRITE_ERROR_NONE;
 
     return true;
 }
@@ -527,6 +562,10 @@ void loggerSetup()
             "LOGGER: HIBA - SD kartya nem inicializalhato!"
         );
 
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
+
         return;
     }
 
@@ -535,12 +574,20 @@ void loggerSetup()
     // Könyvtárstruktúra
     if (!createLogDirectory())
     {
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
+
         return;
     }
 
     // CSV fájlok
     if (!createLogFiles())
     {
+        loggerWriteError = true;
+        loggerWriteErrorReason =
+            LOGGER_WRITE_ERROR_EVENT_LOG;
+
         return;
     }
 

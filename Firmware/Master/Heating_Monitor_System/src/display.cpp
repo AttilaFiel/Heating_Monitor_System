@@ -1691,6 +1691,12 @@ const char* alarmReasonRawToString(AlarmReason reason)
         case ALARM_REASON_STARTUP_FAULT:
             return "STARTUP_FAULT";
 
+        case ALARM_REASON_RTC_BATTERY:
+            return "RTC_BATTERY";
+
+        case ALARM_REASON_RTC_OSCILLATOR_STOP:
+            return "RTC_OSCILLATOR_STOP";
+
         case ALARM_REASON_SD_WARNING:
             return "SD_WARNING";
 
@@ -1726,6 +1732,12 @@ const char* alarmReasonToString(AlarmReason reason)
 
         case ALARM_REASON_STARTUP_FAULT:
             return "Indítás sikertelen";
+
+        case ALARM_REASON_RTC_BATTERY:
+            return "RTC elem hiba";
+
+        case ALARM_REASON_RTC_OSCILLATOR_STOP:
+            return "RTC oscillator stop";
 
         case ALARM_REASON_SD_WARNING:
             return "SD kártya eltávolítva";

@@ -10,6 +10,7 @@ RTC_DS3231 rtc;
 enum RTCWarningReason
 {
     RTC_WARNING_NONE,
+    RTC_WARNING_LOST_POWER,
     RTC_WARNING_NOT_FOUND,
     RTC_WARNING_READ_ERROR,
     RTC_WARNING_OSCILLATOR_STOP,
@@ -19,6 +20,16 @@ enum RTCWarningReason
 RTCWarningReason rtcWarning = RTC_WARNING_NONE;
 
 bool rtcAvailable = false;
+
+bool rtcBatteryWarning()
+{
+    return rtcWarning == RTC_WARNING_LOST_POWER;
+}
+
+bool rtcOscillatorStopWarning()
+{
+    return rtcWarning == RTC_WARNING_OSCILLATOR_STOP;
+}
 
 // RTC inicializálása
 void rtcSetup()
@@ -38,6 +49,15 @@ void rtcSetup()
     if (rtc.lostPower())
     {
         logMessage("RTC elvesztette az idot - ido alaphelyzetbe allitasa.");
+
+        rtcWarning = RTC_WARNING_LOST_POWER;
+
+        logEvent(
+            "RTC",
+            "ERROR",
+            "",
+            "LOST_POWER"
+        );
 
         rtc.adjust(DateTime(2000, 1, 1, 0, 0, 0));
 
@@ -164,7 +184,9 @@ void rtcUpdate()
 
 
     // RTC újra rendben
-    if (rtcWarning != RTC_WARNING_NONE)
+    if (rtcWarning != RTC_WARNING_NONE &&
+        rtcWarning != RTC_WARNING_LOST_POWER &&
+        rtcWarning != RTC_WARNING_OSCILLATOR_STOP)
     {
         logEvent(
             "RTC",

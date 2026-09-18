@@ -8,3 +8,5 @@ void rtcSetup();
 void rtcUpdate();
 bool rtcIsAvailable();
 void rtcTest();
+bool rtcBatteryWarning();
+bool rtcOscillatorStopWarning();

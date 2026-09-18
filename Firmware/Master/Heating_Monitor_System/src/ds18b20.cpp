@@ -112,13 +112,11 @@ float readSensorTemperature(const char* sensorAddress)
 {
     DeviceAddress address;
 
-
     // Cim atalakitas
     if (!stringToAddress(sensorAddress, address))
     {
         return NAN;
     }
-
 
     // Szenzor ellenorzese
     if (!ds18b20.isConnected(address))
@@ -126,17 +124,20 @@ float readSensorTemperature(const char* sensorAddress)
         return NAN;
     }
 
-
     // Homerseklet kiolvasasa
     float temperature = ds18b20.getTempC(address);
 
+    // Ha az elso olvasas hibas, egyszer ujra probaljuk
+    if (temperature == DEVICE_DISCONNECTED_C)
+    {
+        temperature = ds18b20.getTempC(address);
+    }
 
-    // Hibás ertek ellenorzese
+    // Ha a masodik olvasas is hibas
     if (temperature == DEVICE_DISCONNECTED_C)
     {
         return NAN;
     }
-
 
     return temperature;
 }

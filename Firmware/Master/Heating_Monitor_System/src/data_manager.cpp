@@ -401,18 +401,35 @@ void updateAlarmState()
         systemData.alarmReason = ALARM_REASON_STARTUP_FAULT;
     }
 
+    // RTC elem hiba
+    else if (rtcBatteryWarning())
+    {
+        systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_RTC_BATTERY;
+    }
+
+    // RTC oszcillátor leállás hiba
+    else if (rtcOscillatorStopWarning())
+    {
+        systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_RTC_OSCILLATOR_STOP;
+    }
+
+    // SD kártya hiba
     else if (sdCardHasWarning())
     {
         systemData.alarmState = ALARM_WARNING;
         systemData.alarmReason = ALARM_REASON_SD_WARNING;
     }
 
+    // SD kártya megtelt
     else if (sdCardIsFull())
     {
         systemData.alarmState = ALARM_WARNING;
         systemData.alarmReason = ALARM_REASON_SD_FULL;
     }
 
+    // Startup warning
     else if (startupWarning)
     {
         systemData.alarmState = ALARM_WARNING;

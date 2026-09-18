@@ -72,20 +72,14 @@
 // --------------------------------
 // Hőmérséklet határértékek
 // --------------------------------
-//TODO: visszaállítani
-//#define FIRE_TEMPERATURE_THRESHOLD       80.0
-#define FIRE_TEMPERATURE_THRESHOLD       45.0
+#define FIRE_TEMPERATURE_THRESHOLD       80.0
 
 #define WOOD_FLOW_HEATING_THRESHOLD      28.0
 #define WOOD_FLOW_COOLING_THRESHOLD      22.0
 
-//TODO: visszaállítani
-//#define WOOD_BOILER_OPTIMAL_TEMPERATURE  60.0
-//#define WOOD_BOILER_WARNING_TEMPERATURE  70.0
-//#define WOOD_BOILER_ALARM_TEMPERATURE    80.0
-#define WOOD_BOILER_OPTIMAL_TEMPERATURE  10.0
-#define WOOD_BOILER_WARNING_TEMPERATURE  30.0
-#define WOOD_BOILER_ALARM_TEMPERATURE    35.0
+#define WOOD_BOILER_OPTIMAL_TEMPERATURE  60.0
+#define WOOD_BOILER_WARNING_TEMPERATURE  70.0
+#define WOOD_BOILER_ALARM_TEMPERATURE    80.0
 
 #define STARTUP_TIMEOUT                 900000UL   // 15 perc
 #define WOOD_AC_SWITCH_TIMEOUT          120000UL   // 2 perc
