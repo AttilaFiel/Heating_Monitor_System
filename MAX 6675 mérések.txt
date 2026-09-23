@@ -1,0 +1,72 @@
+1. Termoelem ellenállása – hidegen
+Rövid szenzor: 6,1
+Hosszú szenzor: 22,3
+
+2. Mindkét vezeték külön-külön a szenzor fémházához
+R+ ─────── fém köpeny csatlakozóhoz közel: 6,3
+R+ ─────── fém köpeny szenzorhoz közel: 5,1
+R- ─────── fém köpeny csatlakozóhoz közel: 3,5
+R- ─────── fém köpeny szenzorhoz közel: 2,9
+
+H+ ─────── fém köpeny csatlakozóhoz közel: 18,7
+H+ ─────── fém köpeny szenzorhoz közel: 17,1
+H- ─────── fém köpeny csatlakozóhoz közel: 9,5
+H- ─────── fém köpeny szenzorhoz közel: 7,7
+
+3. Vezeték → vezeték, de mozgatás közben
+A sosszú ellenállása néha felugrott 100 fölé és néha szakaást mutatott. A rövid rendben van.
+
+5. MAX6675 bemenet ellenállása
+Nincs ellenállás, nincs kapcsolat.
+
+6. MAX6675 T+ → GND
+Nincs ellenállás, nincs kapcsolat.
+
+7. MAX6675 T− → GND
+1 ohm
+
+8. T+ → 3,3 V
+Nincs ellenállás, nincs kapcsolat.
+
+9. Termoelem polaritásának ellenőrzése multiméterrel (DCV 200m állás)
+Hosszú:
+R+ → piros mérővezeték
+R- → fekete mérővezeték
+érték: -0,1
+
+R- → piros
+R+ → fekete
+érték: 0,2
+
+Rövid:
+R+ → piros mérővezeték
+R- → fekete mérővezeték
+érték: -0,1
+
+R- → piros
+R+ → fekete
+érték: 0,2
+
+10. Melegítés:
+Rövid kézmeleggel: -0,1 -> 0,2
+Hosszú kézmeleggel: -0,1 -> 0,2
+
+12. Hosszú termoelem melegítése több ponton
+Nincs változás, bárhol melegítem
+
+13. Hosszú termoelem csatlakozóinak ellenőrzése
+Nincs hosszabbító, csak a gyári kötés van
+
+14. Keresztbe kötés ellenőrzése
+Rövid és hosszúnál sincs szakadás, van kapcsolat felcserélt vezetékekkel
+
+16. MAX6675 tápfeszültség
+VCC->GND 3,3 V
+
+17. MAX6675 tápfeszültség terhelés alatt
+Ugyan úgy 3,3 V stabilan
+
+18. MAX6675 GND → ESP32 GND
+0 V
+
+20. A legfontosabb mérés: termoelem mV + MAX6675 hőmérséklet együtt
