@@ -26,7 +26,7 @@ LoggerWriteErrorReason loggerWriteErrorReason =
     LOGGER_WRITE_ERROR_NONE;
 
 unsigned long measurementsLogTime = 0;
-#define MEASUREMENTS_LOG_INTERVAL 1000UL
+#define MEASUREMENTS_LOG_INTERVAL 60000UL
 
 // --------------------------------------------------
 // Könyvtár létrehozása

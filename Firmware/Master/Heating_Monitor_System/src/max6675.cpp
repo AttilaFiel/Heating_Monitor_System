@@ -136,7 +136,6 @@ void max6675Test()
 
     logMessage(message);
 
-
     logMessage("MAX6675: OK");
 
     logMessage("================================");

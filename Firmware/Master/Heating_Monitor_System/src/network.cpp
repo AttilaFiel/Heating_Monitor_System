@@ -11,6 +11,7 @@
 #include "rtc.h"
 #include "sd_card.h"
 #include "watchdog.h"
+#include "system_data.h"
 
 WiFiServer terminalServer(TERMINAL_PORT);
 WebServer webServer(80);
@@ -85,11 +86,11 @@ void appendDirectoryToHtml(
 
             html += " <a href=\"/download?path=";
             html += filePath;
-            html += "\">Letoltes</a>";
+            html += "\">Letöltés</a>";
 
             html += " <a href=\"/delete?path=";
             html += filePath;
-            html += "\" onclick=\"return confirm('Biztosan torolni szeretned ezt a fajlt?');\">Torles</a>";
+            html += "\" onclick=\"return confirm('Biztosan törölni szeretnéd ezt a fájlt?');\">Törles</a>";
 
             html += "<br>";
         }
@@ -105,7 +106,7 @@ void networkSetup()
     WiFi.mode(WIFI_STA);
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-    Serial.println("WiFi csatlakozas inditva...");
+    Serial.println("WiFi csatlakozás indítva...");
 
     previousWiFiConnected = false;
     wifiLastAttempt = millis();
@@ -114,7 +115,7 @@ void networkSetup()
     // Wi-Fi terminál szerver
     terminalServer.begin();
 
-    Serial.print("WiFi terminal port: ");
+    Serial.print("WiFi terminál port: ");
     Serial.println(TERMINAL_PORT);
 
     // HTTP szerver
@@ -127,7 +128,7 @@ void networkSetup()
                 "text/html",
                 "<html><body>"
                 "<h1>HMS LOG</h1>"
-                "<p>SD kartya nem erheto el.</p>"
+                "<p>SD kartya nem elérhető.</p>"
                 "</body></html>"
             );
             return;
@@ -140,7 +141,7 @@ void networkSetup()
                 "text/html",
                 "<html><body>"
                 "<h1>HMS LOG</h1>"
-                "<p>SD kartya hasznalatban van.</p>"
+                "<p>SD kártya használatban van.</p>"
                 "</body></html>"
             );
             return;
@@ -150,39 +151,320 @@ void networkSetup()
 
         html += "<html><head>";
         html += "<meta charset=\"UTF-8\">";
+        html += "<meta http-equiv=\"Cache-Control\" content=\"no-cache\">";
+        html += "<title>HMS LOG</title>";
+
+        // Stílus
+        html += "<style>";
+        html += "body{font-family:Arial,sans-serif;margin:20px;}";
+        html += "table{border-collapse:collapse;margin-top:10px;}";
+        html += "td,th{border:1px solid #999;padding:5px 10px;text-align:left;}";
+        html += "h1{margin-bottom:10px;}";
+        html += "h2{margin-top:25px;}";
+        html += ".value{font-weight:bold;}";
+        html += "</style>";
+
         html += "</head><body>";
+
+        // =========================================================
+        // HMS LOG
+        // =========================================================
+
         html += "<h1>HMS LOG</h1>";
 
-        html += "<button onclick=\"";
-        html += "if (confirm('Biztosan ujrainditod az ESP32-t?')) ";
-        html += "window.location='/restart';";
-        html += "\">ESP32 ujrainditasa</button>";
+        // =========================================================
+        // ESP32 újraindítása
+        // =========================================================
 
-        html += "<br><br>";
+        html += "<button onclick=\"";
+        html += "if (confirm('Biztosan újraindítod az ESP32-t?')) ";
+        html += "window.location='/restart';";
+        html += "\">ESP32 újraindítása</button>";
+
+        // =========================================================
+        // Státusz és adatok
+        // =========================================================
+
+        html += "<h2>Státusz és adatok</h2>";
+
+        html += "<table>";
+
+        html += "<tr><td>Rendszerállapot</td>"
+                "<td id=\"systemState\">-</td></tr>";
+
+        html += "<tr><td>Aktív ág</td>"
+                "<td id=\"activeBranch\">-</td></tr>";
+
+        html += "<tr><td>Riasztás</td>"
+                "<td id=\"alarmState\">-</td></tr>";
+
+        html += "<tr><td>Tűz</td>"
+                "<td id=\"firePresent\">-</td></tr>";
+
+        html += "<tr><td>Gáz AC</td>"
+                "<td id=\"gasAcPresent\">-</td></tr>";
+
+        html += "<tr><td>Fa AC</td>"
+                "<td id=\"woodAcPresent\">-</td></tr>";
+
+        html += "<tr><td>Gáz előremenő</td>"
+                "<td id=\"gasFlowTemperature\">-</td></tr>";
+
+        html += "<tr><td>Gáz visszatérő</td>"
+                "<td id=\"gasReturnTemperature\">-</td></tr>";
+
+        html += "<tr><td>Fa előremenő</td>"
+                "<td id=\"woodFlowTemperature\">-</td></tr>";
+
+        html += "<tr><td>Fa visszatérő</td>"
+                "<td id=\"woodReturnTemperature\">-</td></tr>";
+
+        html += "<tr><td>Fa kazán</td>"
+                "<td id=\"woodBoilerTemperature\">-</td></tr>";
+
+        html += "<tr><td>Kémény</td>"
+                "<td id=\"chimneyTemperature\">-</td></tr>";
+
+        html += "<tr><td>Kazánház hőmérséklet</td>"
+                "<td id=\"boilerRoomTemperature\">-</td></tr>";
+
+        html += "<tr><td>Kazánház páratartalom</td>"
+                "<td id=\"boilerRoomHumidity\">-</td></tr>";
+
+        html += "<tr><td>Idő</td>"
+                "<td id=\"timestamp\">-</td></tr>";
+
+        html += "</table>";
+
+        // =========================================================
+        // Logok
+        // =========================================================
+
+        html += "<h2>Logok</h2>";
 
         File logDirectory = SD.open("/log");
 
         if (!logDirectory)
         {
-            html += "<p>/log konyvtar nem erheto el.</p>";
-            html += "</body></html>";
+            html += "<p>/Log könyvtar nem elérhető.</p>";
+        }
+        else
+        {
+            appendDirectoryToHtml(
+                logDirectory,
+                html,
+                0,
+                "/log"
+            );
 
-            webServer.send(200, "text/html", html);
-            return;
+            logDirectory.close();
         }
 
-        appendDirectoryToHtml(
-            logDirectory,
-            html,
-            0,
-            "/log"
-        );
+        // =========================================================
+        // Státusz frissítése 5 másodpercenként
+        // =========================================================
 
-        logDirectory.close();
+        html += "<script>";
+
+        html += "function updateStatus(){";
+        html += "fetch('/status')";
+        html += ".then(response => response.json())";
+        html += ".then(data => {";
+
+        html += "document.getElementById('systemState').textContent=data.systemState;";
+        html += "document.getElementById('activeBranch').textContent=data.activeBranch;";
+        html += "document.getElementById('alarmState').textContent=data.alarmState;";
+        html += "document.getElementById('firePresent').textContent=data.firePresent;";
+        html += "document.getElementById('gasAcPresent').textContent=data.gasAcPresent;";
+        html += "document.getElementById('woodAcPresent').textContent=data.woodAcPresent;";
+
+        html += "document.getElementById('gasFlowTemperature').textContent=data.gasFlowTemperature+' °C';";
+        html += "document.getElementById('gasReturnTemperature').textContent=data.gasReturnTemperature+' °C';";
+        html += "document.getElementById('woodFlowTemperature').textContent=data.woodFlowTemperature+' °C';";
+        html += "document.getElementById('woodReturnTemperature').textContent=data.woodReturnTemperature+' °C';";
+        html += "document.getElementById('woodBoilerTemperature').textContent=data.woodBoilerTemperature+' °C';";
+        html += "document.getElementById('chimneyTemperature').textContent=data.chimneyTemperature+' °C';";
+        html += "document.getElementById('boilerRoomTemperature').textContent=data.boilerRoomTemperature+' °C';";
+        html += "document.getElementById('boilerRoomHumidity').textContent=data.boilerRoomHumidity+' %';";
+
+        html += "document.getElementById('timestamp').textContent=data.timestamp;";
+
+        html += "})";
+        html += ".catch(error => console.log('Státusz hiba:',error));";
+        html += "}";
+
+        html += "updateStatus();";
+        html += "setInterval(updateStatus,5000);";
+
+        html += "</script>";
 
         html += "</body></html>";
 
-        webServer.send(200, "text/html", html);
+        webServer.send(
+            200,
+            "text/html",
+            html
+        );
+    });
+
+    webServer.on("/status", []()
+    {
+        String json = "{";
+
+        json += "\"systemState\":\"";
+
+        switch (systemData.systemState)
+        {
+            case SYSTEM_OFF:
+                json += "Üzemen kívül";
+                break;
+
+            case SYSTEM_GAS:
+                json += "Gáz";
+                break;
+
+            case SYSTEM_WOOD:
+                json += "Fa";
+                break;
+
+            case SYSTEM_FIRE_WITHOUT_CIRCULATOR:
+                json += "Tűz keringető nélkül";
+                break;
+
+            case SYSTEM_STARTUP:
+                json += "Indítás";
+                break;
+
+            case SYSTEM_FAULT:
+                json += "Hiba";
+                break;
+
+            default:
+                json += "Ismeretlen";
+                break;
+        }
+
+        json += "\",";
+
+        json += "\"activeBranch\":\"";
+
+        switch (systemData.activeBranch)
+        {
+            case HEATING_NONE:
+                json += "Nincs";
+                break;
+
+            case HEATING_GAS:
+                json += "Gáz";
+                break;
+
+            case HEATING_WOOD:
+                json += "Fa";
+                break;
+
+            case HEATING_ERROR:
+                json += "Hiba";
+                break;
+
+            default:
+                json += "Ismeretlen";
+                break;
+        }
+
+        json += "\",";
+
+        json += "\"alarmState\":\"";
+
+        switch (systemData.alarmState)
+        {
+            case ALARM_NONE:
+                json += "Nincs";
+                break;
+
+            case ALARM_WARNING:
+                json += "Figyelmeztetés";
+                break;
+
+            case ALARM_CRITICAL:
+                json += "Kritikus";
+                break;
+
+            default:
+                json += "Ismeretlen";
+                break;
+        }
+
+        json += "\",";
+
+        json += "\"firePresent\":\"";
+        json += systemData.firePresent ? "IGEN" : "NEM";
+        json += "\",";
+
+        json += "\"gasAcPresent\":\"";
+        json += systemData.gasAcPresent ? "BE" : "KI";
+        json += "\",";
+
+        json += "\"woodAcPresent\":\"";
+        json += systemData.woodAcPresent ? "BE" : "KI";
+        json += "\",";
+
+        json += "\"gasFlowTemperature\":";
+        json += String(systemData.gasFlowTemperature, 1);
+        json += ",";
+
+        json += "\"gasReturnTemperature\":";
+        json += String(systemData.gasReturnTemperature, 1);
+        json += ",";
+
+        json += "\"woodFlowTemperature\":";
+        json += String(systemData.woodFlowTemperature, 1);
+        json += ",";
+
+        json += "\"woodReturnTemperature\":";
+        json += String(systemData.woodReturnTemperature, 1);
+        json += ",";
+
+        json += "\"woodBoilerTemperature\":";
+        json += String(systemData.woodBoilerTemperature, 1);
+        json += ",";
+
+        json += "\"chimneyTemperature\":";
+        json += String(systemData.chimneyTemperature, 1);
+        json += ",";
+
+        json += "\"boilerRoomTemperature\":";
+        json += String(systemData.boilerRoomTemperature, 1);
+        json += ",";
+
+        json += "\"boilerRoomHumidity\":";
+        json += String(systemData.boilerRoomHumidity, 1);
+        json += ",";
+
+        char timestamp[25];
+
+        snprintf(
+            timestamp,
+            sizeof(timestamp),
+            "%04d.%02d.%02d %02d:%02d:%02d",
+            systemData.timestamp.year(),
+            systemData.timestamp.month(),
+            systemData.timestamp.day(),
+            systemData.timestamp.hour(),
+            systemData.timestamp.minute(),
+            systemData.timestamp.second()
+        );
+
+        json += "\"timestamp\":\"";
+        json += timestamp;
+        json += "\"";
+
+        json += "}";
+
+        webServer.send(
+            200,
+            "application/json",
+            json
+        );
     });
 
     webServer.on("/download", []()
@@ -192,7 +474,7 @@ void networkSetup()
             webServer.send(
                 503,
                 "text/plain",
-                "SD kartya nem erheto el."
+                "SD kártya nem elérhető."
             );
             return;
         }
@@ -202,7 +484,7 @@ void networkSetup()
             webServer.send(
                 503,
                 "text/plain",
-                "SD kartya hasznalatban van."
+                "SD kártya használatban van."
             );
             return;
         }
@@ -212,7 +494,7 @@ void networkSetup()
             webServer.send(
                 400,
                 "text/plain",
-                "Hianyzik a fajl eleresi utja."
+                "Hiányzik a fájl elérési útvonala."
             );
             return;
         }
@@ -224,7 +506,7 @@ void networkSetup()
             webServer.send(
                 403,
                 "text/plain",
-                "Tiltott fajl eleresi ut."
+                "Tiltott fájl elérési útvonal."
             );
             return;
         }
@@ -241,7 +523,7 @@ void networkSetup()
             webServer.send(
                 404,
                 "text/plain",
-                "A fajl nem talalhato."
+                "A fájl nem található."
             );
             return;
         }
@@ -250,15 +532,39 @@ void networkSetup()
             path.lastIndexOf('/') + 1
         );
 
+        webServer.setContentLength(file.size());
+
         webServer.sendHeader(
             "Content-Disposition",
             "attachment; filename=\"" + fileName + "\""
         );
 
-        webServer.streamFile(
-            file,
-            "text/csv"
+        webServer.send(
+            200,
+            "text/csv",
+            ""
         );
+
+        uint8_t buffer[4096];
+
+        while (file.available())
+        {
+            size_t bytesRead = file.read(
+                buffer,
+                sizeof(buffer)
+            );
+
+            if (bytesRead > 0)
+            {
+                webServer.client().write(
+                    buffer,
+                    bytesRead
+                );
+            }
+
+            watchdogUpdate();
+            yield();
+        }
 
         file.close();
     });
@@ -270,7 +576,7 @@ void networkSetup()
             webServer.send(
                 503,
                 "text/plain",
-                "SD kartya nem erheto el."
+                "SD kártya nem elérhető."
             );
             return;
         }
@@ -280,7 +586,7 @@ void networkSetup()
             webServer.send(
                 503,
                 "text/plain",
-                "SD kartya hasznalatban van."
+                "SD kártya használatban van."
             );
             return;
         }
@@ -290,7 +596,7 @@ void networkSetup()
             webServer.send(
                 400,
                 "text/plain",
-                "Hianyzik a fajl eleresi utja."
+                "Hiányzik a fájl elérési útvonala."
             );
             return;
         }
@@ -302,7 +608,7 @@ void networkSetup()
             webServer.send(
                 403,
                 "text/plain",
-                "Tiltott fajl eleresi ut."
+                "Tiltott fájl elérési útvonal."
             );
             return;
         }
@@ -319,7 +625,7 @@ void networkSetup()
             webServer.send(
                 404,
                 "text/plain",
-                "A fajl nem talalhato."
+                "A fájl nem található."
             );
             return;
         }
@@ -331,7 +637,7 @@ void networkSetup()
             webServer.send(
                 500,
                 "text/plain",
-                "A fajl torlese sikertelen."
+                "A fájl törlése sikertelen."
             );
             return;
         }
@@ -339,7 +645,7 @@ void networkSetup()
         webServer.send(
             200,
             "text/plain",
-            "A fajl sikeresen torolve."
+            "A fájl sikeresen törölve."
         );
     });
 
@@ -348,7 +654,7 @@ void networkSetup()
         webServer.send(
             200,
             "text/plain",
-            "ESP32 ujraindul..."
+            "ESP32 újraindul..."
         );
 
         delay(200);
@@ -357,7 +663,7 @@ void networkSetup()
     });
     webServer.begin();
 
-    Serial.println("HTTP szerver keszen all!");
+    Serial.println("HTTP szerver készen áll!");
 
     // OTA
     ArduinoOTA.setHostname(OTA_HOSTNAME);
@@ -365,13 +671,13 @@ void networkSetup()
     ArduinoOTA.onStart([]()
     {
         otaActive = true;
-        logMessage("OTA feltoltes indul!");
+        logMessage("OTA feltöltés indul!");
     });
 
     ArduinoOTA.onEnd([]()
     {
         otaActive = false;
-        logMessage("OTA feltoltes kesz!");
+        logMessage("OTA feltöltés kész!");
     });
 
     ArduinoOTA.onProgress([](unsigned int progress, unsigned int total)
@@ -381,13 +687,13 @@ void networkSetup()
 
     ArduinoOTA.begin();
 
-    logMessage("OTA keszen all!");
-    logMessage("WiFi terminal keszen all!");
+    logMessage("OTA készen áll!");
+    logMessage("WiFi terminál készen áll!");
 
     // NTP időszinkronizáció
     configTime(3600, 3600, "pool.ntp.org", "time.nist.gov");
 
-    logMessage("NTP idoszinkronizacio inditva!");
+    logMessage("NTP időszinkronizáció indítva!");
 }
 
 
@@ -447,7 +753,7 @@ void networkLoop()
             snprintf(
                 message,
                 sizeof(message),
-                "NTP ido: %04d-%02d-%02d %02d:%02d:%02d",
+                "NTP idő: %04d-%02d-%02d %02d:%02d:%02d",
                 ntpTime.tm_year + 1900,
                 ntpTime.tm_mon + 1,
                 ntpTime.tm_mday,
@@ -464,7 +770,7 @@ void networkLoop()
             snprintf(
                 message,
                 sizeof(message),
-                "DS3231 ido: %04d-%02d-%02d %02d:%02d:%02d",
+                "DS3231 idő: %04d-%02d-%02d %02d:%02d:%02d",
                 rtcNow.year(),
                 rtcNow.month(),
                 rtcNow.day(),
@@ -487,7 +793,7 @@ void networkLoop()
 
             rtc.adjust(ntpDateTime);
 
-            logMessage("DS3231 ido NTP alapjan beallitva.");
+            logMessage("DS3231 idő NTP alapjan beállitva.");
 
             ntpTimeReceived = true;
         }
@@ -499,7 +805,7 @@ void networkLoop()
     {
         wifiLastAttempt = millis();
 
-        Serial.println("WiFi ujracsatlakozasi kiserlet...");
+        Serial.println("WiFi újracsatlakozási kísérlet...");
 
         WiFi.disconnect();
         WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -514,7 +820,7 @@ void networkLoop()
         {
             terminalClient = terminalServer.available();
 
-            logMessage("WiFi terminal kliens csatlakozott!");
+            logMessage("WiFi terminál kliens csatlakozott!");
 
                         if (ntpTimeReceived)
             {
@@ -524,7 +830,7 @@ void networkLoop()
                 snprintf(
                     message,
                     sizeof(message),
-                    "NTP ido: %04d-%02d-%02d %02d:%02d:%02d",
+                    "NTP idő: %04d.%02d.%02d %02d:%02d:%02d",
                     ntpTime.tm_year + 1900,
                     ntpTime.tm_mon + 1,
                     ntpTime.tm_mday,
@@ -541,7 +847,7 @@ void networkLoop()
                 snprintf(
                     message,
                     sizeof(message),
-                    "DS3231 ido: %04d-%02d-%02d %02d:%02d:%02d",
+                    "DS3231 idő: %04d.%02d.%02d %02d:%02d:%02d",
                     rtcNow.year(),
                     rtcNow.month(),
                     rtcNow.day(),
