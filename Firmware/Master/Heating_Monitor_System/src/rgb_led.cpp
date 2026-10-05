@@ -226,26 +226,26 @@ void randomLedShow()
 
 void rgbLedUpdate()
 {
-    // LED 1 – Gáz ág
+    // LED – Gáz ág
     if (systemData.alarmReason == ALARM_REASON_BOTH_BRANCHES)
     {
-        setRGB(0, PWM_MAX, 0, 0);
+        setRGB(RGB_LED_GAS, PWM_MAX, 0, 0);
     }
     else if (systemData.activeBranch == HEATING_GAS)
     {
-        setRGB(0, 0, PWM_MAX, 0);
+        setRGB(RGB_LED_GAS, 0, PWM_MAX, 0);
     }
     else
     {
-        setRGB(0, 0, 0, 0);
+        setRGB(RGB_LED_GAS, 0, 0, 0);
     }
 
 
-    // LED 2 – Fa ág
+    // LED – Fa ág
     if (systemData.alarmReason == ALARM_REASON_BOTH_BRANCHES)
     {
         // Piros – mindkét ág aktív
-        setRGB(1, PWM_MAX, 0, 0);
+        setRGB(RGB_LED_WOOD, PWM_MAX, 0, 0);
     }
     else if (systemData.activeBranch == HEATING_WOOD)
     {
@@ -254,54 +254,54 @@ void rgbLedUpdate()
             systemData.alarmReason == ALARM_REASON_STARTUP_FAULT)
         {
             // Piros
-            setRGB(1, PWM_MAX, 0, 0);
+            setRGB(RGB_LED_WOOD, PWM_MAX, 0, 0);
         }
         else if (systemData.alarmReason == ALARM_REASON_WOOD_BOILER_WARNING ||
                 systemData.alarmReason == ALARM_REASON_STARTUP_WARNING)
         {
             // Narancssárga
-            setRGB(1, PWM_MAX, PWM_MAX / 3, 0);
+            setRGB(RGB_LED_WOOD, PWM_MAX, PWM_MAX / 3, 0);
         }
         else if (!systemData.firePresent)
         {
             // Kék – aktív fa ág, de nincs tűz
-            setRGB(1, 0, 0, PWM_MAX);
+            setRGB(RGB_LED_WOOD, 0, 0, PWM_MAX);
         }
         else
         {
             // Zöld – aktív fa üzem, minden rendben
-            setRGB(1, 0, PWM_MAX, 0);
+            setRGB(RGB_LED_WOOD, 0, PWM_MAX, 0);
         }
     }
     else
     {
-        setRGB(1, 0, 0, 0);
+        setRGB(RGB_LED_WOOD, 0, 0, 0);
     }
 
-    // LED 3 – ESP32 státusz
+    // LED – ESP32 státusz
     if (systemData.alarmState == ALARM_CRITICAL)
     {
         // Piros – kritikus hiba
-        setRGB(2, PWM_MAX, 0, 0);
+        setRGB(RGB_LED_ESP32, PWM_MAX, 0, 0);
     }
     else if (systemData.alarmState == ALARM_WARNING)
     {
         // Narancssárga – figyelmeztetés
-        setRGB(2, PWM_MAX, PWM_MAX / 3, 0);
+        setRGB(RGB_LED_ESP32, PWM_MAX, PWM_MAX / 3, 0);
     }
     else if (isStartupActive())
     {
         // Kék – startup
-        setRGB(2, 0, 0, PWM_MAX);
+        setRGB(RGB_LED_ESP32, 0, 0, PWM_MAX);
     }
     else if (otaUpdateActive())
     {
         // Lila – OTA frissítés
-        setRGB(2, PWM_MAX, 0, PWM_MAX);
+        setRGB(RGB_LED_ESP32, PWM_MAX, 0, PWM_MAX);
     }
     else
     {
         // Zöld – minden rendben
-        setRGB(2, 0, PWM_MAX, 0);
+        setRGB(RGB_LED_ESP32, 0, PWM_MAX, 0);
     }
 }

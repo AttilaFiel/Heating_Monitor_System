@@ -68,6 +68,10 @@
 #define DISPLAY1_CS 5
 #define DISPLAY2_CS 4
 
+// RGB LED csatornák
+#define RGB_LED_GAS 1   //Gáz
+#define RGB_LED_WOOD 0  //Fa
+#define RGB_LED_ESP32 2 //ESP32 státusz
 
 // --------------------------------
 // Hőmérséklet határértékek
