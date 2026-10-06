@@ -849,46 +849,46 @@ void sendData(int csPin, uint8_t data)
 
 void initializeDisplay(int csPin)
 {
-    sendCommand(csPin, 0xAE); // Display OFF
+    sendCommand(csPin, 0xAE); // Kijelző kikapcsolása
 
-    sendCommand(csPin, 0xD5); // Clock divide
+    sendCommand(csPin, 0xD5); // Órajelosztás
     sendCommand(csPin, 0x80);
 
-    sendCommand(csPin, 0xA8); // Multiplex
+    sendCommand(csPin, 0xA8); // Multiplexelés
     sendCommand(csPin, 0x3F); // 64 sor
 
-    sendCommand(csPin, 0xD3); // Display offset
+    sendCommand(csPin, 0xD3); // Kijelzőeltolás
     sendCommand(csPin, 0x00);
 
-    sendCommand(csPin, 0x40); // Start line
+    sendCommand(csPin, 0x40); // Kezdősor
 
-    sendCommand(csPin, 0x8D); // Charge pump
+    sendCommand(csPin, 0x8D); // Belső feszültségemelő beállítása
     sendCommand(csPin, 0x14);
 
-    sendCommand(csPin, 0x20); // Memory addressing mode
-    sendCommand(csPin, 0x00); // Horizontal addressing
+    sendCommand(csPin, 0x20); // Memóriacímzési mód
+    sendCommand(csPin, 0x00); // Vízszintes címzés
 
-    sendCommand(csPin, 0xA1); // Segment remap
+    sendCommand(csPin, 0xA1); // Szegmensek átrendezése
 
-    sendCommand(csPin, 0xC8); // COM scan direction
+    sendCommand(csPin, 0xC8); // COM-sorok pásztázási iránya
 
-    sendCommand(csPin, 0xDA); // COM pins
+    sendCommand(csPin, 0xDA); // COM-kivezetések
     sendCommand(csPin, 0x12);
 
-    sendCommand(csPin, 0x81); // Contrast
+    sendCommand(csPin, 0x81); // Kontraszt
     sendCommand(csPin, 0xCF);
 
-    sendCommand(csPin, 0xD9); // Pre-charge
+    sendCommand(csPin, 0xD9); // Előtöltés
     sendCommand(csPin, 0xF1);
 
-    sendCommand(csPin, 0xDB); // VCOM detect
+    sendCommand(csPin, 0xDB); // VCOM-szint beállítása
     sendCommand(csPin, 0x40);
 
-    sendCommand(csPin, 0xA4); // Entire display ON from RAM
+    sendCommand(csPin, 0xA4); // Teljes kijelző megjelenítése a RAM tartalma alapján
 
-    sendCommand(csPin, 0xA6); // Normal display
+    sendCommand(csPin, 0xA6); // Normál megjelenítés
 
-    sendCommand(csPin, 0xAF); // Display ON
+    sendCommand(csPin, 0xAF); // Kijelző bekapcsolása
 }
 
 
@@ -898,11 +898,11 @@ void initializeDisplay(int csPin)
 
 void clearDisplay(int csPin)
 {
-    sendCommand(csPin, 0x21); // Column address
+    sendCommand(csPin, 0x21); // Oszlopcím
     sendCommand(csPin, 0);
     sendCommand(csPin, 127);
 
-    sendCommand(csPin, 0x22); // Page address
+    sendCommand(csPin, 0x22); // Lapcím
     sendCommand(csPin, 0);
     sendCommand(csPin, 7);
 
@@ -1768,7 +1768,7 @@ void displayUpdate()
     lastUpdate = millis();
 
     // =========================================================
-    // DISPLAY 1
+    // 1. KIJELZŐ
     // =========================================================
 
     clearDisplayBuffer();
@@ -1849,7 +1849,7 @@ void displayUpdate()
 
 
     // =========================================================
-    // DISPLAY 2
+    // 2. KIJELZŐ
     // =========================================================
 
     clearDisplayBuffer();

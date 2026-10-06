@@ -1,11 +1,15 @@
+#include "secrets.h"
+
 #pragma once
+
 // --------------------------------
-// Network
+// Hálózati beállítások
 // --------------------------------
 
 // Wi-fi csatlakozási adatok
-#define WIFI_SSID "YOUR_WIFI_SSID"
-#define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
+// secrets.h fájlban definiálva
+//#define WIFI_SSID "YOUR_WIFI_SSID"
+//#define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
 
 // Wi-Fi terminál
 #define TERMINAL_PORT 36987

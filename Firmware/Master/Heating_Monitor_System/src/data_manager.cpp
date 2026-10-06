@@ -50,7 +50,7 @@ bool isStartupActive()
     return startupActive;
 }
 
-// AC jelenlet erzekelok grace time
+// AC-jelenlétérzékelők türelmi ideje
 #define AC_SWITCH_GRACE_TIME 1000
 
 unsigned long acBothActiveStartTime = 0;
@@ -87,7 +87,7 @@ void dataManagerSetup()
 }
 
 // --------------------------------
-// Timestamp frissitese
+// Időbélyeg frissítése
 // --------------------------------
 void updateTimestamp()
 {
@@ -192,7 +192,7 @@ void updateSystemState()
 void updateStartup()
 {
     // --------------------------------
-    // Startup indítása
+    // Rendszerindítás
     // --------------------------------
 
     if (!startupActive && !startupFault)
@@ -288,7 +288,7 @@ void updateStartup()
 
 
     // --------------------------------
-    // Wood flow elérte a 28 °C-ot
+    // A fatüzelésű kazán előremenő hőmérséklete elérte a 28 °C-ot
     // --------------------------------
     if (systemData.woodFlowTemperature >= WOOD_FLOW_HEATING_THRESHOLD &&
     !startupFlowThresholdAbove)
@@ -353,7 +353,7 @@ void updateStartup()
 
 
     // --------------------------------
-    // 15 perces startup timeout
+    // 15 perces indítási időkorlát
     // --------------------------------
 
     if (millis() - startupStartTime >= STARTUP_TIMEOUT)
@@ -417,7 +417,7 @@ void updateAlarmState()
         systemData.alarmReason = ALARM_REASON_WOOD_BOILER_OVERHEAT;
     }
 
-    // Startup hiba
+    // Indítási hiba
     else if (startupFault)
     {
         systemData.alarmState = ALARM_CRITICAL;
@@ -452,7 +452,7 @@ void updateAlarmState()
         systemData.alarmReason = ALARM_REASON_SD_FULL;
     }
 
-    // Startup warning
+    // Indítási figyelmeztetés
     else if (startupWarning)
     {
         systemData.alarmState = ALARM_WARNING;
@@ -477,7 +477,7 @@ void updateAlarmState()
 
 
 // --------------------------------
-// Rendszerállapot logolása string formátumban
+// Rendszerállapot naplózási szövege
 // --------------------------------
 
 const char* systemStateToLogString(SystemState state)
@@ -508,7 +508,7 @@ const char* systemStateToLogString(SystemState state)
 }
 
 // --------------------------------
-// Fűtési ág állapot logolása string formátumban
+// Fűtési ág állapotának naplózási szövege
 // --------------------------------
 
 const char* heatingBranchToLogString(HeatingBranch branch)
@@ -533,7 +533,7 @@ const char* heatingBranchToLogString(HeatingBranch branch)
 }
 
 // --------------------------------
-// Riasztasi allapot logolása string formátumban
+// Riasztási állapot naplózási szövege
 // --------------------------------
 const char* alarmStateToLogString(AlarmState state)
 {
@@ -724,7 +724,7 @@ OverheatState getOverheatState()
 }
 
 // --------------------------------
-// Fa kazán túlmelegedés állapot stringgé alakítása
+// A fakazán túlmelegedési állapotának szöveges megjelenítése
 // --------------------------------
 const char* overheatStateToLogString(OverheatState state)
 {

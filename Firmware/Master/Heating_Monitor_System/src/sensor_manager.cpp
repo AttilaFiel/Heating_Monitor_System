@@ -157,7 +157,7 @@ void updateDS18B20()
     float temperature;
 
 
-    // GAS FLOW
+    // Gáz előremenő
 
     temperature =
         readSensorTemperature(GAS_FLOW_SENSOR);
@@ -168,7 +168,7 @@ void updateDS18B20()
     }
 
 
-    // GAS RETURN
+    // Gáz visszatérő
 
     temperature =
         readSensorTemperature(GAS_RETURN_SENSOR);
@@ -179,7 +179,7 @@ void updateDS18B20()
     }
 
 
-    // WOOD FLOW
+    // Fatüzelésű kazán előremenő
 
     temperature =
         readSensorTemperature(WOOD_FLOW_SENSOR);
@@ -190,7 +190,7 @@ void updateDS18B20()
     }
 
 
-    // WOOD RETURN
+    // Fatüzelésű kazán visszatérő
 
     temperature =
         readSensorTemperature(WOOD_RETURN_SENSOR);
@@ -201,7 +201,7 @@ void updateDS18B20()
     }
 
 
-    // WOOD BOILER
+    // Fatüzelésű kazán
 
     temperature =
         readSensorTemperature(WOOD_BOILER_SENSOR);

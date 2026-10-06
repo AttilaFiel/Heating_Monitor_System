@@ -56,7 +56,7 @@ void setup()
     // ESP32 rendszer indítása
     esp32SystemSetup();
 
-    // Display indítása
+    // Kijelző indítása
     displaySetup();
 
     // Buzzer indítása
@@ -174,7 +174,7 @@ void loop()
     
     //dataManagerTest();
 
-    // Display frissítése
+    // Kijelző frissítése
     displayUpdate();
 
     watchdogUpdate();
