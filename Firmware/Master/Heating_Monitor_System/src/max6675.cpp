@@ -8,7 +8,7 @@
 
 void max6675Setup()
 {
-    // MAX6675 alapallapotban nincs kivalasztva
+    // MAX6675 alapállapotban nincs kiválasztva
     pinMode(CHIMNEY_TEMPERATURE_CS, OUTPUT);
     digitalWrite(CHIMNEY_TEMPERATURE_CS, HIGH);
 
@@ -17,10 +17,10 @@ void max6675Setup()
 
 float max6675ReadTemperature()
 {
-    // SD kartya biztosan nincs kivalasztva
+    // SD kártya biztosan nincs kiválasztva
     digitalWrite(MICROSD_CS, HIGH);
 
-    // MAX6675 kivalasztasa
+    // MAX6675 kiválasztása
     digitalWrite(CHIMNEY_TEMPERATURE_CS, LOW);
 
     SPI.beginTransaction(
@@ -31,23 +31,23 @@ float max6675ReadTemperature()
         )
     );
 
-    // 16 bit kiolvasasa
+    // 16 bit kiolvasása
     uint16_t rawData = SPI.transfer16(0x0000);
 
     SPI.endTransaction();
 
-    // MAX6675 kikapcsolasa
+    // MAX6675 kikapcsolása
     digitalWrite(CHIMNEY_TEMPERATURE_CS, HIGH);
 
 
-    // Termoelem hiba / szakadas
+    // Termoelem hiba / szakadás
     if (rawData & 0x0004)
     {
         return NAN;
     }
 
 
-    // Homerseklet bitek
+    // Hőmérséklet bitek
     rawData >>= 3;
 
     // Egy bit = 0.25 Celsius
@@ -64,11 +64,11 @@ void max6675Test()
     logMessage("================================");
 
 
-    // SD kartya biztosan nincs kivalasztva
+    // SD kártya biztosan nincs kiválasztva
     digitalWrite(MICROSD_CS, HIGH);
 
 
-    // MAX6675 kivalasztasa
+    // MAX6675 kiválasztása
     digitalWrite(CHIMNEY_TEMPERATURE_CS, LOW);
 
 
@@ -81,21 +81,21 @@ void max6675Test()
     );
 
 
-    // 16 bit kiolvasasa
+    // 16 bit kiolvasása
     uint16_t rawData = SPI.transfer16(0x0000);
 
 
     SPI.endTransaction();
 
 
-    // MAX6675 kikapcsolasa a buszrol
+    // MAX6675 kikapcsolása a buszról
     digitalWrite(CHIMNEY_TEMPERATURE_CS, HIGH);
 
 
     char message[100];
 
 
-    // Nyers adat kiirasa
+    // Nyers adat kiírása
     snprintf(
         message,
         sizeof(message),
@@ -119,7 +119,7 @@ void max6675Test()
     }
 
 
-    // Az also 3 bit nem homerseklet adat
+    // Az alsó 3 bit nem hőmérséklet adat
     rawData >>= 3;
 
 

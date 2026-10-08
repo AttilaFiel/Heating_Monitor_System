@@ -31,7 +31,7 @@ uint8_t chimneySensorErrorCount = 0;
 uint8_t boilerRoomSensorErrorCount = 0;
 
 // --------------------------------
-// DS18B20 egyedi cimek
+// DS18B20 egyedi címek
 // --------------------------------
 DeviceAddress gasFlowAddress  =
 {
@@ -60,7 +60,7 @@ DeviceAddress woodBoilerAddress =
 
 
 // --------------------------------
-// DS18B20 szenzorok ellenorzese
+// DS18B20 szenzorok ellenőrzése
 // --------------------------------
 bool checkDS18B20Sensors()
 {
@@ -126,7 +126,7 @@ bool checkDS18B20Sensors()
 }
 
 // --------------------------------
-// Sensor Manager inicializalasa
+// Sensor Manager inicializálása
 // --------------------------------
 
 void sensorManagerSetup()
@@ -152,18 +152,18 @@ void sensorManagerSetup()
     // DHT11 indítása
     dht11Setup();
 
-    // AC jelenlet erzekelok inditasa
+    // AC jelenlét érzékelők indítása
     acSensorSetup();
 
 
 }
 
 // --------------------------------
-// DS18B20 ertekek frissitese
+// DS18B20 értékek frissítése
 // --------------------------------
 void updateDS18B20()
 {
-    // Meres inditasa az osszes szenzoron
+    // Mérés indítása az összes szenzoron
     ds18b20.requestTemperatures();
 
     float temperature;
@@ -308,7 +308,7 @@ void updateDS18B20()
 }
 
 // --------------------------------
-// MAX6675 ertekek frissitese
+// MAX6675 értékek frissítése
 // --------------------------------
 void updateMAX6675()
 {
@@ -337,7 +337,7 @@ void updateMAX6675()
 }
 
 // --------------------------------
-// AC jelenlet erzekelok frissitese
+// AC jelenlét érzékelők frissítése
 // --------------------------------
 
 void updateACSensors()
@@ -347,11 +347,11 @@ void updateACSensors()
 }
 
 // --------------------------------
-// DHT11 ertekek frissitese
+// DHT11 értékek frissítése
 // --------------------------------
 void updateDHT11()
 {
-    // DHT11 olvasasa 2 masodpercenkent
+    // DHT11 olvasása 2 másodpercenként
     if (millis() - dht11LastRead < 2000)
     {
         return;
@@ -362,7 +362,7 @@ void updateDHT11()
     float temperature;
     float humidity;
 
-    // Sikertelen meres
+    // Sikertelen mérés
     if (!dht11Read(temperature, humidity))
     {
         if (boilerRoomSensorErrorCount < SENSOR_ERROR_THRESHOLD)
@@ -380,17 +380,17 @@ void updateDHT11()
         return;
     }
 
-    // Sikeres meres
+    // Sikeres mérés
     boilerRoomSensorErrorCount = 0;
     systemData.boilerRoomSensorError = false;
 
-    // Ervenyes adatok bekerulnek a kozponti adatstruktúrába
+    // Érvényes adatok bekerülnek a központi adatstruktúrába
     systemData.boilerRoomTemperature = temperature;
     systemData.boilerRoomHumidity = humidity;
 }
 
 // --------------------------------
-// Sensor Manager frissitese
+// Sensor Manager frissítése
 // --------------------------------
 void sensorManagerUpdate()
 {
@@ -400,7 +400,7 @@ void sensorManagerUpdate()
     // MAX6675
     updateMAX6675();
 
-    // AC jelenlet erzekelok
+    // AC jelenlét érzékelők
     updateACSensors();
 
     // DHT11

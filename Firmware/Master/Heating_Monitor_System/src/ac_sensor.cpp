@@ -5,7 +5,7 @@
 #include "ac_sensor.h"
 
 
-// AC jelenlet erzekelok inicializalasa
+// AC jelenlét érzékelők inicializálása
 void acSensorSetup()
 {
     pinMode(GAS_AC_PRESENT, INPUT);
@@ -26,7 +26,7 @@ bool woodAcPresent()
     return digitalRead(WOOD_AC_PRESENT) == LOW;
 }
 
-// AC jelenlet erzekelok tesztje
+// AC jelenlét érzékelők tesztje
 void acSensorTest()
 {
     logMessage("");
@@ -35,7 +35,7 @@ void acSensorTest()
     logMessage("================================");
 
 
-    // Bemenetek kiolvasasa
+    // Bemenetek kiolvasása
     int gasAcState = digitalRead(GAS_AC_PRESENT);
 
     int woodAcState = digitalRead(WOOD_AC_PRESENT);
@@ -44,8 +44,7 @@ void acSensorTest()
     char message[100];
 
 
-    // Gazkazan aramellatas
-
+    // Gázkazán áramellátás
     if (gasAcState == LOW)
     {
         logMessage("GAS_AC_PRESENT: AC JELEN VAN");
@@ -55,8 +54,7 @@ void acSensorTest()
         logMessage("GAS_AC_PRESENT: NINCS AC");
     }
 
-    // Vegyeskazán aramellatas
-
+    // Vegyeskazán áramellátás
     if (woodAcState == LOW)
     {
         logMessage("WOOD_AC_PRESENT: AC JELEN VAN");
@@ -67,8 +65,7 @@ void acSensorTest()
     }
 
 
-    // Nyers ertekek is hasznosak a bekotes ellenorzeshez
-
+    // Nyers értékek is hasznosak a bekötés ellenőrzéshez
     snprintf(
         message,
         sizeof(message),

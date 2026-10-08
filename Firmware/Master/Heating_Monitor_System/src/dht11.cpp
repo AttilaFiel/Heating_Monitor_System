@@ -17,7 +17,7 @@ DHT dht(
 
 
 // --------------------------------
-// Inicializalas
+// Inicializálás
 // --------------------------------
 
 void dht11Setup()
@@ -39,7 +39,7 @@ void dht11Test()
     logMessage("DHT11 TESZT INDUL");
     logMessage("================================");
 
-    // DHT11 inicializalasa
+    // DHT11 inicializálása
     dht.begin();
 
     delay(2000);

@@ -42,7 +42,7 @@
 // DHT11
 #define BOILER_ROOM_TEMPERATURE 26
 
-// MVPDM-1PHS AC JELENLET ERZEKELŐK
+// MVPDM-1PHS AC JELENLÉT ÉRZÉKELŐK
 #define GAS_AC_PRESENT 32
 #define WOOD_AC_PRESENT 33
 
@@ -64,11 +64,11 @@
 
 
 // SSD1306 KIJEZOK
-// Kijelzok kozos vezerlo jelei
+// Kijelzők közös vezérlő jelei
 #define DISPLAY_RESET 16
 #define DISPLAY_DC 17
 
-// Kijelzok Chip Select jelei
+// Kijelzők Chip Select jelei
 #define DISPLAY1_CS 5
 #define DISPLAY2_CS 4
 

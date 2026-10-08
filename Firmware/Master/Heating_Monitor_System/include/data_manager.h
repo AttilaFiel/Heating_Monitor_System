@@ -4,12 +4,12 @@
 
 
 // --------------------------------
-// Data Manager inicializalasa
+// Data Manager inicializálása
 // --------------------------------
 void dataManagerSetup();
 
 // --------------------------------
-// Adatok feldolgozasa
+// Adatok feldolgozása
 // --------------------------------
 void dataManagerUpdate();
 
@@ -19,17 +19,17 @@ void dataManagerUpdate();
 void dataManagerTest();
 
 // --------------------------------
-// Rendszerallapot frissitese
+// Rendszerállapot frissítése
 // --------------------------------
 void updateSystemState();
 
 // --------------------------------
-// Riasztasi allapot frissitese
+// Riasztási állapot frissítése
 // --------------------------------
 void updateAlarmState();
 
 // --------------------------------
-// Rendszerallapot szoveges reprezentacioja
+// Rendszerállapot szöveges reprezentációja
 // --------------------------------
 const char* systemStateToLogString(SystemState state);
 
@@ -39,11 +39,11 @@ const char* systemStateToLogString(SystemState state);
 const char* heatingBranchToLogString(HeatingBranch branch);
 
 // --------------------------------
-// Riasztasi allapot szoveges reprezentacioja
+// Riasztási állapot szöveges reprezentációja
 // --------------------------------
 const char* alarmStateToLogString(AlarmState state);
 
 // --------------------------------
-// Startup allapot lekerdezese
+// Startup állapot lekérdezése
 // --------------------------------
 bool isStartupActive();

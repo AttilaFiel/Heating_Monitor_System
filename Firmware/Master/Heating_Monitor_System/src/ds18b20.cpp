@@ -124,22 +124,22 @@ float readSensorTemperature(const char* sensorAddress)
 {
     DeviceAddress address;
 
-    // Cim atalakitas
+    // Cím átalakítás
     if (!stringToAddress(sensorAddress, address))
     {
         return NAN;
     }
 
-    // Homerseklet kiolvasasa
+    // Hőmérséklet kiolvasása
     float temperature = ds18b20.getTempC(address);
 
-    // Elso olvasas sikeres
+    // Első olvasás sikeres
     if (temperature != DEVICE_DISCONNECTED_C)
     {
         return temperature;
     }
 
-    // Elso olvasas hibas
+    // Első olvasás hibás
     SensorReadStats* stats = nullptr;
 
     if (strcmp(sensorAddress, GAS_FLOW_SENSOR) == 0)
@@ -168,13 +168,13 @@ float readSensorTemperature(const char* sensorAddress)
         stats->firstReadError++;
     }
 
-    // 10 ms varakozas
+    // 10 ms várakozás
     delay(10);
 
-    // Ujraolvasas
+    // Újraolvasás
     temperature = ds18b20.getTempC(address);
 
-    // Ujraolvasas sikeres
+    // Újraolvasás sikeres
     if (temperature != DEVICE_DISCONNECTED_C)
     {
         if (stats != nullptr)
@@ -185,7 +185,7 @@ float readSensorTemperature(const char* sensorAddress)
         return temperature;
     }
 
-    // Mindket olvasas hibas
+    // Mindkét olvasás hibás
     if (stats != nullptr)
     {
         stats->doubleError++;

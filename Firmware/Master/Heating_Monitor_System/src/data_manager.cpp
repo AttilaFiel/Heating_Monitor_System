@@ -57,13 +57,13 @@ bool isStartupActive()
 unsigned long acBothActiveStartTime = 0;
 
 // --------------------------------
-// Data Manager inicializalasa
+// Data Manager inicializálása
 // --------------------------------
 void dataManagerSetup()
 {
     logMessage("Data Manager inicializalva.");
 
-    // Alapallapot
+    // Alapállapot
 
     systemData.gasFlowTemperature = 0.0;
     systemData.gasReturnTemperature = 0.0;
@@ -114,7 +114,7 @@ void updateTimestamp()
 }
 
 // --------------------------------
-// Adatok feldolgozasa
+// Adatok feldolgozása
 // --------------------------------
 void updateActiveBranch()
 {
@@ -907,7 +907,7 @@ void updateOverheatStateLog()
 }
 
 // --------------------------------
-// Adatok frissitese
+// Adatok frissítése
 // --------------------------------
 void dataManagerUpdate()
 {

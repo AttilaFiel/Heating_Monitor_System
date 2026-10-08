@@ -87,7 +87,7 @@ void sdCardTest()
     logMessage("MICROSD TESZT INDUL");
     logMessage("================================");
     
-    // MAX6675 biztosan nincs kivalasztva
+    // MAX6675 biztosan nincs kiválasztva
     digitalWrite(CHIMNEY_TEMPERATURE_CS, HIGH);
 
     // SD kártya inicializálása

@@ -1054,7 +1054,7 @@ void diamondTransition()
          radius += 2)
     {
         // DISPLAY1:
-        // fekete hatteren no a feher rombusz
+        // fekete háttéren nő a fehér rombusz
 
         drawDiamond(
             DISPLAY1_CS,
@@ -1064,7 +1064,7 @@ void diamondTransition()
 
 
         // DISPLAY2:
-        // feher hatteren no a fekete rombusz
+        // fehér háttéren nő a fekete rombusz
 
         drawDiamond(
             DISPLAY2_CS,
@@ -1080,7 +1080,7 @@ void diamondTransition()
     delay(200);
 
 
-    // Visszafele
+    // Visszafelé
 
     for (int radius = maxRadius;
          radius >= 0;
@@ -1308,7 +1308,7 @@ void drawDog(int csPin)
 
 
                 // ========================================
-                // FEJ KONTUR
+                // FEJ KONTÚR
                 // ========================================
 
                 // Felső rész
