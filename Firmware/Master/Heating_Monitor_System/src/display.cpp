@@ -1846,12 +1846,24 @@ void displayUpdate()
     {
         char text[32];
 
-        snprintf(
-            text,
-            sizeof(text),
-            "Előre:%.0f°C",
-            systemData.gasFlowTemperature
-        );
+        if (systemData.gasFlowSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Előre:<%.0f°C>",
+                systemData.gasFlowTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Előre:%.0f°C",
+                systemData.gasFlowTemperature
+            );
+        }
 
         drawText(0, 20, text, 2);
     }
@@ -1859,12 +1871,24 @@ void displayUpdate()
     {
         char text[32];
 
-        snprintf(
-            text,
-            sizeof(text),
-            "Kazán:%.0f°C",
-            systemData.woodBoilerTemperature
-        );
+        if (systemData.woodBoilerSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Kazán:<%.0f°C>",
+                systemData.woodBoilerTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Kazán:%.0f°C",
+                systemData.woodBoilerTemperature
+            );
+        }
 
         drawText(0, 20, text, 2);
     }
@@ -1902,21 +1926,45 @@ void displayUpdate()
     // 1. sor – Előremenő
     if (systemData.activeBranch == HEATING_GAS)
     {
-        snprintf(
-            text,
-            sizeof(text),
-            "Előre:%.1f°C",
-            systemData.gasFlowTemperature
-        );
+        if (systemData.gasFlowSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Előre:<%.1f°C>",
+                systemData.gasFlowTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Előre:%.1f°C",
+                systemData.gasFlowTemperature
+            );
+        }
     }
     else
     {
-        snprintf(
-            text,
-            sizeof(text),
-            "Előre:%.1f°C",
-            systemData.woodFlowTemperature
-        );
+        if (systemData.woodFlowSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Előre:<%.1f°C>",
+                systemData.woodFlowTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Előre:%.1f°C",
+                systemData.woodFlowTemperature
+            );
+        }
     }
 
     drawText(0, 0, text, 1);
@@ -1925,11 +1973,58 @@ void displayUpdate()
     // 2. sor – Visszatérő
     if (systemData.activeBranch == HEATING_GAS)
     {
+        if (systemData.gasReturnSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Vissza:<%.1f°C>",
+                systemData.gasReturnTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Vissza:%.1f°C",
+                systemData.gasReturnTemperature
+            );
+        }
+    }
+    else
+    {
+        if (systemData.woodReturnSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Vissza:<%.1f°C>",
+                systemData.woodReturnTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Vissza:%.1f°C",
+                systemData.woodReturnTemperature
+            );
+        }
+    }
+
+    drawText(0, 10, text, 1);
+
+
+    // 3. sor – Füstgáz
+    if (systemData.chimneySensorError)
+    {
         snprintf(
             text,
             sizeof(text),
-            "Vissza:%.1f°C",
-            systemData.gasReturnTemperature
+            "Füstgáz:<%.1f°C>",
+            systemData.chimneyTemperature
         );
     }
     else
@@ -1937,21 +2032,10 @@ void displayUpdate()
         snprintf(
             text,
             sizeof(text),
-            "Vissza:%.1f°C",
-            systemData.woodReturnTemperature
+            "Füstgáz:%.1f°C",
+            systemData.chimneyTemperature
         );
     }
-
-    drawText(0, 10, text, 1);
-
-
-    // 3. sor – Füstgáz
-    snprintf(
-        text,
-        sizeof(text),
-        "Füstgáz:%.1f°C",
-        systemData.chimneyTemperature
-    );
 
     drawText(0, 20, text, 1);
 
@@ -1980,22 +2064,46 @@ void displayUpdate()
     else
     {
         // 4. sor – Kazánház
-        snprintf(
-            text,
-            sizeof(text),
-            "Kazánház:%.1f°C",
-            systemData.boilerRoomTemperature
-        );
+        if (systemData.boilerRoomSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Kazánház:<%.1f°C>",
+                systemData.boilerRoomTemperature
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Kazánház:%.1f°C",
+                systemData.boilerRoomTemperature
+            );
+        }
 
         drawText(0, 30, text, 1);
 
         // 5. sor – Páratartalom
-        snprintf(
-            text,
-            sizeof(text),
-            "Páratartalom:%.0f%%",
-            systemData.boilerRoomHumidity
-        );
+        if (systemData.boilerRoomSensorError)
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Páratartalom:<%.0f%%>",
+                systemData.boilerRoomHumidity
+            );
+        }
+        else
+        {
+            snprintf(
+                text,
+                sizeof(text),
+                "Páratartalom:%.0f%%",
+                systemData.boilerRoomHumidity
+            );
+        }
 
         drawText(0, 40, text, 1);
     }
