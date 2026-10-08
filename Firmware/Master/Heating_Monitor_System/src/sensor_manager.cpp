@@ -13,11 +13,22 @@
 
 unsigned long dht11LastRead = 0;
 
+// --------------------------------
+// DS18B20 szenzorhiba számlálók
+// --------------------------------
+#define SENSOR_ERROR_THRESHOLD 3
+
+uint8_t gasFlowSensorErrorCount = 0;
+uint8_t gasReturnSensorErrorCount = 0;
+
+uint8_t woodFlowSensorErrorCount = 0;
+uint8_t woodReturnSensorErrorCount = 0;
+
+uint8_t woodBoilerSensorErrorCount = 0;
 
 // --------------------------------
 // DS18B20 egyedi cimek
 // --------------------------------
-
 DeviceAddress gasFlowAddress  =
 {
     0x28, 0x50, 0xD6, 0x89, 0x90, 0x25, 0x06, 0x73
@@ -146,71 +157,148 @@ void sensorManagerSetup()
 // --------------------------------
 // DS18B20 ertekek frissitese
 // --------------------------------
-
 void updateDS18B20()
 {
     // Meres inditasa az osszes szenzoron
-
     ds18b20.requestTemperatures();
-
 
     float temperature;
 
-
     // Gáz előremenő
-
     temperature =
         readSensorTemperature(GAS_FLOW_SENSOR);
 
     if (!isnan(temperature))
     {
+        // Sikeres mérés
+        gasFlowSensorErrorCount = 0;
+        systemData.gasFlowSensorError = false;
+
+        // Utolsó érvényes érték frissítése
         systemData.gasFlowTemperature = temperature;
     }
+    else
+    {
+        // Hibás mérés
+        if (gasFlowSensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            gasFlowSensorErrorCount++;
+        }
 
+        if (gasFlowSensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.gasFlowSensorError = true;
+        }
+    }
 
     // Gáz visszatérő
-
     temperature =
         readSensorTemperature(GAS_RETURN_SENSOR);
 
     if (!isnan(temperature))
     {
+        // Sikeres mérés
+        gasReturnSensorErrorCount = 0;
+        systemData.gasReturnSensorError = false;
+
+        // Utolsó érvényes érték frissítése
         systemData.gasReturnTemperature = temperature;
+    }
+    else
+    {
+        // Hibás mérés
+        if (gasReturnSensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            gasReturnSensorErrorCount++;
+        }
+
+        if (gasReturnSensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.gasReturnSensorError = true;
+        }
     }
 
 
     // Fatüzelésű kazán előremenő
-
     temperature =
         readSensorTemperature(WOOD_FLOW_SENSOR);
 
     if (!isnan(temperature))
     {
+        // Sikeres mérés
+        woodFlowSensorErrorCount = 0;
+        systemData.woodFlowSensorError = false;
+
+        // Utolsó érvényes érték frissítése
         systemData.woodFlowTemperature = temperature;
     }
+    else
+    {
+        // Hibás mérés
+        if (woodFlowSensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            woodFlowSensorErrorCount++;
+        }
 
+        if (woodFlowSensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.woodFlowSensorError = true;
+        }
+    }
 
     // Fatüzelésű kazán visszatérő
-
     temperature =
         readSensorTemperature(WOOD_RETURN_SENSOR);
 
     if (!isnan(temperature))
     {
+        // Sikeres mérés
+        woodReturnSensorErrorCount = 0;
+        systemData.woodReturnSensorError = false;
+
+        // Utolsó érvényes érték frissítése
         systemData.woodReturnTemperature = temperature;
     }
+    else
+    {
+        // Hibás mérés
+        if (woodReturnSensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            woodReturnSensorErrorCount++;
+        }
 
+        if (woodReturnSensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.woodReturnSensorError = true;
+        }
+    }
 
     // Fatüzelésű kazán
-
     temperature =
         readSensorTemperature(WOOD_BOILER_SENSOR);
 
     if (!isnan(temperature))
     {
+        // Sikeres mérés
+        woodBoilerSensorErrorCount = 0;
+        systemData.woodBoilerSensorError = false;
+
+        // Utolsó érvényes érték frissítése
         systemData.woodBoilerTemperature = temperature;
     }
+    else
+    {
+        // Hibás mérés
+        if (woodBoilerSensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            woodBoilerSensorErrorCount++;
+        }
 
+        if (woodBoilerSensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.woodBoilerSensorError = true;
+        }
+    }
 
     updateSensorReadStats();
 }

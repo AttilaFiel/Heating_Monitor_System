@@ -91,11 +91,11 @@ void sdCardTest()
     digitalWrite(CHIMNEY_TEMPERATURE_CS, HIGH);
 
     // SD kártya inicializálása
-    logMessage("SD kartya inicializalasa...");
+    logMessage("SD kártya inicializalasa...");
 
     if (!SD.begin(MICROSD_CS, SPI, 400000))
     {
-        logMessage("MICROSD: HIBA - kartya nem inicializalhato!");
+        logMessage("MICROSD: HIBA - kártya nem inicializálható!");
         return;
     }
 
@@ -107,26 +107,26 @@ void sdCardTest()
 
     if (cardType == CARD_NONE)
     {
-        logMessage("MICROSD: HIBA - nincs kartya!");
+        logMessage("MICROSD: HIBA - nincs kártya!");
         return;
     }
 
     switch (cardType)
     {
         case CARD_MMC:
-            logMessage("Kartya tipus: MMC");
+            logMessage("Kártya típus: MMC");
             break;
 
         case CARD_SD:
-            logMessage("Kartya tipus: SDSC");
+            logMessage("Kártya típus: SDSC");
             break;
 
         case CARD_SDHC:
-            logMessage("Kartya tipus: SDHC");
+            logMessage("Kártya típus: SDHC");
             break;
 
         default:
-            logMessage("Kartya tipus: ISMERETLEN");
+            logMessage("Kártya típus: ISMERETLEN");
             break;
     }
 
@@ -139,7 +139,7 @@ void sdCardTest()
     snprintf(
         message,
         sizeof(message),
-        "Kartya kapacitas: %llu MB",
+        "Kártya kapacitas: %llu MB",
         (unsigned long long)cardSize
     );
 
@@ -155,7 +155,7 @@ void sdCardTest()
     {
         SD.remove(testFileName);
 
-        logMessage("Regi tesztfajl torolve.");
+        logMessage("Regi tesztfájl törölve.");
     }
 
 
@@ -164,13 +164,13 @@ void sdCardTest()
 
 
     // Fájl létrehozása és írás
-    logMessage("Tesztfajl letrehozasa es irasa...");
+    logMessage("Tesztfájl létrehozása es írása...");
 
     File file = SD.open(testFileName, FILE_WRITE);
 
     if (!file)
     {
-        logMessage("HIBA: Tesztfajl nem nyithato meg irasra!");
+        logMessage("HIBA: Tesztfájl nem nyitható meg írásra!");
         return;
     }
 
@@ -178,17 +178,17 @@ void sdCardTest()
 
     file.close();
 
-    logMessage("Adat irasa: OK");
+    logMessage("Adat írása: OK");
 
 
     // Fájl visszaolvasása
-    logMessage("Tesztfajl visszaolvasasa...");
+    logMessage("Tesztfájl visszaolvasása...");
 
     file = SD.open(testFileName, FILE_READ);
 
     if (!file)
     {
-        logMessage("HIBA: Tesztfajl nem nyithato meg olvasasra!");
+        logMessage("HIBA: Tesztfájl nem nyitható meg olvasasra!");
         return;
     }
 
@@ -212,16 +212,16 @@ void sdCardTest()
     // Összehasonlítás
     if (readData == testData)
     {
-        logMessage("IRASI / OLVASASI TESZT: OK");
+        logMessage("ÍRÁSI / OLVASASI TESZT: OK");
     }
     else
     {
-        logMessage("IRASI / OLVASASI TESZT: HIBA!");
+        logMessage("ÍRÁSI / OLVASASI TESZT: HIBA!");
     }
 
 
     logMessage("================================");
-    logMessage("MICROSD TESZT VEGE");
+    logMessage("MICROSD TESZT VÉGE");
     logMessage("================================");
 }
 
@@ -394,7 +394,7 @@ void sdCardUpdate()
 
 void sdCardWriteError(const char* reason)
 {
-    logMessage("SD HIBA: irasi hiba!");
+    logMessage("SD HIBA: írási hiba!");
 
     if (sdWarning != SD_WARNING_WRITE_ERROR)
     {

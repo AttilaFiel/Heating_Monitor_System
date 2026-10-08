@@ -25,8 +25,9 @@ SystemState previousSystemState = SYSTEM_OFF;
 bool systemStateInitialized = false;
 HeatingBranch previousActiveBranch = HEATING_NONE;
 bool activeBranchInitialized = false;
-AlarmState previousAlarmState = ALARM_NONE;
 bool alarmStateInitialized = false;
+AlarmState previousAlarmState = ALARM_NONE;
+AlarmReason previousAlarmReason = ALARM_REASON_NONE;
 bool previousFirePresent = false;
 bool firePresentInitialized = false;
 bool previousGasAcPresent = false;
@@ -75,6 +76,17 @@ void dataManagerSetup()
 
     systemData.boilerRoomTemperature = 0.0;
     systemData.boilerRoomHumidity = 0.0;
+
+    systemData.gasFlowSensorError = false;
+    systemData.gasReturnSensorError = false;
+
+    systemData.woodFlowSensorError = false;
+    systemData.woodReturnSensorError = false;
+
+    systemData.woodBoilerSensorError = false;
+    systemData.chimneySensorError = false;
+
+    systemData.boilerRoomSensorError = false;
 
     systemData.gasAcPresent = false;
     systemData.woodAcPresent = false;
@@ -409,6 +421,51 @@ void updateAlarmState()
         systemData.alarmReason = ALARM_REASON_FIRE_WITHOUT_CIRCULATOR;
     }
 
+    // --------------------------------
+    // Szenzorhiba
+    // --------------------------------
+    else if (systemData.gasFlowSensorError)
+    {
+        systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_GAS_FLOW_SENSOR;
+    }
+
+    else if (systemData.gasReturnSensorError)
+    {
+        systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_GAS_RETURN_SENSOR;
+    }
+
+    else if (systemData.woodFlowSensorError)
+    {
+        systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_WOOD_FLOW_SENSOR;
+    }
+
+    else if (systemData.woodReturnSensorError)
+    {
+        systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_WOOD_RETURN_SENSOR;
+    }
+
+    else if (systemData.woodBoilerSensorError)
+    {
+        systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_WOOD_BOILER_SENSOR;
+    }
+
+    else if (systemData.chimneySensorError)
+    {
+        systemData.alarmState = ALARM_CRITICAL;
+        systemData.alarmReason = ALARM_REASON_CHIMNEY_SENSOR;
+    }
+
+    else if (systemData.boilerRoomSensorError)
+    {
+        systemData.alarmState = ALARM_WARNING;
+        systemData.alarmReason = ALARM_REASON_BOILER_ROOM_SENSOR;
+    }
+
     // Fa kazán túlmelegedés
     else if (systemData.woodBoilerTemperature >=
              WOOD_BOILER_ALARM_TEMPERATURE)
@@ -553,6 +610,69 @@ const char* alarmStateToLogString(AlarmState state)
     }
 }
 
+const char* alarmReasonToLogString(AlarmReason reason)
+{
+    switch (reason)
+    {
+        case ALARM_REASON_NONE:
+            return "NONE";
+
+        case ALARM_REASON_BOTH_BRANCHES:
+            return "BOTH_BRANCHES";
+
+        case ALARM_REASON_FIRE_WITHOUT_CIRCULATOR:
+            return "FIRE_WITHOUT_CIRCULATOR";
+
+        case ALARM_REASON_WOOD_BOILER_OVERHEAT:
+            return "WOOD_BOILER_OVERHEAT";
+
+        case ALARM_REASON_STARTUP_FAULT:
+            return "STARTUP_FAULT";
+
+        case ALARM_REASON_RTC_BATTERY:
+            return "RTC_BATTERY";
+
+        case ALARM_REASON_RTC_OSCILLATOR_STOP:
+            return "RTC_OSCILLATOR_STOP";
+
+        case ALARM_REASON_SD_WARNING:
+            return "SD_WARNING";
+
+        case ALARM_REASON_SD_FULL:
+            return "SD_FULL";
+
+        case ALARM_REASON_STARTUP_WARNING:
+            return "STARTUP_WARNING";
+
+        case ALARM_REASON_WOOD_BOILER_WARNING:
+            return "WOOD_BOILER_WARNING";
+
+        case ALARM_REASON_GAS_FLOW_SENSOR:
+            return "GAS_FLOW_SENSOR";
+
+        case ALARM_REASON_GAS_RETURN_SENSOR:
+            return "GAS_RETURN_SENSOR";
+
+        case ALARM_REASON_WOOD_FLOW_SENSOR:
+            return "WOOD_FLOW_SENSOR";
+
+        case ALARM_REASON_WOOD_RETURN_SENSOR:
+            return "WOOD_RETURN_SENSOR";
+
+        case ALARM_REASON_WOOD_BOILER_SENSOR:
+            return "WOOD_BOILER_SENSOR";
+
+        case ALARM_REASON_CHIMNEY_SENSOR:
+            return "CHIMNEY_SENSOR";
+
+        case ALARM_REASON_BOILER_ROOM_SENSOR:
+            return "BOILER_ROOM_SENSOR";
+
+        default:
+            return "UNKNOWN";
+    }
+}
+
 // --------------------------------
 // Rendszerállapot logolása
 // --------------------------------
@@ -611,10 +731,25 @@ void updateAlarmStateLog()
     if (!alarmStateInitialized)
     {
         previousAlarmState = systemData.alarmState;
+        previousAlarmReason = systemData.alarmReason;
         alarmStateInitialized = true;
         return;
     }
 
+    // Riasztási ok változott
+    if (systemData.alarmReason != previousAlarmReason)
+    {
+        logEvent(
+            "ALARM",
+            "REASON",
+            alarmReasonToLogString(previousAlarmReason),
+            alarmReasonToLogString(systemData.alarmReason)
+        );
+
+        previousAlarmReason = systemData.alarmReason;
+    }
+
+    // Riasztási szint változott
     if (systemData.alarmState != previousAlarmState)
     {
         logEvent(
