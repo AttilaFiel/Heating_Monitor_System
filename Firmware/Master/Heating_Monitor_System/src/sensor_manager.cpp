@@ -14,7 +14,7 @@
 unsigned long dht11LastRead = 0;
 
 // --------------------------------
-// DS18B20 szenzorhiba számlálók
+// Szenzorhiba számlálók
 // --------------------------------
 #define SENSOR_ERROR_THRESHOLD 3
 
@@ -25,6 +25,10 @@ uint8_t woodFlowSensorErrorCount = 0;
 uint8_t woodReturnSensorErrorCount = 0;
 
 uint8_t woodBoilerSensorErrorCount = 0;
+
+uint8_t chimneySensorErrorCount = 0;
+
+uint8_t boilerRoomSensorErrorCount = 0;
 
 // --------------------------------
 // DS18B20 egyedi cimek
@@ -69,7 +73,7 @@ bool checkDS18B20Sensors()
     }
     else
     {
-        logMessage("GAS_FLOW_SENSOR: HIBA - nem talalhato!");
+        logMessage("GAS_FLOW_SENSOR: HIBA - nem talalható!");
         allOk = false;
     }
 
@@ -80,7 +84,7 @@ bool checkDS18B20Sensors()
     }
     else
     {
-        logMessage("GAS_RETURN_SENSOR: HIBA - nem talalhato!");
+        logMessage("GAS_RETURN_SENSOR: HIBA - nem talalható!");
         allOk = false;
     }
 
@@ -91,7 +95,7 @@ bool checkDS18B20Sensors()
     }
     else
     {
-        logMessage("WOOD_FLOW_SENSOR: HIBA - nem talalhato!");
+        logMessage("WOOD_FLOW_SENSOR: HIBA - nem talalható!");
         allOk = false;
     }
 
@@ -102,7 +106,7 @@ bool checkDS18B20Sensors()
     }
     else
     {
-        logMessage("WOOD_RETURN_SENSOR: HIBA - nem talalhato!");
+        logMessage("WOOD_RETURN_SENSOR: HIBA - nem talalható!");
         allOk = false;
     }
 
@@ -113,7 +117,7 @@ bool checkDS18B20Sensors()
     }
     else
     {
-        logMessage("WOOD_BOILER_SENSOR: HIBA - nem talalhato!");
+        logMessage("WOOD_BOILER_SENSOR: HIBA - nem talalható!");
         allOk = false;
     }
 
@@ -127,7 +131,7 @@ bool checkDS18B20Sensors()
 
 void sensorManagerSetup()
 {
-    logMessage("Sensor Manager inicializalasa...");
+    logMessage("Sensor Manager inicializálása...");
 
     // MAX6675 indítása
     max6675Setup();
@@ -142,7 +146,7 @@ void sensorManagerSetup()
     }
     else
     {
-        logMessage("DS18B20: HIBA - legalabb egy szenzor hianyzik!");
+        logMessage("DS18B20: HIBA - legalább egy szenzor hiányzik!");
     }
 
     // DHT11 indítása
@@ -310,14 +314,26 @@ void updateMAX6675()
 {
     float temperature = max6675ReadTemperature();
 
-    if (isnan(temperature))
+    if (!isnan(temperature))
     {
-        logMessage("MAX6675: TERMOELEM HIBA / SZAKADAS!");
-
-        return;
+        chimneySensorErrorCount = 0;
+        systemData.chimneySensorError = false;
+        systemData.chimneyTemperature = temperature;
     }
+    else
+    {
+        if (chimneySensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            chimneySensorErrorCount++;
+        }
 
-    systemData.chimneyTemperature = temperature;
+        if (chimneySensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.chimneySensorError = true;
+        }
+
+        logMessage("MAX6675: TERMOELEM HIBA / SZAKADÁS!");
+    }
 }
 
 // --------------------------------
@@ -343,16 +359,30 @@ void updateDHT11()
 
     dht11LastRead = millis();
 
-
     float temperature;
     float humidity;
-
 
     // Sikertelen meres
     if (!dht11Read(temperature, humidity))
     {
+        if (boilerRoomSensorErrorCount < SENSOR_ERROR_THRESHOLD)
+        {
+            boilerRoomSensorErrorCount++;
+        }
+
+        if (boilerRoomSensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        {
+            systemData.boilerRoomSensorError = true;
+        }
+
+        logMessage("DHT11: OLVASáSI HIBA!");
+
         return;
     }
+
+    // Sikeres meres
+    boilerRoomSensorErrorCount = 0;
+    systemData.boilerRoomSensorError = false;
 
     // Ervenyes adatok bekerulnek a kozponti adatstruktúrába
     systemData.boilerRoomTemperature = temperature;
@@ -362,7 +392,6 @@ void updateDHT11()
 // --------------------------------
 // Sensor Manager frissitese
 // --------------------------------
-
 void sensorManagerUpdate()
 {
     // DS18B20
