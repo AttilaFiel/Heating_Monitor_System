@@ -1709,6 +1709,27 @@ const char* alarmReasonRawToString(AlarmReason reason)
         case ALARM_REASON_WOOD_BOILER_WARNING:
             return "WOOD_BOILER_WARNING";
 
+        case ALARM_REASON_GAS_FLOW_SENSOR:
+            return "GAS_FLOW_SENSOR";
+
+        case ALARM_REASON_GAS_RETURN_SENSOR:
+            return "GAS_RETURN_SENSOR";
+
+        case ALARM_REASON_WOOD_FLOW_SENSOR:
+            return "WOOD_FLOW_SENSOR";
+
+        case ALARM_REASON_WOOD_RETURN_SENSOR:
+            return "WOOD_RETURN_SENSOR";
+
+        case ALARM_REASON_WOOD_BOILER_SENSOR:
+            return "WOOD_BOILER_SENSOR";
+
+        case ALARM_REASON_CHIMNEY_SENSOR:
+            return "CHIMNEY_SENSOR";
+
+        case ALARM_REASON_BOILER_ROOM_SENSOR:
+            return "BOILER_ROOM_SENSOR";
+
         default:
             return "ALARM_REASON_UNKNOWN";
     }
@@ -1725,7 +1746,7 @@ const char* alarmReasonToString(AlarmReason reason)
             return "Gáz+fa ág egyszerre";
 
         case ALARM_REASON_FIRE_WITHOUT_CIRCULATOR:
-            return "Tűz!, nincs keringető";
+            return "Tűz! Nincs keringető!";
 
         case ALARM_REASON_WOOD_BOILER_OVERHEAT:
             return "Kazán túlmelegedés";
@@ -1750,6 +1771,27 @@ const char* alarmReasonToString(AlarmReason reason)
 
         case ALARM_REASON_WOOD_BOILER_WARNING:
             return "Kazán hő magas";
+
+        case ALARM_REASON_GAS_FLOW_SENSOR:
+            return "Gáz előremenő szenzor";
+
+        case ALARM_REASON_GAS_RETURN_SENSOR:
+            return "Gáz visszat. szenzor";
+
+        case ALARM_REASON_WOOD_FLOW_SENSOR:
+            return "Fa előremenő szenzor";
+
+        case ALARM_REASON_WOOD_RETURN_SENSOR:
+            return "Fa visszatérő szenzor";
+
+        case ALARM_REASON_WOOD_BOILER_SENSOR:
+            return "Fa kazán szenzor hiba";
+
+        case ALARM_REASON_CHIMNEY_SENSOR:
+            return "Füstgáz szenzor hiba";
+
+        case ALARM_REASON_BOILER_ROOM_SENSOR:
+            return "Kazánház szenzor hiba";
 
         default:
             return "Ismeretlen";
