@@ -19,6 +19,7 @@
 #include "esp32_system.h"
 
 #include "alarm_priority_test.h"
+#include "ac_presence_test.h"
 
 bool i2cScanned = false;
 bool rtcTested = false;
@@ -89,6 +90,9 @@ void setup()
 
     // Alarm Priority Test indítása
     alarmPriorityTestSetup();
+
+    // AC Presence Test indítása
+    acPresenceTestSetup();
 }
 
 
@@ -167,7 +171,9 @@ void loop()
 
     sensorManagerUpdate();
 
+    // Tesztelő függvények frissítése
     alarmPriorityTestUpdate();
+    acPresenceTestUpdate();
     
     dataManagerUpdate();
     

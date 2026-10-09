@@ -94,11 +94,20 @@
 
 
 // =========================================================
-// RIASZTÁSI PRIORITÁS TESZT
+// TESZT BEÁLLÍTÁSOK
 // =========================================================
 
+// RIASZTÁSI PRIORITÁS TESZT
 // Teszt engedélyezése
 #define ALARM_PRIORITY_TEST_ENABLED false
 
 // Egy tesztlépés 30 másodperc
 #define ALARM_TEST_STEP_TIME 30000UL
+
+
+// AC JELENLÉT TESZT
+// Teszt engedélyezése
+#define AC_PRESENCE_TEST_ENABLED false
+
+// Egy tesztlépés 30 másodperc
+#define AC_TEST_STEP_TIME 30000UL
