@@ -20,6 +20,7 @@
 
 #include "alarm_priority_test.h"
 #include "ac_presence_test.h"
+#include "boiler_overheat_test.h"
 
 bool i2cScanned = false;
 bool rtcTested = false;
@@ -88,11 +89,15 @@ void setup()
     // Watchdog indítása
     watchdogSetup();
 
+    // Tesztelő függvények indítása
     // Alarm Priority Test indítása
     alarmPriorityTestSetup();
 
     // AC Presence Test indítása
     acPresenceTestSetup();
+
+    // Boiler Overheat Test indítása
+    boilerOverheatTestSetup();
 }
 
 
@@ -174,6 +179,7 @@ void loop()
     // Tesztelő függvények frissítése
     alarmPriorityTestUpdate();
     acPresenceTestUpdate();
+    boilerOverheatTestUpdate();
     
     dataManagerUpdate();
     
