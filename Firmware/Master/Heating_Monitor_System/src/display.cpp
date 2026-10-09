@@ -1760,7 +1760,7 @@ const char* alarmReasonToString(AlarmReason reason)
             return "RTC elem hiba";
 
         case ALARM_REASON_RTC_OSCILLATOR_STOP:
-            return "RTC oscillator stop";
+            return "RTC oscillátor hiba";
 
         case ALARM_REASON_SD_WARNING:
             return "SD kártya eltávolítva";

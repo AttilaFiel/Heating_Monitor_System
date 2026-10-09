@@ -198,6 +198,9 @@ void networkSetup()
         html += "<tr><td>Riasztás</td>"
                 "<td id=\"alarmState\">-</td></tr>";
 
+        html += "<tr><td>Riasztás oka</td>"
+            "<td id=\"alarmReason\">-</td></tr>";
+
         html += "<tr><td>Tűz</td>"
                 "<td id=\"firePresent\">-</td></tr>";
 
@@ -274,6 +277,7 @@ void networkSetup()
         html += "document.getElementById('systemState').textContent=data.systemState;";
         html += "document.getElementById('activeBranch').textContent=data.activeBranch;";
         html += "document.getElementById('alarmState').textContent=data.alarmState;";
+        html += "document.getElementById('alarmReason').textContent=data.alarmReason;";
         html += "document.getElementById('firePresent').textContent=data.firePresent;";
         html += "document.getElementById('gasAcPresent').textContent=data.gasAcPresent;";
         html += "document.getElementById('woodAcPresent').textContent=data.woodAcPresent;";
@@ -387,6 +391,89 @@ void networkSetup()
 
             case ALARM_CRITICAL:
                 json += "Kritikus";
+                break;
+
+            default:
+                json += "Ismeretlen";
+                break;
+        }
+
+        json += "\",";
+
+        json += "\"alarmReason\":\"";
+
+        switch (systemData.alarmReason)
+        {
+            case ALARM_REASON_NONE:
+                json += "Nincs";
+                break;
+
+            case ALARM_REASON_BOTH_BRANCHES:
+                json += "Gáz+fa ág egyszerre";
+                break;
+
+            case ALARM_REASON_FIRE_WITHOUT_CIRCULATOR:
+                json += "Tűz! Nincs keringető!";
+                break;
+
+            case ALARM_REASON_WOOD_BOILER_OVERHEAT:
+                json += "Kazán túlmelegedés";
+                break;
+
+            case ALARM_REASON_STARTUP_FAULT:
+                json += "Indítás sikertelen";
+                break;
+
+            case ALARM_REASON_RTC_BATTERY:
+                json += "RTC elem hiba";
+                break;
+
+            case ALARM_REASON_RTC_OSCILLATOR_STOP:
+                json += "RTC oszcillátor hiba";
+                break;
+
+            case ALARM_REASON_SD_WARNING:
+                json += "SD kártya eltávolítva";
+                break;
+
+            case ALARM_REASON_SD_FULL:
+                json += "SD kártya megtelt";
+                break;
+
+            case ALARM_REASON_STARTUP_WARNING:
+                json += "Indítás megszakadt";
+                break;
+
+            case ALARM_REASON_WOOD_BOILER_WARNING:
+                json += "Kazán hő magas";
+                break;
+
+            case ALARM_REASON_GAS_FLOW_SENSOR:
+                json += "Gáz előremenő szenzor";
+                break;
+
+            case ALARM_REASON_GAS_RETURN_SENSOR:
+                json += "Gáz visszat. szenzor";
+                break;
+
+            case ALARM_REASON_WOOD_FLOW_SENSOR:
+                json += "Fa előremenő szenzor";
+                break;
+
+            case ALARM_REASON_WOOD_RETURN_SENSOR:
+                json += "Fa visszatérő szenzor";
+                break;
+
+            case ALARM_REASON_WOOD_BOILER_SENSOR:
+                json += "Fa kazán szenzor hiba";
+                break;
+
+            case ALARM_REASON_CHIMNEY_SENSOR:
+                json += "Füstgáz szenzor hiba";
+                break;
+
+            case ALARM_REASON_BOILER_ROOM_SENSOR:
+                json += "Kazánház szenzor hiba";
                 break;
 
             default:
