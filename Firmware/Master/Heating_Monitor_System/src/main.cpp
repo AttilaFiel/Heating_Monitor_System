@@ -18,6 +18,8 @@
 #include "watchdog.h"
 #include "esp32_system.h"
 
+#include "alarm_priority_test.h"
+
 bool i2cScanned = false;
 bool rtcTested = false;
 bool sdCardTested = false;
@@ -82,7 +84,11 @@ void setup()
     // Induló színteszt
     startupTest();
     
+    // Watchdog indítása
     watchdogSetup();
+
+    // Alarm Priority Test indítása
+    alarmPriorityTestSetup();
 }
 
 
@@ -160,6 +166,9 @@ void loop()
     }
 
     sensorManagerUpdate();
+
+    alarmPriorityTestUpdate();
+    
     dataManagerUpdate();
     
     sdCardUpdate();

@@ -91,3 +91,14 @@
 
 #define STARTUP_TIMEOUT                 900000UL   // 15 perc
 #define WOOD_AC_SWITCH_TIMEOUT          120000UL   // 2 perc
+
+
+// =========================================================
+// RIASZTÁSI PRIORITÁS TESZT
+// =========================================================
+
+// Teszt engedélyezése
+#define ALARM_PRIORITY_TEST_ENABLED false
+
+// Egy tesztlépés 30 másodperc
+#define ALARM_TEST_STEP_TIME 30000UL
