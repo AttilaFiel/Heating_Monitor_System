@@ -36,14 +36,17 @@ struct tm ntpTime;
 
 // Log üzenetek kiírása a Serial Monitorra
 // és a Wi-Fi terminálra
+
 void logMessage(const char* message)
 {
-    Serial.println(message);
+    #if LOG_MESSAGE_ENABLED
+        Serial.println(message);
 
-    if (terminalClient && terminalClient.connected())
-    {
-        terminalClient.println(message);
-    }
+        if (terminalClient && terminalClient.connected())
+        {
+            terminalClient.println(message);
+        }
+    #endif
 }
 
 void appendDirectoryToHtml(

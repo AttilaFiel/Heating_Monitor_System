@@ -310,31 +310,45 @@ void updateDS18B20()
 // --------------------------------
 // MAX6675 értékek frissítése
 // --------------------------------
+
 void updateMAX6675()
 {
     float temperature = max6675ReadTemperature();
 
     if (!isnan(temperature))
     {
+        // Sikeres mérés
         chimneySensorErrorCount = 0;
+
+        // Csak akkor jelezzük a helyreállást,
+        // ha előzőleg hibás állapotban volt a szenzor.
+        if (systemData.chimneySensorError)
+        {
+            logMessage("MAX6675: A szenzor helyreallt.");
+        }
+
         systemData.chimneySensorError = false;
         systemData.chimneyTemperature = temperature;
     }
     else
     {
+        // Hibás mérés: a számláló ne lépje túl a küszöböt.
         if (chimneySensorErrorCount < SENSOR_ERROR_THRESHOLD)
         {
             chimneySensorErrorCount++;
         }
 
-        if (chimneySensorErrorCount >= SENSOR_ERROR_THRESHOLD)
+        // Csak a hibás állapotba való átmenetkor naplózunk.
+        if (chimneySensorErrorCount >= SENSOR_ERROR_THRESHOLD &&
+            !systemData.chimneySensorError)
         {
             systemData.chimneySensorError = true;
-        }
 
-        logMessage("MAX6675: TERMOELEM HIBA / SZAKADÁS!");
+            logMessage("MAX6675: TERMOELEM HIBA / SZAKADÁS!");
+        }
     }
 }
+
 
 // --------------------------------
 // AC jelenlét érzékelők frissítése

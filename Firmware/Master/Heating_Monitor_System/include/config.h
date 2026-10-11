@@ -94,9 +94,9 @@
 #define WOOD_AC_SWITCH_TIMEOUT          120000UL   // 2 perc
 
 
-// =========================================================
+// ----------------------------------------
 // TESZT BEÁLLÍTÁSOK
-// =========================================================
+// ----------------------------------------
 
 // Riasztási prioritás teszt
 #define ALARM_PRIORITY_TEST_ENABLED false
@@ -109,3 +109,11 @@
 // Kazán túlmelegedés teszt
 #define BOILER_OVERHEAT_TEST_ENABLED false
 #define BOILER_TEST_STEP_TIME 30000UL
+
+// ----------------------------------------
+// Terminál naplózás
+// ----------------------------------------
+
+// true:  a logMessage() üzenetei megjelennek
+// false: a logMessage() nem ír a terminálokra
+#define LOG_MESSAGE_ENABLED false
