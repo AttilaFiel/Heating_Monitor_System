@@ -55,25 +55,27 @@ void buzzerUpdate()
         duration = BUZZER_CRITICAL_DURATION;
     }
 
-
-    if (!buzzerActive)
+    if (BUZZER_ENABLED)
     {
-        if (now - buzzerStartTime >= interval)
+        if (!buzzerActive)
         {
-            digitalWrite(BUZZER, HIGH);
+            if (now - buzzerStartTime >= interval)
+            {
+                digitalWrite(BUZZER, HIGH);
 
-            buzzerActive = true;
-            buzzerStartTime = now;
+                buzzerActive = true;
+                buzzerStartTime = now;
+            }
         }
-    }
-    else
-    {
-        if (now - buzzerStartTime >= duration)
+        else
         {
-            digitalWrite(BUZZER, LOW);
+            if (now - buzzerStartTime >= duration)
+            {
+                digitalWrite(BUZZER, LOW);
 
-            buzzerActive = false;
-            buzzerStartTime = now;
+                buzzerActive = false;
+                buzzerStartTime = now;
+            }
         }
     }
 }

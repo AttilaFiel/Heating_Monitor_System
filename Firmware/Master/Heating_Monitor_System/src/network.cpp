@@ -12,6 +12,7 @@
 #include "sd_card.h"
 #include "watchdog.h"
 #include "system_data.h"
+#include "status_api.h"
 
 WiFiServer terminalServer(TERMINAL_PORT);
 WebServer webServer(80);
@@ -311,246 +312,32 @@ void networkSetup()
         );
     });
 
+    // A régi HMS LOG végpont válaszformátumát megőrizzük.
     webServer.on("/status", []()
     {
-        String json = "{";
-
-        json += "\"systemState\":\"";
-
-        switch (systemData.systemState)
-        {
-            case SYSTEM_OFF:
-                json += "Üzemen kívül";
-                break;
-
-            case SYSTEM_GAS:
-                json += "Gáz";
-                break;
-
-            case SYSTEM_WOOD:
-                json += "Fa";
-                break;
-
-            case SYSTEM_FIRE_WITHOUT_CIRCULATOR:
-                json += "Tűz keringető nélkül";
-                break;
-
-            case SYSTEM_STARTUP:
-                json += "Indítás";
-                break;
-
-            case SYSTEM_FAULT:
-                json += "Hiba";
-                break;
-
-            default:
-                json += "Ismeretlen";
-                break;
-        }
-
-        json += "\",";
-
-        json += "\"activeBranch\":\"";
-
-        switch (systemData.activeBranch)
-        {
-            case HEATING_NONE:
-                json += "Nincs";
-                break;
-
-            case HEATING_GAS:
-                json += "Gáz";
-                break;
-
-            case HEATING_WOOD:
-                json += "Fa";
-                break;
-
-            case HEATING_ERROR:
-                json += "Hiba";
-                break;
-
-            default:
-                json += "Ismeretlen";
-                break;
-        }
-
-        json += "\",";
-
-        json += "\"alarmState\":\"";
-
-        switch (systemData.alarmState)
-        {
-            case ALARM_NONE:
-                json += "Nincs";
-                break;
-
-            case ALARM_WARNING:
-                json += "Figyelmeztetés";
-                break;
-
-            case ALARM_CRITICAL:
-                json += "Kritikus";
-                break;
-
-            default:
-                json += "Ismeretlen";
-                break;
-        }
-
-        json += "\",";
-
-        json += "\"alarmReason\":\"";
-
-        switch (systemData.alarmReason)
-        {
-            case ALARM_REASON_NONE:
-                json += "Nincs";
-                break;
-
-            case ALARM_REASON_BOTH_BRANCHES:
-                json += "Gáz+fa ág egyszerre";
-                break;
-
-            case ALARM_REASON_FIRE_WITHOUT_CIRCULATOR:
-                json += "Tűz! Nincs keringető!";
-                break;
-
-            case ALARM_REASON_WOOD_BOILER_OVERHEAT:
-                json += "Kazán túlmelegedés";
-                break;
-
-            case ALARM_REASON_STARTUP_FAULT:
-                json += "Indítás sikertelen";
-                break;
-
-            case ALARM_REASON_RTC_BATTERY:
-                json += "RTC elem hiba";
-                break;
-
-            case ALARM_REASON_RTC_OSCILLATOR_STOP:
-                json += "RTC oszcillátor hiba";
-                break;
-
-            case ALARM_REASON_SD_WARNING:
-                json += "SD kártya eltávolítva";
-                break;
-
-            case ALARM_REASON_SD_FULL:
-                json += "SD kártya megtelt";
-                break;
-
-            case ALARM_REASON_STARTUP_WARNING:
-                json += "Indítás megszakadt";
-                break;
-
-            case ALARM_REASON_WOOD_BOILER_WARNING:
-                json += "Kazán hő magas";
-                break;
-
-            case ALARM_REASON_GAS_FLOW_SENSOR:
-                json += "Gáz előremenő szenzor";
-                break;
-
-            case ALARM_REASON_GAS_RETURN_SENSOR:
-                json += "Gáz visszat. szenzor";
-                break;
-
-            case ALARM_REASON_WOOD_FLOW_SENSOR:
-                json += "Fa előremenő szenzor";
-                break;
-
-            case ALARM_REASON_WOOD_RETURN_SENSOR:
-                json += "Fa visszatérő szenzor";
-                break;
-
-            case ALARM_REASON_WOOD_BOILER_SENSOR:
-                json += "Fa kazán szenzor hiba";
-                break;
-
-            case ALARM_REASON_CHIMNEY_SENSOR:
-                json += "Füstgáz szenzor hiba";
-                break;
-
-            case ALARM_REASON_BOILER_ROOM_SENSOR:
-                json += "Kazánház szenzor hiba";
-                break;
-
-            default:
-                json += "Ismeretlen";
-                break;
-        }
-
-        json += "\",";
-
-        json += "\"firePresent\":\"";
-        json += systemData.firePresent ? "IGEN" : "NEM";
-        json += "\",";
-
-        json += "\"gasAcPresent\":\"";
-        json += systemData.gasAcPresent ? "BE" : "KI";
-        json += "\",";
-
-        json += "\"woodAcPresent\":\"";
-        json += systemData.woodAcPresent ? "BE" : "KI";
-        json += "\",";
-
-        json += "\"gasFlowTemperature\":";
-        json += String(systemData.gasFlowTemperature, 1);
-        json += ",";
-
-        json += "\"gasReturnTemperature\":";
-        json += String(systemData.gasReturnTemperature, 1);
-        json += ",";
-
-        json += "\"woodFlowTemperature\":";
-        json += String(systemData.woodFlowTemperature, 1);
-        json += ",";
-
-        json += "\"woodReturnTemperature\":";
-        json += String(systemData.woodReturnTemperature, 1);
-        json += ",";
-
-        json += "\"woodBoilerTemperature\":";
-        json += String(systemData.woodBoilerTemperature, 1);
-        json += ",";
-
-        json += "\"chimneyTemperature\":";
-        json += String(systemData.chimneyTemperature, 1);
-        json += ",";
-
-        json += "\"boilerRoomTemperature\":";
-        json += String(systemData.boilerRoomTemperature, 1);
-        json += ",";
-
-        json += "\"boilerRoomHumidity\":";
-        json += String(systemData.boilerRoomHumidity, 1);
-        json += ",";
-
-        char timestamp[25];
-
-        snprintf(
-            timestamp,
-            sizeof(timestamp),
-            "%04d.%02d.%02d %02d:%02d:%02d",
-            systemData.timestamp.year(),
-            systemData.timestamp.month(),
-            systemData.timestamp.day(),
-            systemData.timestamp.hour(),
-            systemData.timestamp.minute(),
-            systemData.timestamp.second()
-        );
-
-        json += "\"timestamp\":\"";
-        json += timestamp;
-        json += "\"";
-
-        json += "}";
-
         webServer.send(
             200,
             "application/json",
-            json
+            buildLegacyStatusJson()
+        );
+    });
+
+    // Új, gépi klienseknek szánt, csak olvasható REST API.
+    webServer.on("/api/v1/status", []()
+    {
+        webServer.send(
+            200,
+            "application/json",
+            buildApiStatusJson()
+        );
+    });
+
+    webServer.on("/api/v1/health", []()
+    {
+        webServer.send(
+            200,
+            "application/json",
+            buildApiHealthJson()
         );
     });
 

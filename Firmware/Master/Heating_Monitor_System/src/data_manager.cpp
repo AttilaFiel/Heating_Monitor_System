@@ -8,6 +8,22 @@
 
 unsigned long timestampLastUpdate = 0;
 bool timestampInitialized = false;
+
+// Monoton időalapú jelölő az utolsó adatfeldolgozási ciklushoz.
+// A millis() túlcsordulását unsigned kivonással kezeljük.
+static unsigned long lastDataUpdateMillis = 0;
+static bool dataUpdateInitialized = false;
+
+bool getDataAgeMs(unsigned long &ageMs)
+{
+    if (!dataUpdateInitialized)
+    {
+        return false;
+    }
+
+    ageMs = millis() - lastDataUpdateMillis;
+    return true;
+}
 bool firePresent;
 
 bool startupActive = false;
@@ -920,6 +936,11 @@ void dataManagerUpdate()
     rtcUpdate();
     updateTimestamp();
 
+    // A feldolgozott SystemData pillanatkép időpontja.
+    // A szenzorolvasásnak a dataManagerUpdate() előtt kell megtörténnie.
+    lastDataUpdateMillis = millis();
+    dataUpdateInitialized = true;
+
     updateSystemStateLog();
     updateActiveBranchLog();
     updateAlarmStateLog();
@@ -927,6 +948,7 @@ void dataManagerUpdate()
     updateGasAcPresentLog();
     updateWoodAcPresentLog();
     updateOverheatStateLog();
+
 }
 
 // --------------------------------

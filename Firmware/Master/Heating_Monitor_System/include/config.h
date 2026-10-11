@@ -48,6 +48,7 @@
 
 // Buzzer
 #define BUZZER 25
+#define BUZZER_ENABLED false
 
 // DS18B20 hőmérséklet szenzorok
 // DS18B20 OneWire
