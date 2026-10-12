@@ -1035,7 +1035,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/03_Display.kicad_sch"
+		(property "Sheetfile" "Sheets/03_Display.kicad_sch"
 			(at 101.6 76.7846 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1161,7 +1161,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/01_ESP32.kicad_sch"
+		(property "Sheetfile" "Sheets/01_ESP32.kicad_sch"
 			(at 44.45 243.1546 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1397,7 +1397,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/08_Boiler_Room_Sensor.kicad_sch"
+		(property "Sheetfile" "Sheets/08_Boiler_Room_Sensor.kicad_sch"
 			(at 101.6 179.6546 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1473,7 +1473,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/06_RTC.kicad_sch"
+		(property "Sheetfile" "Sheets/06_RTC.kicad_sch"
 			(at 101.6 140.2846 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1559,7 +1559,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/07_Buzzer.kicad_sch"
+		(property "Sheetfile" "Sheets/07_Buzzer.kicad_sch"
 			(at 101.6 158.0646 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1635,7 +1635,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/09_MicroSD.kicad_sch"
+		(property "Sheetfile" "Sheets/09_MicroSD.kicad_sch"
 			(at 101.6 207.5946 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1740,7 +1740,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/02_Power_Supply.kicad_sch"
+		(property "Sheetfile" "Sheets/02_Power_Supply.kicad_sch"
 			(at 44.45 29.7946 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1806,7 +1806,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/10_Voltage_Detectors.kicad_sch"
+		(property "Sheetfile" "Sheets/10_Voltage_Detectors.kicad_sch"
 			(at 101.6 225.3746 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1892,7 +1892,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/05_Temperature_Sensors.kicad_sch"
+		(property "Sheetfile" "Sheets/05_Temperature_Sensors.kicad_sch"
 			(at 101.6 122.5046 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1968,7 +1968,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/04_Chimney_Temperature.kicad_sch"
+		(property "Sheetfile" "Sheets/04_Chimney_Temperature.kicad_sch"
 			(at 101.6 100.9146 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2064,7 +2064,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "../Sheets/11_LEDs.kicad_sch"
+		(property "Sheetfile" "Sheets/11_LEDs.kicad_sch"
 			(at 101.6 243.1546 0)
 			(show_name no)
 			(do_not_autoplace no)

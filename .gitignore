@@ -16,10 +16,3 @@ KiCad/**/.history/
 
 # KiCad ERC report
 *.rpt
-
-# Master firmware - local configuration
-/Firmware/Master/include/secrets.h
-Firmware/Master/.vscode/c_cpp_properties.json
-Firmware/Master/.vscode/launch.json
-Firmware/Master/.vscode/.browse.c_cpp.db*
-Firmware/Master/.vscode/ipch/
