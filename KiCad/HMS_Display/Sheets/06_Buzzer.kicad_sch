@@ -1,0 +1,477 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "957378a8-cfa0-47f4-8d53-348f02a88206")
+	(paper "A4")
+	(lib_symbols
+		(symbol "HMS_Symbols:KY-012"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "KY-012"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Buzzer modul"
+				(at 0 -7.366 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Active buzzer modul"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "KY-012_0_1"
+				(rectangle
+					(start -5.08 10.16)
+					(end 5.08 -6.35)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 3.5921)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "KY-012_1_1"
+				(pin input line
+					(at -2.54 15.24 270)
+					(length 5.08)
+					(name "GRN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 15.24 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 2.54 15.24 270)
+					(length 5.08)
+					(name "SIGNAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 134.62 73.66)
+		(diameter 0)
+		(color 0 0 0 1)
+		(uuid "b1173b02-6011-43c8-af61-27af4cc52e66")
+	)
+	(wire
+		(pts
+			(xy 137.16 69.85) (xy 137.16 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "1b494525-f1d6-4b2a-9fa9-a5f3e8a04f3c")
+	)
+	(wire
+		(pts
+			(xy 134.62 73.66) (xy 134.62 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "2df72623-a05c-4cc2-b578-5bcb23156604")
+	)
+	(wire
+		(pts
+			(xy 165.1 69.85) (xy 165.1 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 255 0 0 1)
+		)
+		(uuid "38c81d7d-3005-4ce9-a4ca-f51fd9639471")
+	)
+	(wire
+		(pts
+			(xy 134.62 69.85) (xy 134.62 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "3ab2ab20-a66f-4aa2-9100-5e27424951fe")
+	)
+	(wire
+		(pts
+			(xy 134.62 73.66) (xy 162.56 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "7d5201d5-b859-45e2-a8eb-4e0663bcaf80")
+	)
+	(wire
+		(pts
+			(xy 162.56 73.66) (xy 162.56 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "93575cc1-a8c5-4e94-9575-db657ee58851")
+	)
+	(wire
+		(pts
+			(xy 167.64 69.85) (xy 167.64 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9857f724-68e6-4067-b31a-36218b93ed97")
+	)
+	(wire
+		(pts
+			(xy 139.7 69.85) (xy 139.7 99.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+			(color 0 255 255 1)
+		)
+		(uuid "db4ae56c-c4bd-48e1-aa64-965b28652959")
+	)
+	(hierarchical_label "PWR_GND"
+		(shape input)
+		(at 134.62 69.85 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3288716a-fb60-4fbc-8ce1-a104a1b52c62")
+	)
+	(hierarchical_label "BUZZER_1"
+		(shape input)
+		(at 139.7 69.85 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "397aab13-4c56-4c14-903e-d43908c036e8")
+	)
+	(hierarchical_label "PWR_3V3_IN"
+		(shape input)
+		(at 137.16 69.85 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4cd7f96d-999a-4c3e-8177-1bc980a917eb")
+	)
+	(hierarchical_label "BUZZER_2"
+		(shape input)
+		(at 167.64 69.85 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "83bcbdae-f1e2-4cbe-a91b-fa64146bdf29")
+	)
+	(hierarchical_label "PWR_5V_IN"
+		(shape input)
+		(at 165.1 69.85 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c8c41676-9034-47f9-9e95-f1927b5efc19")
+	)
+	(symbol
+		(lib_id "HMS_Symbols:KY-012")
+		(at 137.16 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "92d8be69-2516-4431-bb71-532529ba68f9")
+		(property "Reference" "U9"
+			(at 135.636 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "KY-012"
+			(at 133.35 119.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "HMS:KY-012"
+			(at 137.16 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137.16 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Buzzer modul"
+			(at 137.16 121.666 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "2ee9b236-8cbf-437d-8780-6381e62c54e9")
+		)
+		(pin "2"
+			(uuid "cbe544db-327c-4431-a6ba-0e58d20dbf89")
+		)
+		(pin "1"
+			(uuid "7f1bf871-d90e-474a-bc06-492a7d0d8bac")
+		)
+		(instances
+			(project "HMS_Display"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/a2e28c65-40dc-4ab8-b49b-8c9d90f9a40b"
+					(reference "U9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HMS_Symbols:KY-012")
+		(at 165.1 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f50dd0b3-1db0-4507-b248-3e58b8f948d6")
+		(property "Reference" "U10"
+			(at 163.068 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "KY-012"
+			(at 161.29 119.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "HMS:KY-012"
+			(at 165.1 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Buzzer modul"
+			(at 165.1 121.666 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "6397d463-2da1-40a1-af8a-284a69d12487")
+		)
+		(pin "3"
+			(uuid "630c18db-12a8-4c33-925d-102f804439c5")
+		)
+		(pin "1"
+			(uuid "2327b90a-58b3-44b3-8e5b-a185a00958f8")
+		)
+		(instances
+			(project "HMS_Display"
+				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/a2e28c65-40dc-4ab8-b49b-8c9d90f9a40b"
+					(reference "U10")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

@@ -294,7 +294,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "4e0159e0-714e-4f1d-b8f0-6596343a5dab")
-		(property "Reference" "U9"
+		(property "Reference" "U8"
 			(at 150.368 101.854 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -368,9 +368,9 @@
 			(uuid "a90b619b-c4de-4a1c-8bcd-fb9d5665d4fa")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/9bf8bcb7-7800-41c3-a2be-8bb28cb524d4"
-					(reference "U9")
+					(reference "U8")
 					(unit 1)
 				)
 			)

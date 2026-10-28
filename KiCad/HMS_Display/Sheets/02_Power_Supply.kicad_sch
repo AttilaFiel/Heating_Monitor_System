@@ -797,7 +797,7 @@
 		)
 	)
 	(rectangle
-		(start 119.38 74.93)
+		(start 115.57 74.93)
 		(end 203.2 123.19)
 		(stroke
 			(width 0)
@@ -821,7 +821,7 @@
 	(junction
 		(at 181.61 92.71)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "12639f56-d07f-4318-9f5c-bc7439fff765")
 	)
 	(junction
@@ -845,7 +845,7 @@
 	(junction
 		(at 182.88 118.11)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 0 0 0 1)
 		(uuid "d795b847-aec5-4e97-b083-8a6ccbeb161b")
 	)
 	(junction
@@ -1111,7 +1111,7 @@
 			(uuid "64e0978d-6df2-4d84-9154-4fa7b8121387")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cc839e62-2bf5-48e4-87b9-622d38cad52b"
 					(reference "#FLG02")
 					(unit 1)
@@ -1193,7 +1193,7 @@
 			(uuid "d970d17d-770b-4b52-b967-6d275cc0d2c9")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cc839e62-2bf5-48e4-87b9-622d38cad52b"
 					(reference "C1470µF/10V1")
 					(unit 1)
@@ -1271,7 +1271,7 @@
 			(uuid "1baba307-96da-421f-820d-3dc10bf7e7c8")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cc839e62-2bf5-48e4-87b9-622d38cad52b"
 					(reference "#FLG01")
 					(unit 1)
@@ -1353,7 +1353,7 @@
 			(uuid "509c17c4-edbb-4214-a1ad-ca1d5586cd2e")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cc839e62-2bf5-48e4-87b9-622d38cad52b"
 					(reference "C2100nF/50V1")
 					(unit 1)
@@ -1373,7 +1373,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b2e02359-eef1-460d-89c4-37f2d250158d")
-		(property "Reference" "U26"
+		(property "Reference" "U2"
 			(at 129.54 85.09 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1383,7 +1383,7 @@
 				)
 			)
 		)
-		(property "Value" "USB_Micro-B_Socket"
+		(property "Value" "USB-C_POWER_CONNECTOR"
 			(at 129.54 87.63 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1433,9 +1433,9 @@
 			(uuid "7dfb47b7-b835-42ad-be73-6765266aeb8b")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cc839e62-2bf5-48e4-87b9-622d38cad52b"
-					(reference "U26")
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -1451,10 +1451,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "d2e25a27-beb4-4382-9cae-b895c752538d")
 		(property "Reference" "F1"
-			(at 143.5099 90.17 0)
+			(at 146.05 94.742 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1465,7 +1464,7 @@
 			)
 		)
 		(property "Value" "T1A Fuse"
-			(at 146.0499 90.17 0)
+			(at 149.098 90.932 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1515,7 +1514,7 @@
 			(uuid "13379d10-5d4d-4cec-9c31-04ee28507ff4")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/cc839e62-2bf5-48e4-87b9-622d38cad52b"
 					(reference "F1")
 					(unit 1)

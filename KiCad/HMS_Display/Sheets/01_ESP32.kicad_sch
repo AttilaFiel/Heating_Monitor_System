@@ -803,9 +803,9 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "GPIO kiosztás:\nGPIO23 SPI_MOSI\nGPIO19 SPI_MISO\nGPIO18 SPI_SCK\n\nGPIO22 I2C_SCL\nGPIO21 I2C_SDA\n\nGPIO27 TEMPERATURE_SENSOR_BUS (5× DS18B20)\n\nGPIO26 BOILER_ROOM_TEMPERATURE (DHT11)\n\nGPIO17 DISPLAY1_DC + DISPLAY2_DC\nGPIO16 DISPLAY1_RESET + DISPLAY2_RESET\nGPIO5  DISPLAY1_CS\nGPIO4  DISPLAY2_CS\n\nGPIO14 CHIMNEY_TEMPERATURE_CS (MAX6675)\n\nGPIO25 BUZZER\n\nGPIO32 GAS_AC_PRESENT\nGPIO33 WOOD_AC_PRESENT\n\nGPIO13 MICROSD_CS"
+	(text "GPIO kiosztás:\nGPIO18 SPI_SCK (Display SCK, T_CLK)\nGPIO19 SPI_MISO (Display SDO, T_DO)\nGPIO23 SPI_MOSI (Display SDI, T_DIN)\n\nGPIO17 DISPLAY_CS\nGPIO16 DISPLAY_DC\nGPIO04 DISPLAY_RESET\nGPIO32 DISPLAY_LED\n\nGPIO27 T_CS\nGPIO34 T_IRQ\n\nGPIO21 I2C_SDA\nGPIO22 I2C_SCL\n\nGPIO35 PHOTORESISTOR\n\nGPIO33 LED_R\nGPIO25 LED_G\nGPIO26 LED_B\n\nGPIO13 BUZZER_2\nGPIO14 BUZZER_1"
 		(exclude_from_sim no)
-		(at 21.59 48.006 0)
+		(at 69.342 62.484 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -815,16 +815,16 @@
 		(uuid "a72bce38-783d-4489-be60-a3716897e564")
 	)
 	(junction
+		(at 121.92 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "91c9fe1e-6be0-4345-aa6d-d276377ac7fa")
+	)
+	(junction
 		(at 158.75 83.82)
 		(diameter 0)
 		(color 0 0 0 1)
 		(uuid "b026e322-8aef-4e9c-9474-c31fa3401fd5")
-	)
-	(junction
-		(at 121.92 110.49)
-		(diameter 0)
-		(color 0 0 0 1)
-		(uuid "f4443200-3dae-44bc-8161-31cd74f1e478")
 	)
 	(no_connect
 		(at 121.92 68.58)
@@ -839,10 +839,6 @@
 		(uuid "3e3a12fc-0940-4b57-ba42-7e3911b659f9")
 	)
 	(no_connect
-		(at 121.92 106.68)
-		(uuid "3f8f2daf-8ac5-411a-acb7-db86a9d3f9a7")
-	)
-	(no_connect
 		(at 121.92 121.92)
 		(uuid "3ff2ee3b-6b15-4de0-bce4-a226371ff204")
 	)
@@ -851,12 +847,12 @@
 		(uuid "43bbe938-948c-4fbf-b9ec-24242b4f8e99")
 	)
 	(no_connect
-		(at 121.92 64.77)
-		(uuid "51438cf2-93c1-46a7-a46e-2e4bd7673e13")
+		(at 121.92 106.68)
+		(uuid "43c25d4f-9a28-4feb-b4d6-4fb416e71262")
 	)
 	(no_connect
-		(at 121.92 80.01)
-		(uuid "570a9ee5-3a12-47f7-aad5-992853f703fc")
+		(at 121.92 64.77)
+		(uuid "51438cf2-93c1-46a7-a46e-2e4bd7673e13")
 	)
 	(no_connect
 		(at 177.8 114.3)
@@ -875,8 +871,8 @@
 		(uuid "89f6231a-5f36-4b0d-8bd1-f1d58d79b030")
 	)
 	(no_connect
-		(at 121.92 76.2)
-		(uuid "9b3133c5-9d08-4551-8e50-f3353c2bf6e3")
+		(at 177.8 95.25)
+		(uuid "94ecc17f-13e3-4d9d-a043-b55d51375cd6")
 	)
 	(no_connect
 		(at 177.8 121.92)
@@ -940,7 +936,7 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 129.54) (xy 121.92 129.54)
+			(xy 115.57 129.54) (xy 121.92 129.54)
 		)
 		(stroke
 			(width 0.254)
@@ -951,7 +947,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 110.49) (xy 121.92 110.49)
+			(xy 114.3 110.49) (xy 121.92 110.49)
 		)
 		(stroke
 			(width 0.254)
@@ -959,6 +955,16 @@
 			(color 0 0 0 1)
 		)
 		(uuid "6ecaf5df-c276-44be-bd02-f4d444a245f2")
+	)
+	(wire
+		(pts
+			(xy 114.3 60.96) (xy 121.92 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d93d835b-dc08-4f8c-8761-a3d66f0dc63f")
 	)
 	(wire
 		(pts
@@ -973,7 +979,7 @@
 	)
 	(hierarchical_label "DISPLAY_RESET"
 		(shape output)
-		(at 177.8 102.87 0)
+		(at 177.8 106.68 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -982,16 +988,16 @@
 		)
 		(uuid "06f459b4-8f77-4487-b07f-7edcf40ead98")
 	)
-	(hierarchical_label "CHIMNEY_TEMPERATURE_CS"
+	(hierarchical_label "PHOTORESISTOR"
 		(shape input)
-		(at 121.92 102.87 180)
+		(at 121.92 80.01 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right)
 		)
-		(uuid "0b7b0c06-f94e-4449-b13e-3b42a3777f33")
+		(uuid "0d9726d4-a399-4619-bf48-3effc68a6f14")
 	)
 	(hierarchical_label "SPI_SCK"
 		(shape output)
@@ -1004,9 +1010,20 @@
 		)
 		(uuid "0e5fac39-a5f7-4bd2-93cf-bf2280311a01")
 	)
-	(hierarchical_label "DISPLAY1_CS"
+	(hierarchical_label "BUZZER_2"
 		(shape output)
-		(at 177.8 95.25 0)
+		(at 121.92 114.3 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "105e837b-e007-497c-ae5c-3071a4a487b2")
+	)
+	(hierarchical_label "DISPLAY_CS"
+		(shape output)
+		(at 177.8 99.06 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1015,14 +1032,14 @@
 		)
 		(uuid "10756b5d-865b-45d2-b460-4bcccf7c6969")
 	)
-	(hierarchical_label "DISPLAY2_CS"
+	(hierarchical_label "T_CS"
 		(shape output)
-		(at 177.8 106.68 0)
+		(at 121.92 99.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "15ab0bb9-e007-4d04-a2ee-47034c9bac42")
 	)
@@ -1037,9 +1054,9 @@
 		)
 		(uuid "1d505a74-6f87-404b-8249-a58e78573b15")
 	)
-	(hierarchical_label "BUZZER"
+	(hierarchical_label "BUZZER_1"
 		(shape output)
-		(at 121.92 91.44 180)
+		(at 121.92 102.87 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1048,9 +1065,20 @@
 		)
 		(uuid "1d9cbfab-f033-47ec-b61a-c5b02e0c9956")
 	)
+	(hierarchical_label "LED_R"
+		(shape output)
+		(at 121.92 87.63 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3369464d-38d3-4b80-a1d4-afab60c0892f")
+	)
 	(hierarchical_label "PWR_3V3_OUT"
 		(shape output)
-		(at 121.92 60.96 180)
+		(at 114.3 60.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1059,20 +1087,20 @@
 		)
 		(uuid "39edfe65-c81e-461d-8440-cda56d49523d")
 	)
-	(hierarchical_label "TEMPERATURE_SENSOR_BUS"
-		(shape input)
-		(at 121.92 99.06 180)
+	(hierarchical_label "LED_G"
+		(shape output)
+		(at 121.92 91.44 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right)
 		)
-		(uuid "45e72a5f-a497-4d6f-9ba3-6e6af2dea8f7")
+		(uuid "3aae0be4-5645-4aa6-885e-8049a1b20d89")
 	)
 	(hierarchical_label "PWR_5V_IN"
 		(shape input)
-		(at 113.03 129.54 180)
+		(at 115.57 129.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1081,20 +1109,20 @@
 		)
 		(uuid "59e405bd-8a4b-402d-ac80-25a60de2e1d8")
 	)
-	(hierarchical_label "BOILER_ROOM_TEMPERATURE"
-		(shape input)
-		(at 121.92 95.25 180)
+	(hierarchical_label "T_IRQ"
+		(shape output)
+		(at 121.92 76.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right)
 		)
-		(uuid "7095782c-48ce-4c4d-b451-73c1490c45c1")
+		(uuid "6e3566d0-e706-468d-a536-868ce9a2d649")
 	)
 	(hierarchical_label "PWR_GND"
 		(shape input)
-		(at 111.76 110.49 180)
+		(at 114.3 110.49 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1116,7 +1144,7 @@
 	)
 	(hierarchical_label "DISPLAY_DC"
 		(shape output)
-		(at 177.8 99.06 0)
+		(at 177.8 102.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1124,6 +1152,17 @@
 			(justify left)
 		)
 		(uuid "bf677526-fc60-43a8-bfa4-01fac85f51f7")
+	)
+	(hierarchical_label "LED_B"
+		(shape output)
+		(at 121.92 95.25 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c1cf33b2-b45b-4c05-9872-a34863c01d90")
 	)
 	(hierarchical_label "SPI_MOSI"
 		(shape output)
@@ -1136,30 +1175,8 @@
 		)
 		(uuid "cc545681-7db2-4bc2-bab7-553ba6870819")
 	)
-	(hierarchical_label "MICROSD_CS"
+	(hierarchical_label "DISPLAY_LED"
 		(shape output)
-		(at 121.92 114.3 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "d8bf3cc2-5d1d-42fb-b646-a21cfc7309c1")
-	)
-	(hierarchical_label "WOOD_AC_PRESENT"
-		(shape input)
-		(at 121.92 87.63 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "df6c89cf-7fff-462b-be0b-12847b0848d3")
-	)
-	(hierarchical_label "GAS_AC_PRESENT"
-		(shape input)
 		(at 121.92 83.82 180)
 		(effects
 			(font
@@ -1167,7 +1184,7 @@
 			)
 			(justify right)
 		)
-		(uuid "e1c836d6-c5cc-4913-b465-016bed0680b7")
+		(uuid "d773398e-cca5-4ee3-aa9d-cff30337a682")
 	)
 	(hierarchical_label "I2C_SCL"
 		(shape output)
@@ -1212,7 +1229,7 @@
 				)
 			)
 		)
-		(property "Footprint" "HMS_Footprints:ESP32_DEVKITC_32UE"
+		(property "Footprint" "HMS:ESP32_DEVKITC_32UE"
 			(at 134.62 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -1404,7 +1421,7 @@
 			(uuid "b655bff3-2ac5-448a-b87d-d66112db4620")
 		)
 		(instances
-			(project "HMS_Master"
+			(project "HMS_Display"
 				(path "/cab65a7d-0a7e-481c-9f85-25eca3c1fa1e/856812e0-5d79-4de2-b8e2-1ff3e02bf923"
 					(reference "U1")
 					(unit 1)
