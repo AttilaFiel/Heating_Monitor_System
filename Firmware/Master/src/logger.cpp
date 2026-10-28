@@ -16,7 +16,7 @@ DateTime loggerNow()
 {
     if (rtcIsAvailable())
     {
-        return rtc.now();
+        return rtcNowLocal();
     }
 
     return DateTime(2000, 1, 1, 0, 0, 0);

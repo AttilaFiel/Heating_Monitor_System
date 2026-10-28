@@ -567,10 +567,20 @@ void networkSetup()
     logMessage("OTA készen áll!");
     logMessage("WiFi terminál készen áll!");
 
-    // NTP időszinkronizáció
-    configTime(3600, 3600, "pool.ntp.org", "time.nist.gov");
+    // Magyar időzóna: CET (UTC+1) / CEST (UTC+2)
+    // Automatikus váltás:
+    // - nyári időszámítás kezdete: március utolsó vasárnapja, 02:00
+    // - téli időszámítás kezdete: október utolsó vasárnapja, 03:00
+    const char* TIME_ZONE = "CET-1CEST,M3.5.0/2,M10.5.0/3";
 
-    logMessage("NTP időszinkronizáció indítva!");
+    // NTP időszinkronizáció időzóna-szabályokkal
+    configTzTime(
+        TIME_ZONE,
+        "pool.ntp.org",
+        "time.nist.gov"
+    );
+
+    logMessage("NTP időszinkronizáció indítva (CET/CEST).");
 }
 
 
@@ -624,13 +634,13 @@ void networkLoop()
     {
         if (getLocalTime(&ntpTime, 100))
         {
-            char message[80];
+            char message[100];
 
-            // NTP idő
+            // NTP által visszaadott helyi idő (CET/CEST)
             snprintf(
                 message,
                 sizeof(message),
-                "NTP idő: %04d-%02d-%02d %02d:%02d:%02d",
+                "NTP helyi idő: %04d-%02d-%02d %02d:%02d:%02d",
                 ntpTime.tm_year + 1900,
                 ntpTime.tm_mon + 1,
                 ntpTime.tm_mday,
@@ -641,38 +651,42 @@ void networkLoop()
 
             logMessage(message);
 
-            // DS3231 aktuális idő
-            DateTime rtcNow = rtc.now();
+            // UTC idő lekérése az ESP32 rendszerórájából
+            time_t utcTimestamp = time(nullptr);
 
-            snprintf(
-                message,
-                sizeof(message),
-                "DS3231 idő: %04d-%02d-%02d %02d:%02d:%02d",
-                rtcNow.year(),
-                rtcNow.month(),
-                rtcNow.day(),
-                rtcNow.hour(),
-                rtcNow.minute(),
-                rtcNow.second()
-            );
+            // Ellenőrizzük, hogy az NTP idő valóban érvényes-e
+            if (utcTimestamp > 1000000000)
+            {
+                // DS3231 aktuális idő (UTC)
+                DateTime rtcNow = rtc.now();
 
-            logMessage(message);
+                snprintf(
+                    message,
+                    sizeof(message),
+                    "DS3231 UTC idő: %04d-%02d-%02d %02d:%02d:%02d",
+                    rtcNow.year(),
+                    rtcNow.month(),
+                    rtcNow.day(),
+                    rtcNow.hour(),
+                    rtcNow.minute(),
+                    rtcNow.second()
+                );
 
-            // DS3231 beállítása NTP időre
-            DateTime ntpDateTime(
-                ntpTime.tm_year + 1900,
-                ntpTime.tm_mon + 1,
-                ntpTime.tm_mday,
-                ntpTime.tm_hour,
-                ntpTime.tm_min,
-                ntpTime.tm_sec
-            );
+                logMessage(message);
 
-            rtc.adjust(ntpDateTime);
+                // DS3231 beállítása UTC időre
+                DateTime ntpDateTime((uint32_t)utcTimestamp);
 
-            logMessage("DS3231 idő NTP alapjan beállitva.");
+                rtc.adjust(ntpDateTime);
 
-            ntpTimeReceived = true;
+                logMessage("DS3231 UTC idő NTP alapján beállítva.");
+
+                ntpTimeReceived = true;
+            }
+            else
+            {
+                logMessage("NTP idő még nem érvényes.");
+            }
         }
     }
 
@@ -718,13 +732,13 @@ void networkLoop()
 
                 terminalClient.println(message);
 
-                // DS3231 aktuális idő
+                // DS3231 aktuális UTC idő
                 DateTime rtcNow = rtc.now();
 
                 snprintf(
                     message,
                     sizeof(message),
-                    "DS3231 idő: %04d.%02d.%02d %02d:%02d:%02d",
+                    "DS3231 UTC idő: %04d.%02d.%02d %02d:%02d:%02d",
                     rtcNow.year(),
                     rtcNow.month(),
                     rtcNow.day(),

@@ -125,7 +125,7 @@ void updateTimestamp()
         timestampLastUpdate = millis();
         timestampInitialized = true;
 
-        systemData.timestamp = rtc.now();
+        systemData.timestamp = rtcNowLocal();
     }
 }
 

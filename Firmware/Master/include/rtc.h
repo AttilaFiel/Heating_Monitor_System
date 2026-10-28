@@ -10,3 +10,5 @@ bool rtcIsAvailable();
 void rtcTest();
 bool rtcBatteryWarning();
 bool rtcOscillatorStopWarning();
+
+DateTime rtcNowLocal();

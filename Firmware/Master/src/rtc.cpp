@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <RTClib.h>
+#include <time.h>
+#include <stdlib.h>
 
 #include "network.h"
 #include "rtc.h"
@@ -31,9 +33,41 @@ bool rtcOscillatorStopWarning()
     return rtcWarning == RTC_WARNING_OSCILLATOR_STOP;
 }
 
+DateTime rtcNowLocal()
+{
+    // DS3231 által tárolt UTC idő
+    DateTime utc = rtc.now();
+
+    // UTC idő átalakítása Unix timestamp formára
+    time_t timestamp = utc.unixtime();
+
+    // Magyarországi helyi idő kiszámítása
+    struct tm localTime;
+
+    localtime_r(
+        &timestamp,
+        &localTime
+    );
+
+    // Helyi idő visszaadása DateTime formában
+    return DateTime(
+        localTime.tm_year + 1900,
+        localTime.tm_mon + 1,
+        localTime.tm_mday,
+        localTime.tm_hour,
+        localTime.tm_min,
+        localTime.tm_sec
+    );
+}
+
 // RTC inicializálása
 void rtcSetup()
 {
+    // Magyarországi időzóna beállítása
+    setenv("TZ", "CET-1CEST,M3.5.0/2,M10.5.0/3", 1);
+
+    tzset();
+
     rtcAvailable = false;
 
     if (!rtc.begin())
@@ -140,7 +174,7 @@ void rtcUpdate()
     }
 
 
-    DateTime now = rtc.now();
+    DateTime now = rtcNowLocal();
 
 
     // RTC oszcillátor leállt
@@ -231,7 +265,7 @@ void rtcTest()
 
 
     // Aktuális idő kiolvasása
-    DateTime now = rtc.now();
+    DateTime now = rtcNowLocal();
 
     char message[100];
 
