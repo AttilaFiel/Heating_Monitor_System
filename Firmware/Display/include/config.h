@@ -109,6 +109,16 @@ constexpr uint8_t RGB_ALARM_PERCENT = 100;
 constexpr uint16_t PHOTO_DARK_THRESHOLD = 1400;
 constexpr uint16_t PHOTO_HYSTERESIS = 150;
 
+// ============================================================
+// SHT30 hőmérséklet-korrekció
+// ============================================================
+
+// Pozitív vagy negatív korrekció Celsius-fokban.
+//  0.0f  = nincs korrekció
+// +1.5f  = 1,5 °C hozzáadása
+// -1.5f  = 1,5 °C levonása
+constexpr float SHT30_TEMPERATURE_OFFSET_C = -1.5f;
+
 
 // ============================================================
 // Érintőképernyő időzítése

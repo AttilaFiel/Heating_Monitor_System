@@ -53,14 +53,21 @@ void sensorsUpdate(LocalData& d) {
     // SHT30 hőmérséklet- és páratartalom-mérés
     // --------------------------------------------------------
 
-    if (shtOk) {
-        d.temp = sht.readTemperature();
-        d.humidity = sht.readHumidity();
+	if (shtOk) {
+		// SHT30 hőmérsékletmérés és szoftveres korrekció
+		d.temp = sht.readTemperature();
 
-        d.shtValid = !isnan(d.temp) && !isnan(d.humidity);
-    } else {
-        d.shtValid = false;
-    }
+		if (!isnan(d.temp)) {
+			d.temp += SHT30_TEMPERATURE_OFFSET_C;
+		}
+
+		// Páratartalom mérés (korrekció nélkül)
+		d.humidity = sht.readHumidity();
+
+		d.shtValid = !isnan(d.temp) && !isnan(d.humidity);
+	} else {
+		d.shtValid = false;
+	}
 
 
     // --------------------------------------------------------
