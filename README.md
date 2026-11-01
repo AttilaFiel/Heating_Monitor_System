@@ -1,14 +1,5 @@
 # HMS – Fűtésfelügyeleti rendszer
 
-### HMS_Master
-A rendszer központi egysége, amely a kazánházban található érzékelők adatait gyűjti és feldolgozza. Figyeli a fűtési rendszer hőmérsékleteit, a kazánok működését és a különböző hibajelzéseket. Az adatokat kijelzi, naplózza, valamint Wi-Fi-n keresztül elérhetővé teszi a többi eszköz és a központi felügyeleti rendszer számára. Vizuális és hangjelzésekkel figyelmeztet a rendellenes működésre.
-
-### HMS_Display
-A HMS_Master és a HMS_Kids_Thermometer adatait megjelenítő, önállóan működő kijelzőegység, amely a lakótérben helyezhető el. Érintőképernyőjén megjeleníti a fűtési rendszer aktuális állapotát, a hőmérsékleteket, a páratartalmat és a riasztásokat. Hang- és fényjelzésekkel figyelmeztet a fontosabb eseményekre. Wi-Fi-n keresztül kommunikál a többi eszközzel.
-
-### HMS_Kids_Thermometer
-Önálló, Wi-Fi-kapcsolattal rendelkező szobai hőmérséklet- és páratartalom-mérő eszköz. Az SHT30 érzékelő segítségével méri a környezeti hőmérsékletet és páratartalmat. A mért adatokat hálózaton keresztül elérhetővé teszi, így a szoba klímája távolról is ellenőrizhető. Elsősorban a gyerekszoba környezeti viszonyainak folyamatos megfigyelésére szolgál.
-
 <p>
 <img src="https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=black" alt="ESP32" />
 <img src="https://img.shields.io/badge/cp%2b%2b-00599C?style=for-the-badge&logo=cplusplus&logoColor=black" alt="C%2b%2b" />
@@ -20,6 +11,20 @@ A HMS_Master és a HMS_Kids_Thermometer adatait megjelenítő, önállóan műk�
 <img src="https://img.shields.io/badge/SPI-2ECC71?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiPgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjE4IiByeT0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSI2Ii8+CiAgPGcgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4KICAgIDx0ZXh0IHg9IjUwIiB5PSI2OCIgZm9udC1zaXplPSI0NCIgZmlsbD0iIzAwMDAwMCIgbGV0dGVyLXNwYWNpbmc9Ii0yIj5TUEk8L3RleHQ+CiAgPC9nPjwvc3ZnPg==&logoColor=black" alt="SPI" />
 <img src="https://img.shields.io/badge/KiCad-314CB0?style=for-the-badge&logo=kicad&logoColor=black" alt="KiCad" />
 <img src="https://img.shields.io/badge/Git-F03C2E?style=for-the-badge&logo=git&logoColor=black" alt="Git" />
+</p>
+
+### HMS_Master
+A rendszer központi egysége, amely a kazánházban található érzékelők adatait gyűjti és feldolgozza. Figyeli a fűtési rendszer hőmérsékleteit, a kazánok működését és a különböző hibajelzéseket. Az adatokat kijelzi, naplózza, valamint Wi-Fi-n keresztül elérhetővé teszi a többi eszköz és a központi felügyeleti rendszer számára. Vizuális és hangjelzésekkel figyelmeztet a rendellenes működésre.
+
+### HMS_Display
+A HMS_Master és a HMS_Kids_Thermometer adatait megjelenítő, önállóan működő kijelzőegység, amely a lakótérben helyezhető el. Érintőképernyőjén megjeleníti a fűtési rendszer aktuális állapotát, a hőmérsékleteket, a páratartalmat és a riasztásokat. Hang- és fényjelzésekkel figyelmeztet a fontosabb eseményekre. Wi-Fi-n keresztül kommunikál a többi eszközzel.
+
+### HMS_Kids_Thermometer
+Önálló, Wi-Fi-kapcsolattal rendelkező szobai hőmérséklet- és páratartalom-mérő eszköz. Az SHT30 érzékelő segítségével méri a környezeti hőmérsékletet és páratartalmat. A mért adatokat hálózaton keresztül elérhetővé teszi, így a szoba klímája távolról is ellenőrizhető. Elsősorban a gyerekszoba környezeti viszonyainak folyamatos megfigyelésére szolgál.
+
+</br>
+<p align="center">
+    <img src="https://github.com/AttilaFiel/Heating_Monitor_System/blob/main/Heating_Monitor_System_(HMS).png?raw=true" alt="HMS design image" />
 </p>
 
 # HMS hardverlista
