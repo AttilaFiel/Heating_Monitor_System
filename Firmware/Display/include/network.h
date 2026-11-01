@@ -6,4 +6,6 @@ void networkBegin();
 void networkLoop();
 void networkLog(const String &s);
 void networkSetLocalData(const LocalData &data);
+
 bool networkFetchMaster(MasterData &m);
+bool networkFetchKidsThermometer(KidsThermometerData &d);

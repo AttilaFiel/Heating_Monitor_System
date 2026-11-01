@@ -69,6 +69,25 @@ static String weekdayHu(int year, int month, int day) {
     return names[weekday];
 }
 
+static void drawThickRect(
+    int16_t x,
+    int16_t y,
+    int16_t width,
+    int16_t height,
+    uint16_t color,
+    uint8_t thickness
+) {
+    for (uint8_t i = 0; i < thickness; i++) {
+        tft.drawRect(
+            x + i,
+            y + i,
+            width - 2 * i,
+            height - 2 * i,
+            color
+        );
+    }
+}
+
 static void drawTextField(
     uint8_t cacheId,
     int16_t x, int16_t y, int16_t width, int16_t height,
@@ -108,19 +127,174 @@ static void drawTextField(
     cache.initialized = true;
 }
 
+// ============================================================
+// Hőmérséklet megjelenítése eltérő betűméretekkel
+// Egyetlen TextFieldCache használatával
+// ============================================================
+
+static void drawTemperature(
+    uint8_t cacheId,
+    int16_t x,
+    int16_t y,
+    float temperature
+) {
+    if (cacheId >= MAX_CACHED_FIELDS) return;
+
+    // Hőmérséklet formázása egy tizedesjeggyel
+    const String temp = isnan(temperature)
+        ? "--.-"
+        : String(temperature, 1);
+
+    // Cache ellenőrzése
+    TextFieldCache& cache = fieldCache[cacheId];
+
+    const bool changed =
+        !cache.initialized ||
+        cache.x != x ||
+        cache.y != y ||
+        cache.text != temp;
+
+    // Ha nem változott az érték vagy a pozíció, nincs rajzolás
+    if (!changed) return;
+
+    // Teljes hőmérséklet-megjelenítési terület törlése
+    const int16_t fieldWidth = 70;
+    const int16_t fieldHeight = 32;
+
+    tft.fillRect(
+        x,
+        y,
+        fieldWidth,
+        fieldHeight,
+        COLOR_BG
+    );
+
+    // Egész szám és tizedes rész szétválasztása
+    const int dotPos = temp.indexOf('.');
+
+    const String wholePart = temp.substring(0, dotPos);
+    const String decimalPart = temp.substring(dotPos);
+
+    // Egész szám szélessége 4-es betűmérettel
+    const int16_t wholeWidth = wholePart.length() * 24;
+
+    // Egész szám: nagy betűméret
+    tft.setTextColor(COLOR_VALUE);
+    tft.setTextSize(4);
+    tft.setCursor(x, y);
+    tft.print(wholePart);
+
+    // Tizedes rész: kisebb betűméret, alulra igazítva
+    tft.setTextSize(2);
+    tft.setCursor(x + wholeWidth, y + 16);
+    tft.print(decimalPart);
+
+    // °C: kisebb betűméret, felülre igazítva
+    tft.setCursor(x + wholeWidth, y);
+    tft.print(String((char)0xF7) + "C");
+
+    // Cache frissítése
+    cache.x = x;
+    cache.y = y;
+    cache.width = fieldWidth;
+    cache.height = fieldHeight;
+    cache.text = temp;
+    cache.textColor = COLOR_VALUE;
+    cache.backgroundColor = COLOR_BG;
+    cache.textSize = 4;
+    cache.initialized = true;
+}
+
+// ============================================================
+// Páratartalom megjelenítése eltérő betűméretekkel
+// Egyetlen TextFieldCache használatával
+// ============================================================
+
+static void drawHumidity(
+    uint8_t cacheId,
+    int16_t x,
+    int16_t y,
+    float humidity
+) {
+    if (cacheId >= MAX_CACHED_FIELDS) return;
+
+     // Egész páratartalom meghatározása
+    const int humidityInt = isnan(humidity)
+        ? -999
+        : (int)humidity;
+
+    // Cache ellenőrzése
+    TextFieldCache& cache = fieldCache[cacheId];
+
+    const String humidityText = humidityInt == -999
+        ? "--"
+        : String(humidityInt);
+
+    const bool changed =
+        !cache.initialized ||
+        cache.x != x ||
+        cache.y != y ||
+        cache.text != humidityText;
+
+    // Ha nem változott az érték vagy a pozíció, nincs rajzolás
+    if (!changed) return;
+
+    // Teljes páratartalom-megjelenítési terület törlése
+    const int16_t fieldWidth = 70;
+    const int16_t fieldHeight = 32;
+
+    tft.fillRect(
+        x,
+        y,
+        fieldWidth,
+        fieldHeight,
+        COLOR_BG
+    );
+
+    // Egész érték
+    const int16_t wholeWidth = humidityText.length() * 24;
+
+    // Egész szám: nagy betűméret
+    tft.setTextColor(COLOR_VALUE);
+    tft.setTextSize(4);
+    tft.setCursor(x, y);
+    tft.print(humidityText);
+
+    // Tizedes rész: kisebb betűméret, alulra igazítva
+    // tft.setTextSize(2);
+    // tft.setCursor(x + wholeWidth, y + 16);
+    // tft.print(decimalPart);
+
+    // %: kisebb betűméret, felülre igazítva
+    tft.setTextSize(3);
+    tft.setCursor(x + wholeWidth + 8, y + 8);
+    tft.print("%");
+
+    // Cache frissítése
+    cache.x = x;
+    cache.y = y;
+    cache.width = fieldWidth;
+    cache.height = fieldHeight;
+    cache.text = humidityText;
+    cache.textColor = COLOR_VALUE;
+    cache.backgroundColor = COLOR_BG;
+    cache.textSize = 4;
+    cache.initialized = true;
+}
+
 static void drawStaticHouseLayout() {
     tft.fillScreen(COLOR_BG);
 
     // BAL OLDALI HÁZ: szélesebb, két egyforma helyiséggel.
     const int16_t leftX = 7;
     const int16_t roomY = 102;
-    const int16_t roomW = 85;  // korábban 68
+    const int16_t roomW = 92;
     const int16_t roomH = FOOTER_LINE_Y - roomY;
 
     const int16_t leftW = roomW * 2;
 
-    tft.drawRect(leftX, roomY, roomW, roomH, COLOR_HOUSE);
-    tft.drawRect(leftX + roomW, roomY, roomW, roomH, COLOR_HOUSE);
+    drawThickRect(leftX, roomY, roomW, roomH, COLOR_HOUSE, 2);
+    drawThickRect(leftX + roomW, roomY, roomW, roomH, COLOR_HOUSE, 2);
 
     // Bal ház tetője: csúcs a két helyiség határán.
     const int16_t peakX = leftX + roomW;
@@ -142,7 +316,7 @@ static void drawStaticHouseLayout() {
     const int16_t rightW = 110;  // korábban 147
     const int16_t rightH = FOOTER_LINE_Y - rightY;
 
-    tft.drawRect(rightX, rightY, rightW, rightH, COLOR_HOUSE);
+    drawThickRect(rightX, rightY, rightW, rightH, COLOR_HOUSE, 2);
 
     // Lapos tető, az új házszélességhez igazítva.
     const int16_t rightPeakX = rightX + rightW / 2;
@@ -156,8 +330,7 @@ static void drawStaticHouseLayout() {
                  rightX + rightW + 5, rightY + 2, COLOR_LINE);
 
     // A 3 pixeles elválasztó a házak alapvonala.
-    tft.fillRect(0, FOOTER_LINE_Y, SCREEN_W,
-                 FOOTER_LINE_H, COLOR_LINE);
+    drawThickRect(0, FOOTER_LINE_Y, SCREEN_W, FOOTER_LINE_H, COLOR_LINE, 2);
 }
 
 void displayBegin() {
@@ -195,7 +368,11 @@ void displayMessage(const String& a, const String& b) {
     tft.println(b);
 }
 
-void displayUpdate(const MasterData& m, const LocalData& l) {
+void displayUpdate(
+    const MasterData& m,
+    const LocalData& l,
+    const KidsThermometerData& kids
+) {
     // Háttérvilágítás fényerejének beállítása
     const uint8_t brightnessPercent = l.dark
         ? BACKLIGHT_DARK_PERCENT
@@ -217,10 +394,58 @@ void displayUpdate(const MasterData& m, const LocalData& l) {
     const String roomTemp = l.shtValid ? degreeC(l.temp) : String("--.-") + String((char)0xF7) + "C";
     const String roomHumidity = l.shtValid ? tt(l.humidity) + "%" : "--.-%";
 
-    drawTextField(0, 14, 119, 60, 12, roomTemp, COLOR_VALUE, COLOR_BG, 2);
-    drawTextField(1, 14, 151, 60, 12, roomHumidity, COLOR_VALUE, COLOR_BG, 2);
+    // drawTemperature paraméterek jelentése:
+    // Paraméter	Érték	    Jelentés
+    // 1.	        0   	    A mező azonosítója. Ha a függvény kezeli a mezőket, ez alapján tudja azonosítani a korábban kirajzolt mezőt.
+    // 2.	        14	        A mező bal felső sarkának X koordinátája.
+    // 3.	        119	        A mező bal felső sarkának Y koordinátája.
+    // 4.	        l.temp      A kiírandó szöveg, vagyis a hőmérsékleti változó értéke.
 
-    // A második szoba helye üres marad későbbi bővítéshez.
+    drawTemperature(
+        0,
+        17,
+        115,
+        l.temp
+    );
+
+    drawHumidity(
+        1,
+        17,
+        151,
+        l.humidity
+    );
+
+    // --------------------------------------------------------
+    // JOBB szoba: HMS Kids Thermometer adatai
+    // --------------------------------------------------------
+
+    // Hőmérséklet
+    const String kidsTemp =
+        kids.valid
+            ? degreeC(kids.temperature)
+            : String("--.-") + String((char)0xF7) + "C";
+
+    // Páratartalom
+    const String kidsHumidity =
+        kids.valid
+            ? tt(kids.humidity) + "%"
+            : "--.-%";
+
+    // Hőmérséklet
+    drawTemperature(
+        2,
+        110,
+        115,
+        kids.temperature
+    );
+
+    // Páratartalom
+    drawHumidity(
+        3,
+        110,
+        151,
+        kids.humidity
+    );
 
     // JOBB HÁZ: az aktív ág előremenő és visszatérő adatai.
     const bool gasActive =
@@ -238,23 +463,59 @@ void displayUpdate(const MasterData& m, const LocalData& l) {
         ret = m.m.woodReturn;
     }
 
-    drawTextField(2, 211, 117, 90, 12,
-                  activeBranchName(m.activeBranch, m.systemState),
-                  COLOR_VALUE, COLOR_BG, 1);
+    // drawTextField paraméterek jelentése:
+    // Paraméter	Érték	    Jelentés
+    // 1.	        3   	    A mező azonosítója. Ha a függvény kezeli a mezőket, ez alapján tudja azonosítani a korábban kirajzolt mezőt.
+    // 2.	        211	        A mező bal felső sarkának X koordinátája.
+    // 3.	        133	        A mező bal felső sarkának Y koordinátája.
+    // 4.	        90  	    A mező szélessége pixelben.
+    // 5.	        12	        A mező magassága pixelben.
+    // 6.	        kidsTemp    A kiírandó szöveg, vagyis a Kids hőmérsékleti értéke.
+    // 7.	        COLOR_VALUE A szöveg színe.
+    // 8.	        COLOR_BG	A mező háttérszíne.
+    // 9.	        2       	A szöveg mérete vagy skálázása — a pontos jelentés a drawTextField() függvény definíciójától függ.
 
-    drawTextField(3, 211, 133, 90, 12,
-                  String("Elore ") + degreeC(flow),
-                  COLOR_VALUE, COLOR_BG, 1);
-    drawTextField(4, 211, 145, 90, 12,
-                  String("Vissza ") + degreeC(ret),
-                  COLOR_VALUE, COLOR_BG, 1);
+    drawTextField(
+        4,
+        213, 120, 90, 8,
+        activeBranchName(m.activeBranch, m.systemState),
+        COLOR_VALUE,
+        COLOR_BG,
+        1
+    );
 
-    drawTextField(5, 211, 155, 90, 12,
-                  String("Fust ") + degreeC(m.m.chimney),
-                  COLOR_VALUE, COLOR_BG, 1);
-    drawTextField(6, 211, 165, 90, 12,
-                  String("Kaz ") + degreeC(m.m.woodBoiler),
-                  COLOR_VALUE, COLOR_BG, 1);
+    drawTextField(
+        5,
+        213, 138, 90, 8,
+        String("Elore ") + degreeC(flow),
+        COLOR_VALUE,
+        COLOR_BG,
+        1
+    );
+    drawTextField(
+        6,
+        213, 149, 90, 8,
+        String("Vissza ") + degreeC(ret),
+        COLOR_VALUE,
+        COLOR_BG,
+        1
+    );
+    drawTextField(
+        7,
+        213, 161, 90, 8,
+        String("Fust ") + degreeC(m.m.chimney),
+        COLOR_VALUE,
+        COLOR_BG,
+        1
+    );
+    drawTextField(
+        8,
+        213, 173, 90, 8,
+        String("Kaz ") + degreeC(m.m.woodBoiler),
+        COLOR_VALUE,
+        COLOR_BG,
+        1
+    );
 
     // Master utolsó mérési frissítésének időpontja: YYYY.MM.DD HH:MM.
     /*String updateTime = "----.--.-- --:--";
@@ -268,12 +529,12 @@ void displayUpdate(const MasterData& m, const LocalData& l) {
                   COLOR_VALUE, COLOR_BG, 1);*/
 
     // ALSÓ ÖTÖD: dátum balra, óra jobbra, másodperc fél méretben.
-    String dateText = "----.--.-- ---";
+    String dateText = "--.--.-- ---";
     String clockText = "--:--";
     String secondsText = "--";
 
     if (l.dateTime.length() >= 19) {
-        const int year = l.dateTime.substring(0, 4).toInt();
+        const int year = l.dateTime.substring(2, 2).toInt();
         const int month = l.dateTime.substring(5, 7).toInt();
         const int day = l.dateTime.substring(8, 10).toInt();
 
@@ -286,12 +547,30 @@ void displayUpdate(const MasterData& m, const LocalData& l) {
         secondsText = l.dateTime.substring(17, 19);
     }
 
-    drawTextField(8, 5, 200, 18, 12, dateText,
-                  COLOR_VALUE, COLOR_BG, 2);
-    drawTextField(9, 210, 202, 70, 22, clockText,
-                  COLOR_VALUE, COLOR_BG, 2);
-    drawTextField(10, 282, 208, 24, 12, secondsText,
-                  COLOR_VALUE, COLOR_BG, 1);
+    // drawTextField(
+    //     9,
+    //     5, 200, 18, 12,
+    //     dateText,
+    //     COLOR_VALUE,
+    //     COLOR_BG,
+    //     3
+    // );
+    drawTextField(
+        10,
+        160, 202, 120, 32,
+        clockText,
+        COLOR_VALUE,
+        COLOR_BG,
+        4
+    );
+    drawTextField(
+        11,
+        285, 217, 30, 16,
+        secondsText,
+        COLOR_VALUE,
+        COLOR_BG,
+        2
+    );
 
     // Hibánál a felső sáv elfedi a normál kép tetejét.
     // Master-riasztáshoz később külön, teljes képernyős nézet készülhet.

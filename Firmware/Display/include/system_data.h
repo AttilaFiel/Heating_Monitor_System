@@ -95,3 +95,21 @@ struct LocalData {
     // Dátum és idő
     String dateTime;
 };
+
+// ============================================================
+// HMS Kids Thermometer adatai
+// ============================================================
+
+struct KidsThermometerData {
+
+    bool valid = false;
+    bool sensorOk = false;
+
+    float temperature = NAN;
+    float humidity = NAN;
+
+    uint32_t lastSuccess = 0;
+    uint32_t dataAgeMs = UINT32_MAX;
+
+    String timestamp;
+};

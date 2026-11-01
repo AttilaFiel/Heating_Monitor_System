@@ -18,10 +18,11 @@
 
 MasterData master;
 LocalData local;
+KidsThermometerData kidsThermometer;
 
 uint32_t lastPoll = 0;
 uint32_t lastDraw = 0;
-
+uint32_t lastKidsPoll = 0;
 
 // ============================================================
 // Inicializálás
@@ -97,8 +98,21 @@ void loop() {
         }
     }
 
+    // --------------------------------------------------------
+    // HMS Kids Thermometer API lekérdezése
+    // --------------------------------------------------------
 
+    if (now - lastKidsPoll >= KIDS_POLL_MS) {
+        lastKidsPoll = now;
+
+        if (!networkFetchKidsThermometer(kidsThermometer)) {
+            networkLog("Kids Thermometer API failed");
+        }
+    }
+
+    // --------------------------------------------------------
     // Master adatainak frissesség-ellenőrzése
+    // --------------------------------------------------------
     if (master.valid) {
         const uint32_t fetchAgeMs = now - master.lastSuccess;
 
@@ -125,7 +139,7 @@ void loop() {
 
     if (now - lastDraw >= 1000) {
         lastDraw = now;
-        displayUpdate(master, local);
+        displayUpdate(master, local, kidsThermometer);
     }
 
 

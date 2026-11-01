@@ -19,6 +19,7 @@ constexpr char MASTER_STATUS_PATH[] = "/api/v1/status";
 constexpr char DISPLAY_HOSTNAME[] = "HMS-Display";
 
 constexpr uint32_t MASTER_POLL_MS = 5000;
+constexpr uint32_t KIDS_POLL_MS = 5000;
 constexpr uint32_t MASTER_STALE_MS = 30000;
 
 constexpr uint32_t WIFI_RETRY_MS = 10000;

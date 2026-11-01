@@ -28,6 +28,7 @@ static uint32_t lastRetry = 0;
 static MasterData *lastMaster = nullptr;
 static LocalData localCopy;
 
+static KidsThermometerData *lastKidsThermometer = nullptr;
 
 // ============================================================
 // Helyi adatok frissítése
@@ -473,4 +474,117 @@ bool networkFetchMaster(MasterData &d) {
     // --------------------------------------------------------
 
     return true;
+}
+
+// ============================================================
+// HMS Kids Thermometer API lekérdezése
+// ============================================================
+
+bool networkFetchKidsThermometer(KidsThermometerData &d) {
+
+    lastKidsThermometer = &d;
+
+    // --------------------------------------------------------
+    // Wi-Fi kapcsolat ellenőrzése
+    // --------------------------------------------------------
+
+    if (WiFi.status() != WL_CONNECTED) {
+        d.valid = false;
+        d.sensorOk = false;
+
+        return false;
+    }
+
+
+    // --------------------------------------------------------
+    // HTTP kapcsolat inicializálása
+    // --------------------------------------------------------
+
+    HTTPClient h;
+
+    const String url =
+        "http://192.168.1.112/api/v1/status";
+
+    h.setTimeout(1800);
+
+    if (!h.begin(url)) {
+        d.valid = false;
+        d.sensorOk = false;
+
+        return false;
+    }
+
+
+    // --------------------------------------------------------
+    // HTTP kérés
+    // --------------------------------------------------------
+
+    const int code = h.GET();
+
+    if (code != 200) {
+        h.end();
+
+        d.valid = false;
+        d.sensorOk = false;
+
+        return false;
+    }
+
+
+    // --------------------------------------------------------
+    // JSON válasz feldolgozása
+    // --------------------------------------------------------
+
+    JsonDocument j;
+
+    const auto err = deserializeJson(j, h.getStream());
+
+    h.end();
+
+    if (err) {
+        d.valid = false;
+        d.sensorOk = false;
+
+        return false;
+    }
+
+
+    // --------------------------------------------------------
+    // Szenzoradatok kiolvasása
+    // --------------------------------------------------------
+
+    d.sensorOk = j["sensorOk"] | false;
+
+    d.temperature =
+        j["temperatureC"].is<float>()
+            ? j["temperatureC"].as<float>()
+            : NAN;
+
+    d.humidity =
+        j["humidityRH"].is<float>()
+            ? j["humidityRH"].as<float>()
+            : NAN;
+
+    d.timestamp = j["timestamp"] | "";
+
+    d.dataAgeMs =
+        j["dataAgeMs"].is<uint32_t>()
+            ? j["dataAgeMs"].as<uint32_t>()
+            : UINT32_MAX;
+
+
+    // --------------------------------------------------------
+    // Érvényesség ellenőrzése
+    // --------------------------------------------------------
+
+    d.valid =
+        d.sensorOk &&
+        !isnan(d.temperature) &&
+        !isnan(d.humidity);
+
+    if (d.valid) {
+        d.lastSuccess = millis();
+    }
+
+    return d.valid;
 }
