@@ -61,12 +61,24 @@ static String weekdayHu(int year, int month, int day) {
         month += 12;
         --year;
     }
+
     const int k = year % 100;
     const int j = year / 100;
-    const int h = (day + (13 * (month + 1)) / 5 + k + k / 4 + j / 4 + 5 * j) % 7;
-    const int weekday = (h + 5) % 7; // hétfő=0
-    static const char* names[] = {"H", "K", "Sze", "Cs", "P", "Szo", "V"};
-    return names[weekday];
+
+    const int h = (
+        day +
+        (13 * (month + 1)) / 5 +
+        k +
+        k / 4 +
+        j / 4 +
+        5 * j
+    ) % 7;
+
+    static const char* names[] = {
+        "Szo", "V", "H", "K", "Sze", "Cs", "P"
+    };
+
+    return names[h];
 }
 
 static void drawThickRect(
@@ -394,6 +406,8 @@ void displayUpdate(
     const String roomTemp = l.shtValid ? degreeC(l.temp) : String("--.-") + String((char)0xF7) + "C";
     const String roomHumidity = l.shtValid ? tt(l.humidity) + "%" : "--.-%";
 
+    // Karakter szélessége: 6 pixel
+    // Karakter magassága: 8 pixel
     // drawTemperature paraméterek jelentése:
     // Paraméter	Érték	    Jelentés
     // 1.	        0   	    A mező azonosítója. Ha a függvény kezeli a mezőket, ez alapján tudja azonosítani a korábban kirajzolt mezőt.
@@ -463,6 +477,8 @@ void displayUpdate(
         ret = m.m.woodReturn;
     }
 
+    // Karakter szélessége: 6 pixel
+    // Karakter magassága: 8 pixel
     // drawTextField paraméterek jelentése:
     // Paraméter	Érték	    Jelentés
     // 1.	        3   	    A mező azonosítója. Ha a függvény kezeli a mezőket, ez alapján tudja azonosítani a korábban kirajzolt mezőt.
@@ -534,7 +550,7 @@ void displayUpdate(
     String secondsText = "--";
 
     if (l.dateTime.length() >= 19) {
-        const int year = l.dateTime.substring(2, 2).toInt();
+        const int year = l.dateTime.substring(0, 4).toInt();
         const int month = l.dateTime.substring(5, 7).toInt();
         const int day = l.dateTime.substring(8, 10).toInt();
 
@@ -547,30 +563,30 @@ void displayUpdate(
         secondsText = l.dateTime.substring(17, 19);
     }
 
-    // drawTextField(
-    //     9,
-    //     5, 200, 18, 12,
-    //     dateText,
-    //     COLOR_VALUE,
-    //     COLOR_BG,
-    //     3
-    // );
+    drawTextField(
+        9,
+        5, 202, 168, 16,
+        dateText,
+        COLOR_VALUE,
+        COLOR_BG,
+        2
+    );
     drawTextField(
         10,
-        160, 202, 120, 32,
+        190, 202, 120, 32,
         clockText,
         COLOR_VALUE,
         COLOR_BG,
         4
     );
-    drawTextField(
-        11,
-        285, 217, 30, 16,
-        secondsText,
-        COLOR_VALUE,
-        COLOR_BG,
-        2
-    );
+    // drawTextField(
+    //     11,
+    //     285, 217, 30, 16,
+    //     secondsText,
+    //     COLOR_VALUE,
+    //     COLOR_BG,
+    //     2
+    // );
 
     // Hibánál a felső sáv elfedi a normál kép tetejét.
     // Master-riasztáshoz később külön, teljes képernyős nézet készülhet.

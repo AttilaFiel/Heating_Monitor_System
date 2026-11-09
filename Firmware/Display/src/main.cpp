@@ -120,6 +120,18 @@ void loop() {
             fetchAgeMs <= MASTER_STALE_MS;
     }
 
+    // --------------------------------------------------------
+    // Kids Thermometer adatainak frissesség-ellenőrzése
+    // --------------------------------------------------------
+
+    if (kidsThermometer.lastSuccess > 0) {
+        const uint32_t fetchAgeMs =
+            now - kidsThermometer.lastSuccess;
+
+        if (fetchAgeMs > KIDS_STALE_MS) {
+            kidsThermometer.valid = false;
+        }
+    }
 
     // --------------------------------------------------------
     // Kimenetek kezelése
